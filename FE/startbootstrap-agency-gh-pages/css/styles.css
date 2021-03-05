@@ -10581,3 +10581,53 @@ section#contact form#contactForm :-ms-input-placeholder {
 .kids-ages .ages-thumb .ages-content {
   text-align: center;
 }
+
+<<<<<<< HEAD
+.iconCall {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top:20px;
+  margin-bottom:40px;
+}
+=======
+.border-azul {
+  border-color: #44BBC9 !important;
+  border-width: 3px;
+}
+
+.border-magenta {
+  border-color: #E5004E !important;
+  border-width: 3px;
+}
+
+.border-amarelo {
+  border-color: #F7BE00 !important;
+  border-width: 3px;
+}
+
+.letra-azul {
+  color: #44BBC9;
+  font-family: "Capriola";
+}
+
+.letra-magenta {
+  color: #E5004E;
+  font-family: "Capriola";
+}
+
+.letra-amarela {
+  color: #F7BE00;
+  font-family: "Capriola";
+}
+
+#bg3 {
+  background-image: url("../assets/img/fundos/arco_iris.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.fundo-azul {
+  background-color: #54e6f7;
+}
+>>>>>>> 0f3b050a4634103d8dfa5857bb7f42b00161a482
