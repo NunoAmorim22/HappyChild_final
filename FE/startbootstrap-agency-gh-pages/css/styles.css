@@ -10488,3 +10488,61 @@ section#contact form#contactForm :-ms-input-placeholder {
 }
 
 /*--------------------------------------NOVO----------------------------------------------------------------------*/
+.titulos {
+  color: #3a3b45;
+  font-weight: bold;
+}
+
+.bg-gradient-primary-azul {
+  background-color: #43bcc97c;
+}
+
+.bg-gradient-primary-amarelo {
+  background-color: #f7bd0070;
+}
+
+.bg-gradient-primary-magenta {
+  background-color: #55004034;
+}
+
+.bg-primary-escuro {
+  background-color: #10009ca2;
+}
+
+.labels-login-azul {
+  color: #43bbc9;
+  font-size: 14px;
+}
+
+.labels-login-amarelo {
+  color: #f7be00;
+  font-size: 14px;
+}
+
+.labels-login-magenta {
+  color: #e5004e;
+  font-size: 14px;
+}
+
+.btn-azul {
+  color: #fff;
+  font-weight: bold;
+  background-color: #43bbc9;
+}
+
+.btn-amarelo {
+  color: #fff;
+  font-weight: bold;
+  background-color: #f7be00;
+}
+
+.btn-magenta {
+  color: #fff;
+  font-weight: bold;
+  background-color: #e5004e;
+}
+
+.responsive {
+  max-width: 100%;
+  height: auto;
+}
