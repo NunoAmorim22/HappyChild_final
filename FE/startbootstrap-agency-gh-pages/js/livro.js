@@ -1,35 +1,35 @@
 var slideIndex = 1;
 localStorage.setItem("direito", slideIndex);
+var fotos1 = [["assets/img/logos/LogoApp.png", "Logo da app"] , ["assets/img/logos/LgoProChild.png", "Logo da prochild"]];
+var slides = 2;
 showSlides(slideIndex);
 
 
 // Next/previous controls
 function plusSlides(n) {
-  showSlides(slideIndex += n);
+    showSlides(slideIndex += n);
 }
 
 // Thumbnail image controls
 function currentSlide(n) {
-  showSlides(slideIndex = n);
+    showSlides(slideIndex = n);
 }
 
-let fotos1 = ["assets/img/logos/LogoApp.png", "Logo da app"];
-let fotos2 = ["assets/img/logos/LogoProChild.png", "Logo da prochild"];
-var slides = 2;
+
 
 function showSlides(n) {
     var i;
     console.log(slides);
     var dots = document.getElementsByClassName("dot");
-    if (n > slides) {slideIndex = 1}
-    if (n < 1) {slideIndex = slides}
+    if (n > slides) { slideIndex = 1 }
+    if (n < 1) { slideIndex = slides }
     for (i = 0; i < dots.length; i++) {
         dots[i].className = dots[i].className.replace(" active", "");
     }
-    dots[slideIndex-1].className += " active";
+    dots[slideIndex - 1].className += " active";
     localStorage.setItem("direito", slideIndex);
-    
-  }
+    document.getElementById("mySlides").innerHTML = `<div class="numbertext">${slideIndex} / 3</div> <img src='${fotos1[slideIndex - 1][0]}' style="width:100%"/> <div class="text">${fotos1[slideIndex - 1][1]}</div>`;
+}
 /*
 function showSlides(n) {
   var i;
