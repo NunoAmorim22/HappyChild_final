@@ -10581,3 +10581,11 @@ section#contact form#contactForm :-ms-input-placeholder {
 .kids-ages .ages-thumb .ages-content {
   text-align: center;
 }
+
+.iconCall {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top:20px;
+  margin-bottom:40px;
+}
