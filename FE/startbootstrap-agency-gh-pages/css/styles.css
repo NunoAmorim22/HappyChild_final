@@ -10611,6 +10611,16 @@ section#contact form#contactForm :-ms-input-placeholder {
   border-width: 3px;
 }
 
+.border-verde {
+  border-color: #4e8f04 !important;
+  border-width: 3px;
+}
+
+.border-laranja {
+  border-color: #f57309 !important;
+  border-width: 3px;
+}
+
 .letra-azul {
   color: #3ea8b4;
   font-family: "Capriola";
@@ -10626,6 +10636,16 @@ section#contact form#contactForm :-ms-input-placeholder {
   font-family: "Capriola";
 }
 
+.letra-verde {
+  color: #4e8f04;
+  font-family: "Capriola";
+}
+
+.letra-laranja {
+  color: #f57309;
+  font-family: "Capriola";
+}
+
 #bg3 {
   background-image: url("../assets/img/fundos/arco_iris.jpg");
   background-repeat: repeat-y;
@@ -10634,6 +10654,22 @@ section#contact form#contactForm :-ms-input-placeholder {
 
 .fundo-azul {
   background-color: #54e7f762;
+}
+
+.fundo-magenta {
+  background-color: #e5004c5e;
+}
+
+.fundo-amarelo {
+  background-color: #f7bd005e;
+}
+
+.fundo-verde {
+  background-color: #CAE5B5;
+}
+
+.fundo-laranja {
+  background-color: #f5730981;
 }
 
 header.masthead1 {
