@@ -10134,14 +10134,14 @@ header.masthead .masthead-subheading {
   font-style: italic;
   line-height: 1.5rem;
   margin-bottom: 25px;
-  font-family: "Droid Serif", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: "Capriola" cursive;
 }
 header.masthead .masthead-heading {
   font-size: 3.25rem;
   font-weight: 700;
   line-height: 3.25rem;
   margin-bottom: 2rem;
-  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: "Capriola" cursive;
 }
 
 @media (min-width: 768px) {
@@ -10554,6 +10554,13 @@ section#contact form#contactForm :-ms-input-placeholder {
   background-image: url("../assets/img/fundos/Fundo1.jpg");
 }
 
+.bg1  {
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-attachment: fixed;
+  background-image: url("../assets/img/fundos/Fundo1.jpg");
+}
+
 #bg2 {
   background-repeat: no-repeat;
   background-size: 100%;
@@ -10717,3 +10724,83 @@ header.masthead1 .masthead1-heading {
   }
 }
 
+/* } de cima!? */
+
+.fundo-forum {
+  background-color: #fff;
+  color: #000;
+  overflow: none;
+}
+
+.categoryModule {
+  background-color: #fff;
+  color: #000;
+  overflow: none;
+  margin-top: 30px;
+}
+
+.forumMargin {
+  margin-bottom: 10px;
+}
+
+.forumPad{
+  padding-top: 5px;
+  padding-bottom: 20px;
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+.forumTable {
+  width: 100%;
+  height: auto;
+  border: 1px solid #F7BE00;
+}
+
+.forumTable td{
+  padding: 5px;
+}
+
+.forumTable thead tr{
+  border: 1px solid #F7BE00;
+}
+
+.forumTable tr{
+  border: 1px solid #f7bd006b;
+}
+
+.forumTable th{
+  padding: 5px;
+}
+
+.pagination-arrow {
+  color: grey;
+  
+}
+
+.pullLeft {
+  float: left;
+  display: inline-block;
+}
+
+.pullRight {
+  float: right;
+  display: inline-block;
+}
+
+.themeButton{
+  background-color: #f3bd01;
+  color: white;
+  border-color: black;
+  border-width: thin;
+  font-weight: 500;
+}
+
+.vMiddle {
+  position: relative;
+  vertical-align: middle;
+}
+
+.newDiscussionText {
+  width: 100%;
+  height: auto;
+}
