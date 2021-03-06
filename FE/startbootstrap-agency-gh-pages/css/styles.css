@@ -10593,8 +10593,8 @@ section#contact form#contactForm :-ms-input-placeholder {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  margin-top:20px;
-  margin-bottom:40px;
+  margin-top: 20px;
+  margin-bottom: 40px;
 }
 .border-azul {
   border-color: #44BBC9 !important;
@@ -10680,3 +10680,4 @@ header.masthead1 .masthead1-heading {
     margin-bottom: 4rem;
   }
 }
+
