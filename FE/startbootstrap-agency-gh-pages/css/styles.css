@@ -10612,7 +10612,7 @@ section#contact form#contactForm :-ms-input-placeholder {
 }
 
 .letra-azul {
-  color: #44BBC9;
+  color: #3ea8b4;
   font-family: "Capriola";
 }
 
@@ -10628,12 +10628,12 @@ section#contact form#contactForm :-ms-input-placeholder {
 
 #bg3 {
   background-image: url("../assets/img/fundos/arco_iris.jpg");
-  background-repeat: no-repeat;
+  background-repeat: repeat-y;
   background-size: cover;
 }
 
 .fundo-azul {
-  background-color: #54e6f7;
+  background-color: #54e7f762;
 }
 
 header.masthead1 {
