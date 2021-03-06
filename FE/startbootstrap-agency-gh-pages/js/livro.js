@@ -1,5 +1,5 @@
 var slideIndex = 1;
-var fotos1 = [["assets/img/logos/LogoApp.png", "<p> As armas e os barões assinalados <p>Que, da Ocidental praia Lusitana, <p>Por mares nunca dantes navegados <p>Passaram ainda além da Taprobana, <p>Em perigos e guerras esforçados <p>Mais do que prometia a força humana <p>E entre gente remota edificaram <p>Novo Reino, que tanto sublimaram;"], ["assets/img/logos/LgoProChild.png", "Logo da prochild"]];
+var fotos1 = [["assets/img/logos/LogoApp.png", "<p> As armas e os barões assinalados <p>Que, da Ocidental praia Lusitana, <p>Por mares nunca dantes navegados <p>Passaram ainda além da Taprobana, <p>Em perigos e guerras esforçados <p>Mais do que prometia a força humana <p>E entre gente remota edificaram <p>Novo Reino, que tanto sublimaram;", "assets/audios/gravacao1.m4a"], ["assets/img/logos/LgoProChild.png", "Logo da prochild", "assets/audios/gravacao.m4a"]];
 var slides = 2;
 showSlides(slideIndex);
 
@@ -30,7 +30,7 @@ function showSlides(n) {
         }
     }   
     document.getElementById("rights-texts").innerHTML = dots;
-    document.getElementById("mySlides").innerHTML = `<div class="numbertext">${slideIndex} / ${fotos1.length}</div><br> <br><div><img src='${fotos1[slideIndex - 1][0]}' style="width:100%"/></div> <br> <br> <div class="text">${fotos1[slideIndex - 1][1]}</div>`;
+    document.getElementById("mySlides").innerHTML = `<div class="numbertext">${slideIndex} / ${fotos1.length}</div><br> <br><div><img src='${fotos1[slideIndex - 1][0]}' style="width:100%"/></div> <br> <br> <div class="text">${fotos1[slideIndex - 1][1]}</p><audio controls src="${fotos1[slideIndex - 1][2]}">AQUI</audio></div> <br> `;
 
 }
 /*
