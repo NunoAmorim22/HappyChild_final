@@ -30,7 +30,7 @@ function showSlides(n) {
         }
     }   
     document.getElementById("rights-texts").innerHTML = dots;
-    document.getElementById("mySlides").innerHTML = `<div class="numbertext">${slideIndex} / ${fotos1.length}</div><br> <br><div><img src='${fotos1[slideIndex - 1][0]}' style="width:100%"/></div> <br> <br> <div class="text">${fotos1[slideIndex - 1][1]}</p><audio controls src="${fotos1[slideIndex - 1][2]}">AQUI</audio></div> <br> `;
+    document.getElementById("mySlides").innerHTML = `<div class="numbertext">${slideIndex} / ${fotos1.length}</div><br> <br><div><img  class="responsive" src='${fotos1[slideIndex - 1][0]}' style="display: block; width:50%; margin-left: auto; margin-right: auto;"/></div> <br> <br> <div class="text responsive">${fotos1[slideIndex - 1][1]}</p><audio controls src="${fotos1[slideIndex - 1][2]}">AQUI</audio></div> <br> `;
 
 }
 /*

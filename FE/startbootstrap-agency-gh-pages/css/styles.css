@@ -10812,3 +10812,11 @@ header.masthead1 .masthead1-heading {
 .submit-button:hover{
   background-color: #3facb8;
 }
+
+.bg-direitos {
+  background-image: url("../assets/img/fundos/clipboard_direitos.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: center;
+}
