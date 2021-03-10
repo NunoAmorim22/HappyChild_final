@@ -10146,8 +10146,8 @@ header.masthead .masthead-heading {
 
 @media (min-width: 768px) {
   header.masthead {
-    padding-top: 17rem;
-    padding-bottom: 12.5rem;
+    padding-top: 9rem;
+    padding-bottom: 4.5rem;
   }
   header.masthead .masthead-subheading {
     font-size: 2.25rem;
@@ -10680,8 +10680,8 @@ section#contact form#contactForm :-ms-input-placeholder {
 }
 
 header.masthead1 {
-  padding-top: 10.5rem;
-  padding-bottom: 6rem;
+  padding-top: 9rem;
+  padding-bottom: 9rem;
   text-align: center;
   color: #e52461;
   background-image: url("../assets/img/fundos/Fundo1.jpg");
@@ -10707,8 +10707,8 @@ header.masthead1 .masthead1-heading {
 
 @media (min-width: 768px) {
   header.masthead1 {
-    padding-top: 17rem;
-    padding-bottom: 12.5rem;
+    padding-top: 9rem;
+    padding-bottom: 4.5rem;
   }
   header.masthead1 .masthead1-subheading {
     font-size: 2.25rem;
