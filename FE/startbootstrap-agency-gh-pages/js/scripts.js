@@ -72,3 +72,8 @@ function chooseTypeInstitution(){
     localStorage.setItem("type", "institution");
     window.location.href = "./Login.html";
 }
+
+function chooseGenderMale(){
+    localStorage.setItem("gender", "male");
+    document.getElementById("male-btn").style.background = "#"
+}
