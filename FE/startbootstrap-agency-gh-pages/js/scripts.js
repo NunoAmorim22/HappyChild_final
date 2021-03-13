@@ -58,3 +58,17 @@
 
 //-------------------------------------------NOVO----------------------------------------------------//
 
+function chooseTypeChild(){
+    localStorage.setItem("type", "child");
+    window.location.href = "./MenuEscolherIdade.html";
+}
+
+function chooseTypeFamily(){
+    localStorage.setItem("type", "family");
+    window.location.href = "./Login.html";
+}
+
+function chooseTypeInstitution(){
+    localStorage.setItem("type", "institution");
+    window.location.href = "./Login.html";
+}
