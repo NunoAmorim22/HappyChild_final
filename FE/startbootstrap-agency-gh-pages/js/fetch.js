@@ -10,7 +10,7 @@ function saveSuspect() {
     console.log(data); //debugging para ver os dados que foram enviados
   
     //chamada fetch para envio dos dados para o servior via POST
-    fetch( 'localhost:8080/users',
+    fetch( 'http://localhost:8080/users',
       {
         headers: { "Content-Type": "application/json" },
         method: "POST",
