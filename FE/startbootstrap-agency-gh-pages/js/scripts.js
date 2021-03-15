@@ -75,5 +75,20 @@ function chooseTypeInstitution(){
 
 function chooseGenderMale(){
     localStorage.setItem("gender", "male");
-    document.getElementById("male-btn").style.background = "#"
+    document.getElementById("male-btn").style.backgroundColor = "rgba(249, 210, 77, 1)";
+    document.getElementById("female-btn").style.backgroundColor = "rgba(255, 255, 255, 0)";
+}
+function chooseGenderFemale(){
+    localStorage.setItem("gender", "female");
+    document.getElementById("male-btn").style.backgroundColor = "rgba(255, 255, 255, 0)";
+    document.getElementById("female-btn").style.backgroundColor = "rgba(249, 210, 77, 1)";
+}
+
+function chooseAge(faixa){
+    if(faixa==1 && localStorage.getItem("gender")!==null){
+        console.log("tem genero");
+    }
+    else{
+        console.log("não tem genero");
+    }
 }
