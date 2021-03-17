@@ -91,7 +91,7 @@ function chooseGenderFemale(){
 }
 
 function chooseAge(faixa){
-    localStorage.setItem("idade", faixa);
+    localStorage.setItem("age", faixa);
     for(i=1;i<5;i++){
         if(faixa == i){
             document.getElementById(i + "btn").style.backgroundColor = "rgba(249, 210, 77, 1)";
@@ -99,5 +99,15 @@ function chooseAge(faixa){
         else{
             document.getElementById(i + "btn").style.backgroundColor = "rgba(255, 255, 255, 0)";
         }
+    }
+}
+
+function clearLocalStorage(){
+    localStorage.clear();
+}
+
+function changeMainMenu(){
+    if(localStorage.getItem("type") == "child"){
+        document.getElementById("forumbtn").remove();
     }
 }
