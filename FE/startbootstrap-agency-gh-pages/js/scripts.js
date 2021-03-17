@@ -73,6 +73,12 @@ function chooseTypeInstitution(){
     window.location.href = "./Login.html";
 }
 
+function moveOn(){
+    if(localStorage.getItem("idade")!== null && localStorage.getItem("gender") !== null){
+        window.location.href = "./MenuPrincipal.html";
+    }
+}
+
 function chooseGenderMale(){
     localStorage.setItem("gender", "male");
     document.getElementById("male-btn").style.backgroundColor = "rgba(249, 210, 77, 1)";
@@ -85,10 +91,13 @@ function chooseGenderFemale(){
 }
 
 function chooseAge(faixa){
-    if(faixa==1 && localStorage.getItem("gender")!==null){
-        console.log("tem genero");
-    }
-    else{
-        console.log("não tem genero");
+    localStorage.setItem("idade", faixa);
+    for(i=1;i<5;i++){
+        if(faixa == i){
+            document.getElementById(i + "btn").style.backgroundColor = "rgba(249, 210, 77, 1)";
+        }
+        else{
+            document.getElementById(i + "btn").style.backgroundColor = "rgba(255, 255, 255, 0)";
+        }
     }
 }
