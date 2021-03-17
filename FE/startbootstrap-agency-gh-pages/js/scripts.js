@@ -115,6 +115,5 @@ function changeMainMenu(){
             document.getElementById("direitosbtn").setAttribute("href", "MenuDireitos.html");
         }
         document.getElementById("perfilbtn").remove();
-
     }
 }
