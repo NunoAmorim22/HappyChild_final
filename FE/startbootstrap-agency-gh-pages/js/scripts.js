@@ -109,5 +109,6 @@ function clearLocalStorage(){
 function changeMainMenu(){
     if(localStorage.getItem("type") == "child"){
         document.getElementById("forumbtn").remove();
+        document.getElementById("perfilbtn").remove();
     }
 }
