@@ -29,7 +29,7 @@
   </div>
 
   <div class="row justify-content-center">
-    <a class="kids-ages" id="male-btn" onclick="chooseGenderMale()">
+    <a class="kids-ages" id="male-btn" onclick="chooseGenderMale(); moveOn();">
       <div class="ages-thumb">
         <div class="ages-img">
           <img class="rounded-circle responsive" style="width: 146px"
@@ -37,7 +37,7 @@
         </div>
       </div>
     </a>
-    <a class="kids-ages" id="female-btn" onclick="chooseGenderFemale()">
+    <a class="kids-ages" id="female-btn" onclick="chooseGenderFemale(); moveOn();">
       <div class="ages-thumb">
         <div class="ages-img">
           <img class="rounded-circle responsive" style="width: 146px"
@@ -53,7 +53,7 @@
   </div>
 
   <div class="row justify-content-center">
-    <a href="MenuPrincipal.html" class="kids-ages" onclick="chooseAge(1)">
+    <a class="kids-ages" id="1btn" onclick="chooseAge(1); moveOn();">
       <div class="ages-thumb">
         <div class="ages-img">
           <img class="rounded-circle responsive" style="width: 188px"
@@ -64,7 +64,7 @@
         </div>
       </div>
     </a>
-    <a href="MenuPrincipal.html" class="kids-ages">
+    <a id="2btn" class="kids-ages" onclick="chooseAge(2); moveOn();">
       <div class="ages-thumb">
         <div class="ages-img">
           <img class="rounded-circle responsive" src="assets/img/perfis-idades/6-9-kid.jpg" />
@@ -74,7 +74,7 @@
         </div>
       </div>
     </a>
-    <a href="MenuPrincipal.html" class="kids-ages">
+    <a id="3btn" class="kids-ages" onclick="chooseAge(3); moveOn();">
       <div class="ages-thumb">
         <div class="ages-img">
           <img class="rounded-circle responsive" style="width: 188px" src="assets/img/perfis-idades/9-12-kids.png" />
@@ -84,7 +84,7 @@
         </div>
       </div>
     </a>
-    <a href="MenuPrincipal.html" class="kids-ages">
+    <a id="4btn" class="kids-ages" onclick="chooseAge(4); moveOn();">
       <div class="ages-thumb">
         <div class="ages-img">
           <img class="rounded-circle responsive" style="width: 188px" src="assets/img/perfis-idades/12-15-kids.png" />
