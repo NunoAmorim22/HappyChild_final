@@ -111,6 +111,10 @@ function changeMainMenu(){
         if(localStorage.getItem("age") === "1" || localStorage.getItem("age") === "2" || localStorage.getItem("age") === "3"){
             document.getElementById("forumbtn").remove();
         }
+        if(localStorage.getItem("age") === "4"){
+            document.getElementById("direitosbtn").setAttribute("href", "MenuDireitos.html");
+        }
         document.getElementById("perfilbtn").remove();
+
     }
 }
