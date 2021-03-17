@@ -74,7 +74,7 @@ function chooseTypeInstitution(){
 }
 
 function moveOn(){
-    if(localStorage.getItem("idade")!== null && localStorage.getItem("gender") !== null){
+    if(localStorage.getItem("age")!== null && localStorage.getItem("gender") !== null){
         window.location.href = "./MenuPrincipal.html";
     }
 }
@@ -108,7 +108,9 @@ function clearLocalStorage(){
 
 function changeMainMenu(){
     if(localStorage.getItem("type") == "child"){
-        document.getElementById("forumbtn").remove();
+        if(localStorage.getItem("age") === "1" || localStorage.getItem("age") === "2" || localStorage.getItem("age") === "3"){
+            document.getElementById("forumbtn").remove();
+        }
         document.getElementById("perfilbtn").remove();
     }
 }
