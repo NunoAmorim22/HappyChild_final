@@ -114,4 +114,7 @@ function changeMainMenu(){
         }
         document.getElementById("perfilbtn").remove();
     }
+    else if(localStorage.getItem("type") == "family"){
+        document.getElementById("apoiosplace").innerHTML = '<a class="nav-link js-scroll-trigger" href="MenuSelecaoTipoInformacao.html"><i class="far fa-question-circle"></i> Ajudas</a>';
+    }
 }
