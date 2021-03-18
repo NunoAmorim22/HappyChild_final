@@ -19,7 +19,7 @@
   <link href="css/styles.css" rel="stylesheet" />
 </head>
 
-<body class="">
+<body class="" onload="changeMainMenu()">
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
     <div class="container">
       <a class="navbar-brand js-scroll-trigger" href="#page-top"><img src="assets/img/logos/LogoApp.png" alt="" /></a>
@@ -31,32 +31,22 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav text-uppercase ml-auto">
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="MenuPrincipal.html"><i class="fas fa-home"></i> Menu
-              Principal</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="MenuForum.html"><i class="fas fa-comments"></i> Forum</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="MenuDireitosCriancas.html"><i class="fas fa-balance-scale"></i>
-              Direitos das Crianças</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="MenuDiversoes.html"><i class="fas fa-puzzle-piece"></i>
-              Diversoes</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="MenuSelecaoTipoInformacao.html"><i
-                class="far fa-question-circle"></i> Ajudas</a>
-          </li>
-          <li class="nav-item">
+          <li class="nav-item"><a class="nav-link js-scroll-trigger" href="MenuPrincipal.html"><i
+                class="fas fa-home"></i> Menu Principal</a></li>
+          <li class="nav-item" id="forumbtn"><a class="nav-link js-scroll-trigger" href="MenuForum.html"><i
+                class="fas fa-comments"></i> Forum</a></li>
+          <li class="nav-item"><a class="nav-link js-scroll-trigger" id="direitosbtn" href="MenuDireitos.html"><i
+                class="fas fa-balance-scale"></i> Direitos das Crianças</a></li>
+          <li class="nav-item"><a class="nav-link js-scroll-trigger" href="MenuDiversoes.html"><i
+                class="fas fa-puzzle-piece"></i> Diversoes</a></li>
+          <li class="nav-item"><a class="nav-link js-scroll-trigger" href="MenuLinhasApoio.html"><i
+                class="fas fa-headset"></i> Ajudas</a></li>
+          <li class="nav-item" id="perfilbtn">
             <a class="nav-link js-scroll-trigger" href="DadosPerfil.html"><i class="fas fa-user"></i>
               Perfil</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href=""><i class="fas fa-sign-out-alt"></i> Logout</a>
-          </li>
+          <li class="nav-item"><a class="nav-link js-scroll-trigger" href=""><i class="fas fa-sign-out-alt"></i>
+              Logout</a></li>
         </ul>
       </div>
     </div>
