@@ -1,4 +1,4 @@
-//---------------------funcao para fazer Post de suspeitos-----------------------------------------
+//---------------------funcao para fazer Post de utilizadores-----------------------------------------
 
 function saveSuspect() {
     var data = {};
