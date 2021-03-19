@@ -35,3 +35,16 @@ function saveSuspect() {
         console.error(err);
       });
   }
+
+  /*
+  function verImagem() {
+    fetch( 'http://localhost:8080/livros/3',
+      {
+        headers: { "Content-Type": "application/json" },
+        method: "GET",
+      }
+    )
+    .then (res => json) 
+    console.log(res)
+  }
+  */
