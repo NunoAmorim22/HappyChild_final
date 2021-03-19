@@ -124,3 +124,9 @@ function changeProfileMenu(){
         document.getElementById("instituitiontype").remove();
     }
 }
+
+function changeLinhasApoio(){
+    if(localStorage.getItem("type") !== "child"){
+        document.getElementById("formComplaint").remove();
+    }
+}
