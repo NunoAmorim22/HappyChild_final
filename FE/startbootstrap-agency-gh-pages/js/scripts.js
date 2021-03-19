@@ -110,7 +110,17 @@ function changeMainMenu(){
     if(localStorage.getItem("type") == "child"){
         if(localStorage.getItem("age") === "1" || localStorage.getItem("age") === "2" || localStorage.getItem("age") === "3"){
             document.getElementById("forumbtn").remove();
+            document.getElementById("direitosbtn").setAttribute("href", "MenuDireitosCriancas.html");
         }
         document.getElementById("perfilbtn").remove();
+    }
+    else {
+        document.getElementById("apoiosplace").innerHTML = '<a class="nav-link js-scroll-trigger" href="MenuSelecaoTipoInformacao.html"><i class="far fa-question-circle"></i> Ajudas</a>';
+    }
+}
+
+function changeProfileMenu(){
+    if(localStorage.getItem("type") == "family"){
+        document.getElementById("instituitiontype").remove();
     }
 }
