@@ -11275,3 +11275,7 @@ header.masthead1 .masthead1-heading {
   background-position-x: center;
   background-position-y: center;
 }
+
+textarea {
+  resize: none;
+}
