@@ -11082,28 +11082,30 @@ section#contact form#contactForm :-ms-input-placeholder {
 
 .letra-azul {
   color: #3ea8b4;
-  font-family: "Capriola";
-}
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI",
+  Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+  "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";}
 
 .letra-magenta {
   color: #e5004e;
-  font-family: "Capriola";
-}
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI",
+  Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+  "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";}
 
 .letra-amarela {
   color: #f7be00;
-  font-family: "Capriola";
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-.letra-verde {
-  color: #4e8f04;
-  font-family: "Capriola";
+.letra-AzulEscura {
+  color: #233C7E;
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-.letra-laranja {
-  color: #f57309;
-  font-family: "Capriola";
-}
 
 #bg3 {
   background-image: url("../assets/img/fundos/arco_iris.jpg");
@@ -11113,6 +11115,10 @@ section#contact form#contactForm :-ms-input-placeholder {
 
 .fundo-azul {
   background-color: #54e7f762;
+}
+
+.fundo-azulescuro {
+  background-color: #233b7e98;
 }
 
 .fundo-magenta {
