@@ -8,7 +8,7 @@ var fotos1 =
 ["assets/img/team/MarianaCancela.jpg",""],
 ["assets/img/team/albano.jpg",""],
 ["assets/img/team/vasco.jpg",""],
-["assets/img/team/", ""],
+["assets/img/team/Joao.jpg", ""],
 ["assets/img/team/", ""],
 ["assets/img/team/", ""],
 ["assets/img/team/", ""],
