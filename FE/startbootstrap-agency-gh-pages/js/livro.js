@@ -1,5 +1,5 @@
 var slideIndex = 1;
-var fotos1 = [["assets/img/logos/LogoApp.png", "<p> As armas e os barões assinalados <p>Que, da Ocidental praia Lusitana, <p>Por mares nunca dantes navegados <p>Passaram ainda além da Taprobana, <p>Em perigos e guerras esforçados <p>Mais do que prometia a força humana <p>E entre gente remota edificaram <p>Novo Reino, que tanto sublimaram;", "assets/audios/gravacao1.m4a"], ["assets/img/logos/LgoProChild.png", "Logo da prochild", "assets/audios/gravacao.m4a"]];
+var fotos1 = [["assets/img/logos/LogoApp.png", "<p> As armas e os barões assinalados <p>Que, da Ocidental praia Lusitana, <p>Por mares nunca dantes navegados <p>Passaram ainda além da Taprobana, <p>Em perigos e guerras esforçados <p>Mais do que prometia a força humana <p>E entre gente remota edificaram <p>Novo Reino, que tanto sublimaram;", "assets/audios/gravacao1.m4a"], ["assets/img/logos/LgoProChild.png", "Logo da prochild", "assets/audios/mariana_teste.mp3"]];
 var slides = 2;
 showSlides(slideIndex);
 
