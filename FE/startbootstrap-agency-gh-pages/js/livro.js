@@ -59,18 +59,21 @@ function currentSlide(n) {
 
 
 function showSlides(n) {
-    var i;
+    var i = 0;
     let dots = "";
     if (n > slides) { slideIndex = 1 }
     if (n < 1) { slideIndex = slides }
-    for (i = 0; i < fotos1.length; i++) {
+    if(slideIndex > 5){
+        i = slideIndex - 5
+    }
+    for (i; i < fotos1.length; i++) {
         if(slideIndex == i + 1){
             dots = dots + `<span class="dot active" onclick="currentSlide(${i + 1})">${i + 1}</span>`;
         }
         else{
         dots = dots + `<span class="dot" onclick="currentSlide(${i + 1})">${i + 1}</span>`;
         }
-        if(slideIndex == i - 5){
+        if(slideIndex == i - 3){
             break;
         }
     }   
@@ -78,20 +81,3 @@ function showSlides(n) {
     document.getElementById("mySlides").innerHTML = `<div class="numbertext">${slideIndex} / ${fotos1.length}</div><br> <br><div><img  class="responsive" src='${fotos1[slideIndex - 1][0]}' style="display: block; width:50%; margin-left: auto; margin-right: auto;"/></div> <br> <br> <div class="text responsive">${fotos1[slideIndex - 1][1]}</p><audio controls src="${fotos1[slideIndex - 1][2]}">AQUI</audio></div> <br> `;
 
 }
-/*
-function showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-  }
-  for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " active";
-  localStorage.setItem("direito", slideIndex);
-}*/
