@@ -10492,7 +10492,7 @@ img::-moz-selection {
   text-transform: uppercase;
 }
 #mainNav .navbar-brand img {
-  height: 1.5rem;
+  height: 3.5rem;
 }
 #mainNav .navbar-nav .nav-item .nav-link {
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI",
@@ -10523,7 +10523,7 @@ img::-moz-selection {
     transition: font-size 0.3s ease-in-out;
   }
   #mainNav .navbar-brand img {
-    height: 2rem;
+    height: 3rem;
     transition: height 0.3s ease-in-out;
   }
   #mainNav.navbar-shrink {
@@ -10536,7 +10536,7 @@ img::-moz-selection {
   }
   #mainNav.navbar-shrink .navbar-brand svg,
   #mainNav.navbar-shrink .navbar-brand img {
-    height: 1.5rem;
+    height: 3rem;
   }
   #mainNav .navbar-nav .nav-item {
     margin-right: 1rem;
@@ -10997,17 +10997,11 @@ section#contact form#contactForm :-ms-input-placeholder {
 
 #bg1 {
   background-repeat: no-repeat;
-  background-size: 100%;
-  background-attachment: fixed;
-  background-image: url("../assets/img/fundos/Fundo1.png");
-}
-
-.bg1 {
-  background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: 100% 100%;
   background-attachment: fixed;
   background-image: url("../assets/img/fundos/Fundo1.jpg");
 }
+
 
 #bg2 {
   background-repeat: no-repeat;
@@ -11070,15 +11064,6 @@ section#contact form#contactForm :-ms-input-placeholder {
   border-width: 3px;
 }
 
-.border-verde {
-  border-color: #4e8f04 !important;
-  border-width: 3px;
-}
-
-.border-laranja {
-  border-color: #f57309 !important;
-  border-width: 3px;
-}
 
 .letra-azul {
   color: #3ea8b4;
@@ -11580,7 +11565,7 @@ header.masthead9 .masthead9-heading {
     line-height: 2.25rem;
     margin-bottom: 2rem;
   }
-  header.masthead9 .masthead8-heading {
+  header.masthead9 .masthead9-heading {
     font-size: 4.5rem;
     font-weight: 700;
     line-height: 4.5rem;
@@ -11588,7 +11573,155 @@ header.masthead9 .masthead9-heading {
   }
 }
 
+/*Fundo apoio fmailiar*/
+header.masthead10 {
+  padding-top: 9rem;
+  padding-bottom: 9rem;
+  text-align: center;
+  color: #e52461;
+  background-image: url("../assets/img/fundos/FundoApoiosFamiliares.png");
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center center;
+  background-size: cover;
+}
+header.masthead10 .masthead10-subheading {
+  font-size: 1.5rem;
+  font-style: italic;
+  line-height: 1.5rem;
+  margin-bottom: 25px;
+  font-family: "Droid Serif", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+header.masthead10 .masthead10-heading {
+  font-size: 3.25rem;
+  font-weight: 700;
+  line-height: 3.25rem;
+  margin-bottom: 2rem;
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
 
+@media (min-width: 768px) {
+  header.masthead10 {
+    padding-top: 9rem;
+    padding-bottom: 4.5rem;
+  }
+  header.masthead10 .masthead10-subheading {
+    font-size: 2.25rem;
+    font-style: italic;
+    line-height: 2.25rem;
+    margin-bottom: 2rem;
+  }
+  header.masthead10 .masthead10-heading {
+    font-size: 4.5rem;
+    font-weight: 700;
+    line-height: 4.5rem;
+    margin-bottom: 4rem;
+  }
+}
+
+/*Fundo Admin*/
+header.masthead11 {
+  padding-top: 9rem;
+  padding-bottom: 9rem;
+  text-align: center;
+  color: #e52461;
+  background-image: url("../assets/img/fundos/FundoMenuAdmin.png");
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center center;
+  background-size: cover;
+}
+header.masthead11 .masthead11-subheading {
+  font-size: 1.5rem;
+  font-style: italic;
+  line-height: 1.5rem;
+  margin-bottom: 25px;
+  font-family: "Droid Serif", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+header.masthead11 .masthead11-heading {
+  font-size: 3.25rem;
+  font-weight: 700;
+  line-height: 3.25rem;
+  margin-bottom: 2rem;
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+@media (min-width: 768px) {
+  header.masthead11 {
+    padding-top: 9rem;
+    padding-bottom: 4.5rem;
+  }
+  header.masthead11 .masthead11-subheading {
+    font-size: 2.25rem;
+    font-style: italic;
+    line-height: 2.25rem;
+    margin-bottom: 2rem;
+  }
+  header.masthead11 .masthead11-heading {
+    font-size: 4.5rem;
+    font-weight: 700;
+    line-height: 4.5rem;
+    margin-bottom: 4rem;
+  }
+}
+
+/*Fundo Admin*/
+header.masthead12 {
+  padding-top: 9rem;
+  padding-bottom: 9rem;
+  text-align: center;
+  color: #e52461;
+  background-image: url("../assets/img/fundos/FundoPerfil.png");
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center center;
+  background-size: cover;
+}
+header.masthead12 .masthead12-subheading {
+  font-size: 1.5rem;
+  font-style: italic;
+  line-height: 1.5rem;
+  margin-bottom: 25px;
+  font-family: "Droid Serif", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+header.masthead12 .masthead12-heading {
+  font-size: 3.25rem;
+  font-weight: 700;
+  line-height: 3.25rem;
+  margin-bottom: 2rem;
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+@media (min-width: 768px) {
+  header.masthead12 {
+    padding-top: 9rem;
+    padding-bottom: 4.5rem;
+  }
+  header.masthead12 .masthead12-subheading {
+    font-size: 2.25rem;
+    font-style: italic;
+    line-height: 2.25rem;
+    margin-bottom: 2rem;
+  }
+  header.masthead12 .masthead12-heading {
+    font-size: 4.5rem;
+    font-weight: 700;
+    line-height: 4.5rem;
+    margin-bottom: 4rem;
+  }
+}
 
 
 .fundo-forum {
