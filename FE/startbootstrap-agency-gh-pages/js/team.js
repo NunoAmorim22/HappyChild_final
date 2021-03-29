@@ -48,14 +48,6 @@ function showSlides(n) {
     }
     document.getElementById("rights-texts").innerHTML = dots;
 
-    //profun
-    if (slideIndex == 3) {
-        document.getElementById("teamSlides").innerHTML = `<div class="numbertext">${slideIndex} / ${fotos1.length}</div><br> <br><div><img  class="responsive rounded-circle" src='${fotos1[slideIndex - 1][0]}' style="display: block;  margin-left: auto; margin-right: auto;"/></div> <br> <br> <div class="text responsive">${fotos1[slideIndex - 1][1]}</p><audio controls src="${fotos1[slideIndex - 1][2]}">AQUI</audio></div> `;
-
-    }
-    else {
-        document.getElementById("teamSlides").innerHTML = `<div class="numbertext">${slideIndex} / ${fotos1.length}</div><br> <br><div><img  class="responsive rounded-circle" src='${fotos1[slideIndex - 1][0]}' style="display: block;  margin-left: auto; margin-right: auto;"/></div> <br> <br> <div class="text responsive">${fotos1[slideIndex - 1][1]}</p>`;
-    }
-
-
+    document.getElementById("teamSlides").innerHTML = `<div class="numbertext">${slideIndex} / ${fotos1.length}</div><br> <br><div><img  class="responsive rounded-circle" src='${fotos1[slideIndex - 1][0]}' style="display: block;  margin-left: auto; margin-right: auto;"/></div> <br> <br> <div class="text responsive">${fotos1[slideIndex - 1][1]}</p>`;
+    
 }

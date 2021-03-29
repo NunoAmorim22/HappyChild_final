@@ -10422,7 +10422,7 @@ p {
 
 @media (min-width: 768px) {
   section {
-    padding: 9rem 0;
+    padding: 0;
   }
 }
 ::-moz-selection {
@@ -11599,4 +11599,12 @@ textarea {
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+ol li {
+  font-weight:bold;
+}
+
+li p {
+  font-weight:normal;
 }
