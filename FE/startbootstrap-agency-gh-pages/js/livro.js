@@ -68,7 +68,7 @@ function showSlides(n) {
     }
     for (i; i < fotos1.length; i++) {
         if(slideIndex == i + 1){
-            dots = dots + `<span class="dot active" onclick="currentSlide(${i + 1})">${i + 1}</span>`;
+            dots = dots + `<span class="dot active" style="fo" onclick="currentSlide(${i + 1})">${i + 1}</span>`;
         }
         else{
         dots = dots + `<span class="dot" onclick="currentSlide(${i + 1})">${i + 1}</span>`;
