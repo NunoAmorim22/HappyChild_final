@@ -130,3 +130,5 @@ function changeLinhasApoio(){
         document.getElementById("formComplaint").remove();
     }
 }
+
+/*-----------------------------------------------------------------------------------------------*/
