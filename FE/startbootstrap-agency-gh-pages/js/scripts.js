@@ -65,12 +65,12 @@ function chooseTypeChild(){
 
 function chooseTypeFamily(){
     localStorage.setItem("type", "family");
-    window.location.href = "./Login.html";
+    window.location.href = "./LoginFamilias.html";
 }
 
 function chooseTypeInstitution(){
     localStorage.setItem("type", "institution");
-    window.location.href = "./Login.html";
+    window.location.href = "./LoginInstituicoes.html";
 }
 
 function moveOn(){
