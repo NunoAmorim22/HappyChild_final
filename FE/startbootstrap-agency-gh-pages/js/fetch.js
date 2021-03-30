@@ -36,15 +36,16 @@ function saveSuspect() {
       });
   }
 
-  /*
+  
   function verImagem() {
-    fetch( 'http://localhost:8080/livros/3',
-      {
-        headers: { "Content-Type": "application/json" },
-        method: "GET",
-      }
-    )
-    .then (res => json) 
-    console.log(res)
+    let outside;
+    fetch( 'http://localhost:8080/prochild/livros');
+    const users1 = await response1.json();
+    console.log(users1);/*
+    .then (res => res.Blob())
+    .then(images => {
+      // Then create a local URL for that image and print it 
+      outside = URL.createObjectURL(images)
+      console.log(outside) 
+    console.log(res);*/
   }
-  */
