@@ -19,7 +19,7 @@
   <link href="css/styles.css" rel="stylesheet" />
 </head>
 
-<body id="page-top" onload="changeMainMenu()">
+<body id="page-top" onload="changeMainMenu(); showVideos()">
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
     <div class="container">
@@ -170,9 +170,9 @@
         <h2 class="section-heading text-uppercase letra-azul">Línguas</h2>
       </div> <br>
 
-      <div class="row text-center justify-content-md-center">
+      <div class="row text-center justify-content-md-center" id="languages">
 
-        <!--div class="col-lg-4 col-md-6 mb-4 justify-content-md-center" id="languages">
+        <!--div class="col-lg-4 col-md-6 mb-4 justify-content-md-center" >
           <p>Números em Inglês</p>
           <div class="iframe-container">
             <iframe width="560" height="315" src="https://www.youtube.com/embed/DR-cfDsHCGA"
@@ -248,9 +248,9 @@
         <h2 class="section-heading text-uppercase letra-magenta">Diversos</h2>
       </div> <br>
 
-      <div class="row text-center justify-content-md-center">
+      <div class="row text-center justify-content-md-center" id="diverse">
 
-        <!--div class="col-lg-4 col-md-6 mb-4 justify-content-md-center" id="diverse">
+        <!--div class="col-lg-4 col-md-6 mb-4 justify-content-md-center" >
           <p>Lady bug</p>
           <div class="iframe-container">
             <iframe width="560" height="315" src="https://www.youtube.com/embed/g1knSkH-Swg"
@@ -406,6 +406,7 @@
   <script src="assets/mail/contact_me.js"></script>
   <!-- Core theme JS-->
   <script src="js/scripts.js"></script>
+  <script src="js/videos.js"></script>
 </body>
 
 </html>

@@ -24,7 +24,7 @@ let videos = [
     ["https://www.youtube.com/embed/kE1lxvGFlnM", "Patrulha Pata"]
     ],
     ["gameplays",
-   [ "https://www.youtube.com/embed/0Ltse-yfne0", "RicFazeres Spider-man"],
+    ["https://www.youtube.com/embed/0Ltse-yfne0", "RicFazeres Spider-man"],
     ["https://www.youtube.com/embed/8iWlhYexIUo", "RicFazeres Subnáutica"],
     ["https://www.youtube.com/embed/EtjHxuZ8a1s", "RicFazeres FIFA"],
     ["https://www.youtube.com/embed/JR0Xk8iW_aE", "Feromonas Minecraft"],
