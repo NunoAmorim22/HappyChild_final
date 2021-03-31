@@ -90,3 +90,67 @@ function verImagem() {
   //.catch(console.error("Erro"))
   
   }
+//----------------------------------------------------------------------------------------------------------------------
+//funcao de login como user normal
+function LoginAdmin() {
+  var data = {};
+  data.email = document.getElementById("inputEmail").value;
+  data.password = document.getElementById("inputPassword").value;
+
+  if (data.email == "" || data.password == "") {
+    document.getElementById("labelErro").style.display = "block";
+    return false;
+  }
+
+  console.log(data);
+  fetch(``, {
+    headers: { "Content-Type": "application/json" },
+    method: "POST",
+    body: JSON.stringify(data),
+  })
+    .then(function (response) {
+      if (!response.ok) {
+        console.log(response.status); //=> number 100–599
+        console.log(response.statusText); //=> String
+        console.log(response.headers); //=> Headers
+
+      } else {
+        console.log("Success POST");
+        console.log(response);
+        //chama a funcao que faz o get dos dados
+        ToFetchLoginDataAdmin();
+      }
+    })
+    .then(function (result) {
+      console.log(result);
+    })
+    .catch(function (err) {
+      console.error(err);
+    });
+}
+
+//funcao que retorna os dados do admin
+function ToFetchLoginDataAdmin() {
+  async function fetchAsync() {
+    var data1 = {};
+    data1.email = document.getElementById("inputEmail").value;
+
+    const renderUsers = document.getElementById("result");
+    const response = await fetch(
+      ``,
+      {
+        headers: { "Content-Type": "application/json" },
+        method: "POST",
+        body: JSON.stringify(data1),
+      }
+    );
+    const users = await response.json();
+    localStorage.setItem("tipo", users[0].tipo);
+
+    window.location.href = "./Index.html";
+  }
+  //chama a função fetchAsync()
+  fetchAsync()
+    .then((data) => console.log("ok"))
+    .catch((reason) => console.log(reason.message));
+}
