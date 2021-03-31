@@ -49,13 +49,13 @@
                                         placeholder="Email">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id=""
+                                    <input type="text" class="form-control form-control-user" id="InputConcelho"
                                         placeholder="Concelho">
                                 </div>
 
                                 <div class="control-group">
                                     <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                                        <select id="genreSuspect" class="browser-default custom-select">
+                                        <select class="browser-default custom-select" id="InputFuncao">
                                             <option disabled selected>Selecione o tipo de Instituição</option>
                                             <option value="M">Masculino</option>
                                             <option value="F">Feminino</option>
@@ -68,14 +68,14 @@
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Palavra-Passe">
+                                            id="exampleInputPassword" placeholder="Palavra-Passe" id="InputPwd">
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="password" class="form-control form-control-user"
-                                            id="exampleRepeatPassword" placeholder="Repetir Palavra-Passe">
+                                            id="exampleRepeatPassword" placeholder="Repetir Palavra-Passe" id="InputPwd2">
                                     </div>
                                 </div>
-                                <a href="Login.html" class="btn btn-primary btn-user btn-block">
+                                <a onclick="saveInstitution()" class="btn btn-primary btn-user btn-block">
                                     Registar
                                 </a>
                                 <hr>
@@ -123,6 +123,7 @@
     <script src="assets/mail/contact_me.js"></script>
     <!-- Core theme JS-->
     <script src="js/scripts.js"></script>
+    <script src="js/instituicoes.js"></script>
 
 </body>
 
