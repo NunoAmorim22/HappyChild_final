@@ -1,17 +1,27 @@
 //---------------------funcao para fazer Post de utilizadores-----------------------------------------
 
-function saveSuspect() {
+function saveFamilia() {
   var data = {};
-  data.username = document.getElementById("exampleFirstName").value;
-  data.email = document.getElementById("exampleInputEmail").value;
-  data.password = document.getElementById("exampleInputPassword").value;
+  data.username = document.getElementById("nameFamily").value;
+  data.password = document.getElementById("PwdFamily").value;
+  data.email = document.getElementById("mailFamily").value;
   data.tipo = "familia";
+  data.nome = document.getElementById("nameFamily").value;
+  if(document.getElementById("inlineRadio1").checked){
+    data.sexo = document.getElementById("inlineRadio1").value;
+  }
+  else if(document.getElementById("inlineRadio2").checked){
+    data.sexo = document.getElementById("inlineRadio2").value;
+  }
+  data.localizacao = "1111";
+  data.concelho = document.getElementById("countyFamly");
 
   console.log(data); //debugging para ver os dados que foram enviados
 
   //chamada fetch para envio dos dados para o servior via POST
-  fetch('http://localhost:8080/users',
+  fetch('http://localhost:8080/prochild/users/familias',
     {
+      mode: "no-cors",
       headers: { "Content-Type": "application/json" },
       method: "POST",
       body: JSON.stringify(data),
@@ -67,15 +77,17 @@ fetchAsync()
       
 }
 */
-/*
+
 function verImagem() {
-  fetch('http://localhost:8080/prochild/users/familias', {
-    mode: "no-cors",
-    headers: { "Content-Type": "application/json" },
-    method: "GET"
-  })
+  //let outside;
+  fetch('http://localhost:8080/prochild/users/familias')
   .then(res => res.json())
-  .then((out) => {
-    console.log(out);
-  })
-}*/
+  .then(data => console.log(data));
+  /*.then(images => {
+    // Then create a local URL for that image and print it 
+    outside = URL.createObjectURL(images)
+    console.log(outside)
+  })*/
+  //.catch(console.error("Erro"))
+  
+  }

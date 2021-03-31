@@ -41,7 +41,7 @@
                             <form class="user">
                                 <div class="form-group">
                                     <div class="">
-                                        <input type="text" class="form-control form-control-user" id="exampleFirstName"
+                                        <input type="text" class="form-control form-control-user" id="nameFamily"
                                             placeholder="Nome">
                                     </div>
                                     <!--<div class="col-sm-6">
@@ -50,16 +50,16 @@
                                     </div>-->
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail"
+                                    <input type="email" class="form-control form-control-user" id="mailFamily"
                                         placeholder="Email">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id=""
+                                    <input type="text" class="form-control form-control-user" id="countyFamily"
                                         placeholder="Concelho">
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="number" class="form-control form-control-user" id=""
+                                        <input type="number" class="form-control form-control-user" id="ageFamily"
                                             placeholder="Idade">
                                     </div>
                                     <div class="col-sm-6">
@@ -79,14 +79,14 @@
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Palavra-Passe">
+                                            id="PwdFamily" placeholder="Palavra-Passe">
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="password" class="form-control form-control-user"
-                                            id="exampleRepeatPassword" placeholder="Repetir Palavra-Passe">
+                                            id="PwdFamily2" placeholder="Repetir Palavra-Passe">
                                     </div>
                                 </div>
-                                <a href="Login.html" class="btn btn-primary btn-user btn-block">
+                                <a onclick="saveFamilia()" class="btn btn-primary btn-user btn-block">
                                     Registar
                                 </a>
                                 <hr>
@@ -134,6 +134,8 @@
     <script src="assets/mail/contact_me.js"></script>
     <!-- Core theme JS-->
     <script src="js/scripts.js"></script>
+
+    <script src="js/fetch.js"></script>
 
 </body>
 
