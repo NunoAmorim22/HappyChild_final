@@ -132,3 +132,15 @@ function changeLinhasApoio(){
 }
 
 /*-----------------------------------------------------------------------------------------------*/
+
+
+function testeImagem(){
+fetch("http://localhost:8080/prochild/livros")
+.then(response =>{
+    console.log('response', response);
+    if(!response.ok){
+        throw Error("Erro fetching")
+    }
+    return response.json();
+});
+}
