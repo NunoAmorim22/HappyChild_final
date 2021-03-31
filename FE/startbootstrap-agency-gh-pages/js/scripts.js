@@ -114,6 +114,9 @@ function changeMainMenu(){
         }
         document.getElementById("perfilbtn").remove();
     }
+    else if(localStorage.getItem("function") == "seguranca"){
+        document.getElementById("apoiosplace").innerHTML = '<a class="nav-link js-scroll-trigger" href="MenuVerDenuncias.html"><i class="fas fa-shield-alt"></i> Denuncias</a>';
+    }
     else {
         document.getElementById("apoiosplace").innerHTML = '<a class="nav-link js-scroll-trigger" href="MenuSelecaoTipoInformacao.html"><i class="far fa-question-circle"></i> Ajudas</a>';
     }

@@ -11843,3 +11843,7 @@ ol li {
 li p {
   font-weight:normal;
 }
+
+.paragrafo {
+  white-space: pre-line;
+}
