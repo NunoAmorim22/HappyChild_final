@@ -11,8 +11,8 @@ function saveInstitution() {
   
     console.log(data); //debugging para ver os dados que foram enviados
   
-    /*/chamada fetch para envio dos dados para o servior via POST
-    fetch('http://localhost:8080/users',
+    //chamada fetch para envio dos dados para o servior via POST
+    fetch('http://localhost:8080/users/instituicoes',
       {
         headers: { "Content-Type": "application/json" },
         method: "POST",
@@ -35,6 +35,6 @@ function saveInstitution() {
       .catch(function (err) {
         alert("Submission error");
         console.error(err);
-      });*/
+      });
   }
   
