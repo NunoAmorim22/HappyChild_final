@@ -2,14 +2,19 @@
 
 function saveFamilia() {
   var data = {};
-  data.username = "ruca",
-  data.password = "ruquita123",
-  data.email = "ruca@gmail.com",
-  data.tipo = "familia",
-  data.nome = "Ruca",
-  data.sexo = "M",
-  data.localizacao = "1111",
-  data.concelho = "Guimaraes"
+  data.username = document.getElementById("nameFamily").value;
+  data.password = document.getElementById("PwdFamily").value;
+  data.email = document.getElementById("mailFamily").value;
+  data.tipo = "familia";
+  data.nome = document.getElementById("nameFamily").value;
+  if(document.getElementById("inlineRadio1").checked){
+    data.sexo = document.getElementById("inlineRadio1").value;
+  }
+  else if(document.getElementById("inlineRadio2").checked){
+    data.sexo = document.getElementById("inlineRadio2").value;
+  }
+  data.localizacao = "1111";
+  data.concelho = document.getElementById("countyFamly");
 
   console.log(data); //debugging para ver os dados que foram enviados
 
