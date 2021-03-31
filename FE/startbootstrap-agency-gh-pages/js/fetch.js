@@ -3,7 +3,8 @@
 function saveFamilia() {
   var data = {};
   data.username = document.getElementById("nameFamily").value;
-  data.password = document.getElementById("PwdFamily").value;
+  let password = document.getElementById("PwdFamily").value;
+  let repPwd = document.getElementById("PwdFamily2").value;
   data.email = document.getElementById("mailFamily").value;
   data.tipo = "familia";
   data.nome = document.getElementById("nameFamily").value;
@@ -15,6 +16,16 @@ function saveFamilia() {
   }
   data.localizacao = "1111";
   data.concelho = document.getElementById("countyFamly");
+
+  if(password === "" || repPwd === ""){
+    return false;
+  }
+  else if(password !== repPwd){
+    return false;
+  }
+  else{
+    data.password = password;
+  }
 
   console.log(data); //debugging para ver os dados que foram enviados
 
