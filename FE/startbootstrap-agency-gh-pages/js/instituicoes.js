@@ -2,13 +2,24 @@ function saveInstitution() {
     var data = {};
     data.username = document.getElementById("exampleFirstName").value;
     data.email = document.getElementById("exampleInputEmail").value;
-    data.password = document.getElementById("exampleInputPassword").value;
+    let password = document.getElementById("InputPwd").value;
+    let repPwd = document.getElementById("InputPwd2").value;
     data.tipo = "instituicao";
     data.nome = document.getElementById("exampleFirstName").value;
     data.localizacao = "!!!"
     data.conselho = document.getElementById("InputConcelho").value;
     data.funcao = document.getElementById("InputFuncao").value;
-  
+
+
+    if(password === "" || repPwd === ""){
+      return false;
+    }
+    else if(password !== repPwd){
+      return false;
+    }
+    else{
+      data.password = password;
+    }
     console.log(data); //debugging para ver os dados que foram enviados
   
     //chamada fetch para envio dos dados para o servior via POST
