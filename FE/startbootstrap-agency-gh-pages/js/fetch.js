@@ -21,7 +21,6 @@ function saveFamilia() {
   //chamada fetch para envio dos dados para o servior via POST
   fetch('http://localhost:8080/prochild/users/familias',
     {
-      mode: "no-cors",
       headers: { "Content-Type": "application/json" },
       method: "POST",
       body: JSON.stringify(data),
