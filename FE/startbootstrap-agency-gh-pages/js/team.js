@@ -1,6 +1,7 @@
 var slideIndex = 1;
 var fotos1 = 
 [
+["assets/img/team/unknown.png", ""],
 ["assets/img/team/Nuno.png",""],
 ["assets/img/team/AnaCatarina.jpeg",""],
 ["assets/img/team/carol.jpg",""],
