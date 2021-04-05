@@ -147,3 +147,7 @@ function activeEdit(){
         document.getElementById("btnEdit").style.display = "";
     }
 }
+
+function showAddForm(){
+    document.getElementById("formJogos").style.display = "";
+}
