@@ -44,7 +44,9 @@ function showDetails(id){
     document.getElementById("idDenuncia").setAttribute("value", data[0].id);
     document.getElementById("descricaoDenuncia").setAttribute("value", data[0].acontecimento);
     document.getElementById("dataDenuncia").setAttribute("value", data[0].data);
-    document.getElementById("localDenuncia").setAttribute("value", data[0].localizacao);
+    document.getElementById("localDenuncia").setAttribute("value", data[0].localizacao); 
+
+    document.href="#detalhes-denuncias";
     }
     fetchAsync()
       .then((data) => console.log("ok"))
