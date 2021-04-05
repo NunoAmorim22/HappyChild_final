@@ -28,7 +28,7 @@ function show(data) {
 
   // Loop to access all rows
   for (let r of data) {
-    tab += `<tr><td>${r.nome} </td> <td>${r.contacto}</td> <td><a class="btn" onclick = "showDetails(${r.id})"><i class="fas fa-search-plus"></i></a></td></tr>`;
+    tab += `<tr><td>${r.nome} </td> <td>${r.contacto}</td> <td><a class="btn" onclick =""><i class="fas fa-phone-alt"></i></a></td></tr>`;
   }
   // Setting innerHTML as tab variable
   document.getElementById("dataTableLinhas").innerHTML = tab;
