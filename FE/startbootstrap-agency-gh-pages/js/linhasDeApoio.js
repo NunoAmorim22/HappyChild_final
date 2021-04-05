@@ -70,4 +70,5 @@ function saveLinhaDeApoio() {
             alert("Submission error");
             console.error(err);
         });
+        
 }
