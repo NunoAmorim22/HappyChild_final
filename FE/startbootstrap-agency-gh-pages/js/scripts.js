@@ -141,3 +141,9 @@ function editAssets(){
         btns[n].style.display = "";
     }
 }
+
+function activeEdit(){
+    if(localStorage.getItem("type") == "Instituicao" || localStorage.getItem("type") == "Admin"){
+        document.getElementById("btnEdit").style.display = "";
+    }
+}

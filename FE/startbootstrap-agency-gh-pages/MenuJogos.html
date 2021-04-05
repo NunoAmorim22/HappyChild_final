@@ -19,7 +19,7 @@
   <link href="css/styles.css" rel="stylesheet" />
 </head>
 
-<body id="page-top" onload="changeMainMenu(); showJogos()">
+<body id="page-top" onload="changeMainMenu(); showJogos(); activeEdit()">
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
     <div class="container">
@@ -57,7 +57,7 @@
     <div class="container">
       <div class="masthead-subheading"></div>
       <div class="masthead2-heading text-uppercase">Jogos</div>
-      <button class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" name="btnEdit" onclick="editAssets()">Editar</button>
+      <button class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" id="btnEdit" onclick="editAssets()">Editar</button>
     </div>
   </header>
 
