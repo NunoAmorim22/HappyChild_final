@@ -1,4 +1,4 @@
-//funcao que faz get de todos os operacionais aceites e coloca na tabela para acesso do admin
+//funcao que faz get de todas as denuncias e coloca na tabela
 const api_url = "link here";
 
 // Defining async function
