@@ -149,5 +149,5 @@ function activeEdit(){
 }
 
 function showAddForm(){
-    document.getElementById("formJogos").style.display = "";
+    document.getElementById("formAdd").style.display = "";
 }
