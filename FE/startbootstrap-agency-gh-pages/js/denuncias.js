@@ -36,7 +36,8 @@ function show(data) {
 
 
 //Aqui o fetch das informacoes!!
-async function showDetails(id){
+function showDetails(id){
+    async function fetchAsync() {
     const response = await fetch(`link here ${id}`);
     var data = await response.json();
 
@@ -44,4 +45,8 @@ async function showDetails(id){
     document.getElementById("descricaoDenuncia").setAttribute("value", data[0].acontecimento);
     document.getElementById("dataDenuncia").setAttribute("value", data[0].data);
     document.getElementById("localDenuncia").setAttribute("value", data[0].localizacao);
+    }
+    fetchAsync()
+      .then((data) => console.log("ok"))
+      .catch((reason) => console.log(reason.message));
 }
