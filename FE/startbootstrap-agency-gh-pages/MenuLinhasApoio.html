@@ -19,7 +19,7 @@
   <link href="css/styles.css" rel="stylesheet" />
 </head>
 
-<body onload="changeMainMenu(); changeLinhasApoio();">
+<body onload="changeMainMenu(); changeLinhasApoio(); activeEdit()">
 
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
     <div class="container">
@@ -55,6 +55,7 @@
   <header class="masthead6">
     <div class="container">
       <div class="masthead6-heading text-uppercase">Linhas de Apoio</div>
+      <button class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" style="display: none;" id="btnEdit" onclick="editAssets()">Editar</button>
     </div>
   </header>
 
@@ -174,7 +175,44 @@
   </div>
 </div>
 </div>
-  
+<section class="page-section" id="portfolio">
+  <div class="container">
+    <div class="text-center">
+    </div>
+    <div align=center>
+      <button class="btn btn-primary" name="editingbtn" style="display: none;" onclick="showAddForm()">Adicionar</button>
+      <button class="btn btn-primary" name="editingbtn" style="display: none;">Eliminar</button>
+    </div>
+  </div>
+</section>
+<section class="page-section fundo-azul" id="formAdd" style="display: none;">
+  <div class="container">
+      <div class="text-center">
+          <h2 class="section-heading text-uppercase">Formulario para adicionar linhas</h2>
+          <h3 class="section-subheading text-muted"></h3>
+      </div>
+      <form>
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Nome</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="nomeLinha" value="" />
+            </div>
+          </div>
+    
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Contacto</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="contactoLinha" value="" />
+            </div>
+          </div>
+    
+          
+          <div align="center">
+            <button type="submit" class="btn btn-primary" align="center">Confirmar</button>
+          </div>
+        </form>
+  </div>
+</section>
   </div>
 
   <!------------------------------------------------------------------------------------------------------------------------------------>

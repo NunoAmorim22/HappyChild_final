@@ -33,3 +33,41 @@ function show(data) {
   // Setting innerHTML as tab variable
   document.getElementById("dataTableLinhas").innerHTML = tab;
 }
+
+
+function saveLinhaDeApoio() {
+    var data = {};
+    data.nome = document.getElementById("nomeLinha").value;
+    data.contacto = document.getElementById("contactoLinha").value;
+    
+
+    
+
+    console.log(data); //debugging para ver os dados que foram enviados
+
+    //chamada fetch para envio dos dados para o servior via POST
+    fetch('http://localhost:8080/prochild/ Poe o resto aqui',
+        {
+            headers: { "Content-Type": "application/json" },
+            method: "POST",
+            body: JSON.stringify(data),
+        }
+    )
+        .then(function (response) {
+            if (!response.ok) {
+                console.log(response.status); //=> number 100–599
+                console.log(response.statusText); //=> String
+                console.log(response.headers); //=> Headers
+            } else {
+                console.log("Success POST");
+                console.log(response);
+            }
+        })
+        .then(function (result) {
+            console.log(result);
+        })
+        .catch(function (err) {
+            alert("Submission error");
+            console.error(err);
+        });
+}
