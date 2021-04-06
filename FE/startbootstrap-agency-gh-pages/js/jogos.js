@@ -40,10 +40,10 @@ function showJogos() {
                   <i class="fas fa-plus fa-3x"></i>
                 </div>
               </div>
-              <img class="img-fluid" src="${jogos[i][1]}" alt="" />
+              <img class="img-fluid" src="${jogos[i].imagem}" alt="" />
             </a>
             <div class="portfolio-caption">
-              <div class="portfolio-caption-heading">${jogos[i][0]}</div>
+              <div class="portfolio-caption-heading">${jogos[i].nome}</div>
               <div class="portfolio-caption-subheading text-muted"></div>
             </div>
           </div>
@@ -52,19 +52,15 @@ function showJogos() {
     let video = ``
     if (jogos[i][5] !== '') {
       video = video + `<div class="iframe-container">
-            ${jogos[i][5]}
+            ${jogos[i].video}
             </div>`;
     }
     else {
       video = video + `<div>
-            <img class="img-fluid d-block mx-auto" style="height: 100%; width: 100%; object-fit: contain" src="${jogos[i][1]}" alt="" />
+            <img class="img-fluid d-block mx-auto" style="height: 100%; width: 100%; object-fit: contain" src="${jogos[i].imagem}" alt="" />
         </div>`;
     }
 
-    let regras = ``;
-    if (jogos[i][4] !== '') {
-      regras = regras + 'Regras:\n' + jogos[i][4];
-    }
 
 
     model = model + `<div class="portfolio-modal modal fade" id="portfolioModal${i}" tabindex="-1" role="dialog" aria-hidden="true">
@@ -78,18 +74,15 @@ function showJogos() {
                 <div class="col-lg-8">
                   <div class="modal-body">
                     <!--Project Details Go Here-->
-                    <h2 class="text-uppercase">${jogos[i][0]}</h2>
+                    <h2 class="text-uppercase">${jogos[i].nome}</h2>
                     <p class="item-intro text-muted paragrafo">
-                    ${jogos[i][2]}
+                    ${jogos[i].descricao}
                     </p>
                     ${video} 
                     <br>
                     <p class="item-intro text-muted paragrafo">
                     Instruções:
-                    ${jogos[i][3]}
-                    </p>
-                    <p class="item-intro text-muted paragrafo">
-                    ${regras}
+                    ${jogos[i].regras}
                     </p>
                     <button class="btn btn-primary" data-dismiss="modal" type="button">
                       <i class="fas fa-times mr-1"></i>
