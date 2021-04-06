@@ -16,7 +16,7 @@ let jogos = [
 ];
 
 
-function showDetails(id) {
+function fetchJogos() {
   async function fetchAsync() {
     const response = await fetch(`http://localhost:8080/prochild/`);
     var data = await response.json();
