@@ -10,7 +10,7 @@ async function getapi(url) {
   var data = await response.json();
   console.log(data);
   if (response) {
-    hideloader();
+    //hideloader();
   }
   show(data);
 }
