@@ -4,7 +4,7 @@ let jogos = [
 'O "Jogo do Galo", também conhecido por três em linha, pode ser jogado com um papel e lápis por dois jogadores que alternadamente vão desenhando um X e um O numa grelha de tamanho 3 x 3. Ganha o jogador que primeiro conseguir alinhar três símbolos na vertical, na horizontal ou na diagonal.',
 '1º: Começa por arranjar: um lápis ou caneta; uma folha de papel\n2º: Desenha uma grelha #\n3º: Escolhe com que simbolo vais jogar (X ou O) e começa o jogo',
 '',
-'https://www.youtube.com/embed/YSbKz66dwVQ'
+'<iframe width="560" height="315" src="https://www.youtube.com/embed/YSbKz66dwVQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
 ],
 [
 'Jogo da macaca',
@@ -40,8 +40,8 @@ function showJogos(){
         let video = ``
         if(jogos[i][5] !== ''){
             video = video + `<div class="iframe-container">
-            <iframe width="560" height="315" src="${jogos[i][5]}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>  
-        </div>`;
+            ${jogos[i][5]}
+            </div>`;
         }
         else{
             video = video + `<div>
