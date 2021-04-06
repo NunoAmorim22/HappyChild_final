@@ -27,7 +27,7 @@ function fetchJogos() {
     outside = await response2.blob()
       .then(images => {
         // Then create a local URL for that image and print it 
-        for(i=0;i<outside.length;i++){
+        for(i=0;i<jogos.length;i++){
           jogos[i].imagem = URL.createObjectURL(images);
         }
       });
@@ -61,7 +61,7 @@ function showJogos() {
                   <i class="fas fa-plus fa-3x"></i>
                 </div>
               </div>
-              <img class="img-fluid" src="${image_url}" alt="" />
+              <img class="img-fluid" src="${jogos[i].imagem}" alt="" />
             </a>
             <div class="portfolio-caption">
               <div class="portfolio-caption-heading">${jogos[i].nome}</div>
@@ -70,17 +70,18 @@ function showJogos() {
           </div>
         </div>`;
 
+    
     let video = ``
-    if (jogos[i].video !== '') {
+    /*if (jogos[i].video !== '') {
       video = video + `<div class="iframe-container">
             ${jogos[i].video}
             </div>`;
     }
-    else {
+    else {*/
       video = video + `<div>
-            <img class="img-fluid d-block mx-auto" style="height: 100%; width: 100%; object-fit: contain" src="${image_url}" alt="" />
+            <img class="img-fluid d-block mx-auto" style="height: 100%; width: 100%; object-fit: contain" src="${jogos[i].imagem}" alt="" />
         </div>`;
-    }
+    //}
 
 
 
