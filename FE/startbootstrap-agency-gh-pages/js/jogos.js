@@ -21,7 +21,6 @@ function fetchJogos() {
     const response = await fetch(`http://localhost:8080/prochild/jogos`);
     jogos = await response.json();
     console.log(jogos);
-    let imagem = jogos[0].imagem;
     showJogos();
   }
   fetchAsync()
@@ -30,19 +29,21 @@ function fetchJogos() {
 }
 
 
-.then (res => res.Blob())
+/*.then (res => res.Blob())
     .then(images => {
       // Then create a local URL for that image and print it 
       outside = URL.createObjectURL(images)
       console.log(outside) 
     console.log(res);
-
+*/
 fetchJogos();
 
 function showJogos() {
   let table = ``;
   let model = ``;
   for (i = 0; i < jogos.length; i++) {
+    let image = jogos[0].imagem.blob();
+    let image_url = URL.createObjectURL(image);
     table = table + `<div class="col-lg-4 col-sm-6 mb-4">
           <div class="portfolio-item">
             <a class="portfolio-link" data-toggle="modal" href="#portfolioModal${i}">
@@ -51,7 +52,7 @@ function showJogos() {
                   <i class="fas fa-plus fa-3x"></i>
                 </div>
               </div>
-              <img class="img-fluid" src="${jogos[i].imagem}" alt="" />
+              <img class="img-fluid" src="${image_url}" alt="" />
             </a>
             <div class="portfolio-caption">
               <div class="portfolio-caption-heading">${jogos[i].nome}</div>
@@ -68,7 +69,7 @@ function showJogos() {
     }
     else {
       video = video + `<div>
-            <img class="img-fluid d-block mx-auto" style="height: 100%; width: 100%; object-fit: contain" src="${jogos[i].imagem}" alt="" />
+            <img class="img-fluid d-block mx-auto" style="height: 100%; width: 100%; object-fit: contain" src="${image_url}" alt="" />
         </div>`;
     }
 
