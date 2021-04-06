@@ -42,8 +42,10 @@ function showJogos() {
   let table = ``;
   let model = ``;
   for (i = 0; i < jogos.length; i++) {
-    let image = jogos[0].imagem.blob();
-    let image_url = URL.createObjectURL(image);
+    let image = jogos[0].imagem;
+    image = image.blob().then(image_url => {
+      URL.createObjectURL(image)
+   
     table = table + `<div class="col-lg-4 col-sm-6 mb-4">
           <div class="portfolio-item">
             <a class="portfolio-link" data-toggle="modal" href="#portfolioModal${i}">
@@ -107,6 +109,7 @@ function showJogos() {
           </div>
         </div>
       </div>`;
+    })
   }
   document.getElementById("divJogos").innerHTML = table;
   document.getElementById("divModelsJogos").innerHTML = model;
