@@ -18,15 +18,17 @@ let jogos = [
 
 function fetchJogos() {
   async function fetchAsync() {
-    const response = await fetch(`http://localhost:8080/prochild/`);
+    const response = await fetch(`http://localhost:8080/prochild/jogos`);
     var data = await response.json();
-
+    console.log(data);
     jogos.push(data);
   }
   fetchAsync()
     .then((data) => console.log("ok"))
     .catch((reason) => console.log(reason.message));
 }
+
+fetchJogos();
 
 function showJogos() {
   let table = ``;
