@@ -50,7 +50,7 @@ function showJogos() {
         </div>`;
 
     let video = ``
-    if (jogos[i][5] !== '') {
+    if (jogos[i].video !== '') {
       video = video + `<div class="iframe-container">
             ${jogos[i].video}
             </div>`;
