@@ -27,9 +27,9 @@ function fetchJogos() {
     outside = await response2.blob()
       .then(images => {
         // Then create a local URL for that image and print it 
-        let outside1 = URL.createObjectURL(images);
-        console.log(outside1);
-        console.log(response2);
+        for(i=0;i<outside.length;i++){
+          jogos[i].imagem = URL.createObjectURL(images);
+        }
       });
     showJogos();
   }
