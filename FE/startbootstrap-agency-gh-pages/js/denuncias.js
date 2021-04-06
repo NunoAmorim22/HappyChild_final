@@ -1,5 +1,5 @@
 //funcao que faz get de todas as denuncias e coloca na tabela
-const api_url = "link here";
+const api_url = "http://localhost:8080/prochild/denuncias";
 
 // Defining async function
 async function getapi(url) {
@@ -38,13 +38,13 @@ function show(data) {
 //Aqui o fetch das informacoes!!
 function showDetails(id){
     async function fetchAsync() {
-    const response = await fetch(`link here ${id}`);
+    const response = await fetch(`http://localhost:8080/prochild/denuncias/${id}`);
     var data = await response.json();
 
-    document.getElementById("idDenuncia").setAttribute("value", data[0].id);
-    document.getElementById("descricaoDenuncia").setAttribute("value", data[0].acontecimento);
-    document.getElementById("dataDenuncia").setAttribute("value", data[0].data);
-    document.getElementById("localDenuncia").setAttribute("value", data[0].localizacao); 
+    document.getElementById("idDenuncia").setAttribute("value", data.id);
+    document.getElementById("descricaoDenuncia").setAttribute("value", data.acontecimento);
+    document.getElementById("dataDenuncia").setAttribute("value", data.data);
+    document.getElementById("localDenuncia").setAttribute("value", data.localizacao); 
 
     document.href="#detalhes-denuncias";
     }
