@@ -21,6 +21,7 @@ function fetchJogos() {
     const response = await fetch(`http://localhost:8080/prochild/jogos`);
     jogos = await response.json();
     console.log(jogos);
+    showJogos();
   }
   fetchAsync()
     .then((data) => console.log("ok"))
