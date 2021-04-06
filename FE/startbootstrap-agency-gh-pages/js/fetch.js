@@ -30,19 +30,21 @@ fetchAsync()
 }
 */
 
+//ver!!!!
 function verImagem() {
-  //let outside;
-  fetch('http://localhost:8080/prochild/users/familias')
-  .then(res => res.json())
-  .then(data => console.log(data));
-  /*.then(images => {
-    // Then create a local URL for that image and print it 
-    outside = URL.createObjectURL(images)
-    console.log(outside)
-  })*/
-  //.catch(console.error("Erro"))
-  
+  let outside
+
+  fetch('http://localhost:8080/prochild/livros/capa/1')
+  .then(response => response.blob())
+  .then(images => {
+      // Then create a local URL for that image and print it 
+      outside = URL.createObjectURL(images)
+      console.log(outside)
+      document.getElementById("imagemteste").src = outside;
+  })
   }
+
+  
 //----------------------------------------------------------------------------------------------------------------------
 //funcao de login como user normal
 function LoginAdmin() {

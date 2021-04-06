@@ -41,12 +41,10 @@ function saveLinhaDeApoio() {
     data.contacto = document.getElementById("contactoLinha").value;
     
 
-    
-
     console.log(data); //debugging para ver os dados que foram enviados
 
     //chamada fetch para envio dos dados para o servior via POST
-    fetch('http://localhost:8080/prochild/ Poe o resto aqui',
+    fetch('http://localhost:8080/prochild/linhasapoio',
         {
             headers: { "Content-Type": "application/json" },
             method: "POST",

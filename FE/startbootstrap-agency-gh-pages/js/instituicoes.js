@@ -23,7 +23,7 @@ function saveInstitution() {
   console.log(data); //debugging para ver os dados que foram enviados
 
   //chamada fetch para envio dos dados para o servior via POST
-  fetch('http://localhost:8080/users/instituicoes',
+  fetch('http://localhost:8080/prochild/users/instituicoes',
     {
       headers: { "Content-Type": "application/json" },
       method: "POST",
@@ -49,6 +49,7 @@ function saveInstitution() {
     });
 }
 
+//ver
 function EditProfileInstituition() {
   var data = {};
   let id_instituitions = localStorage.getItem("!!!!!");
