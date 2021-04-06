@@ -30,6 +30,21 @@ fetchAsync()
 }
 */
 
+function verImagem() {
+  async function fetchAsync() {
+    const response = await fetch(`http://localhost:8080/prochild/livros`);
+    var data = await response.json();
+    console.log(data);
+  }
+  fetchAsync()
+    .then((data) => console.log("ok"))
+    .catch((reason) => console.log(reason.message));
+}
+
+verImagem();
+
+  
+/*
 //ver!!!!
 function verImagem() {
   let outside
@@ -43,8 +58,7 @@ function verImagem() {
       document.getElementById("imagemteste").src = outside;
   })
   }
-
-  
+*/
 //----------------------------------------------------------------------------------------------------------------------
 //funcao de login como user normal
 function LoginAdmin() {
