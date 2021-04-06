@@ -17,10 +17,20 @@ let jogos = [
 
 
 function fetchJogos() {
+  let outside;
+
   async function fetchAsync() {
     const response = await fetch(`http://localhost:8080/prochild/jogos`);
     jogos = await response.json()
     console.log(jogos);
+    const response2 = await fetch(`http://localhost:8080/prochild/jogos/imagem/1`);
+    outside = await response2.blob()
+      .then(images => {
+        // Then create a local URL for that image and print it 
+        let outside1 = URL.createObjectURL(images);
+        console.log(outside1);
+        console.log(response2);
+      });
     showJogos();
   }
   fetchAsync()
@@ -42,7 +52,7 @@ function showJogos() {
   let table = ``;
   let model = ``;
   for (i = 0; i < jogos.length; i++) {
-    
+
     table = table + `<div class="col-lg-4 col-sm-6 mb-4">
           <div class="portfolio-item">
             <a class="portfolio-link" data-toggle="modal" href="#portfolioModal${i}">
