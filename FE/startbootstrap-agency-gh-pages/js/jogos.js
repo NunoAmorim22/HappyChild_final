@@ -21,12 +21,21 @@ function fetchJogos() {
     const response = await fetch(`http://localhost:8080/prochild/jogos`);
     jogos = await response.json();
     console.log(jogos);
+    let imagem = jogos[0].imagem;
     showJogos();
   }
   fetchAsync()
     .then((data) => console.log("ok"))
     .catch((reason) => console.log(reason.message));
 }
+
+
+.then (res => res.Blob())
+    .then(images => {
+      // Then create a local URL for that image and print it 
+      outside = URL.createObjectURL(images)
+      console.log(outside) 
+    console.log(res);
 
 fetchJogos();
 
