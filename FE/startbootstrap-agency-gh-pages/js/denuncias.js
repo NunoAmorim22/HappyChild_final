@@ -52,3 +52,17 @@ function showDetails(id){
       .then((data) => console.log("ok"))
       .catch((reason) => console.log(reason.message));
 }
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+   ~console.log("Geolocation is not supported by this browser.");
+  }
+}
+
+function showPosition(position) {
+  console.log(position.coords.latitude + "\n" + position.coords.longitude);
+}
+
+getLocation();
