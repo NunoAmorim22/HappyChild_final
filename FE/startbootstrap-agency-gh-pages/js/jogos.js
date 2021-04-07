@@ -1,4 +1,4 @@
-let jogos = [
+let jogos /*= [
   {
     "nome": 'Jogo do Galo',
     "imagem": 'assets/img/portfolio/jogodogalo.jpg',
@@ -13,7 +13,73 @@ let jogos = [
     "regras": '1º: Desenhar a macaca\n2º: Começa a diversão\nPara jogar, a criança atira a patela para a primeira casa e desloca-se até lá ao pé-coxinho apanhando a mesma e voltando para trás;\nEfectua o mesmo processo até chegar ao último patamar;\nNa casa 4 e 5 e 7 e 8 os dois pés devem ser colocados em simultâneo;\nDepois de saltar as últimas casas é necessário efectuar o percurso contrário.',
     "video": ''
   }
-];
+];*/
+
+function saveJogo(){
+/*let data = {};
+data.jogo = {
+  "nome": document.getElementById("inputName").value,
+  "regras":document.getElementById("inputRules").value,
+  "descricao":document.getElementById("inputDesc").value
+}
+
+data.imagem = document.getElementById("file").files[0];
+//data.video = document.getElementById("inputVideo").value;
+
+console.log(data);*/
+
+//console.log(file.files[0].path);
+//var path = (window.URL || window.webkitURL).createObjectURL(file.files[0]);
+    //console.log('path', path);
+    var reader = new FileReader();
+    reader.readAsDataURL(file.files[0]);
+    console.log(reader);
+//console.log(file.files[0]);
+var myHeaders = new Headers();
+myHeaders.append("Cookie", "JSESSIONID=B082F7E7ABE2EBF64420BBAB600DF404");
+myHeaders.append("Content-Type", "application/json");
+
+var formdata = new FormData();
+formdata.append("jogo", '{ "nome": "Arroz",\n"descricao": "Era uma vez um arrozinho",\n"regras": "Joga um arroz de cada vez"}');//`{ "nome": "${document.getElementById("inputName").value}","descricao": "${document.getElementById("inputDesc").value}","regras": "${document.getElementById("inputRules").value}"}`);
+formdata.append("imagem", reader);
+
+var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: formdata,
+  redirect: 'follow'
+};
+
+fetch("http://localhost:8080/prochild/jogos", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+/*
+fetch('http://localhost:8080/prochild/jogos',
+        {
+            headers: { "Content-Type": "application/json" },
+            method: "POST",
+            body: JSON.stringify(data),
+        }
+    )
+        .then(function (response) {
+            if (!response.ok) {
+                console.log(response.status); //=> number 100–599
+                console.log(response.statusText); //=> String
+                console.log(response.headers); //=> Headers
+            } else {
+                console.log("Success POST");
+                console.log(response);
+            }
+        })
+        .then(function (result) {
+            console.log(result);
+        })
+        .catch(function (err) {
+            alert("Submission error");
+            console.error(err);
+        });  */
+}
 
 
 function fetchJogos() {
