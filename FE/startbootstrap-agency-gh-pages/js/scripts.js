@@ -143,7 +143,7 @@ function editAssets(){
 }
 
 function activeEdit(){
-    if(localStorage.getItem("type") == "Instituicao" || localStorage.getItem("type") == "Admin"){
+    if(localStorage.getItem("type") == "institution" || localStorage.getItem("type") == "admin"){
         document.getElementById("btnEdit").style.display = "";
     }
 }

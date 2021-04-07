@@ -14,6 +14,20 @@ let jogos /*= [
     "video": ''
   }
 ];*/
+/*window.addEventListener("load", function() { 
+  }); */
+  let fileContent;
+  window.addEventListener("load", function() { 
+    document.getElementById("file").onchange = function(event) { 
+      var reader = new FileReader(); 
+      reader.readAsDataURL(event.srcElement.files[0]); 
+      var me = this; 
+      reader.onload = function () { 
+        fileContent = reader.result; 
+      console.log(fileContent); 
+      document.getElementById("x").setAttribute("src", fileContent);
+      } 
+  }}); 
 
 function saveJogo(){
 /*let data = {};
@@ -31,21 +45,21 @@ console.log(data);*/
 //console.log(file.files[0].path);
 //var path = (window.URL || window.webkitURL).createObjectURL(file.files[0]);
     //console.log('path', path);
-    var reader = new FileReader();
-    reader.readAsDataURL(file.files[0]);
-    console.log(reader);
-//console.log(file.files[0]);
+    
+console.log(fileContent);
 var myHeaders = new Headers();
 myHeaders.append("Cookie", "JSESSIONID=B082F7E7ABE2EBF64420BBAB600DF404");
 myHeaders.append("Content-Type", "application/json");
 
 var formdata = new FormData();
-formdata.append("jogo", '{ "nome": "Arroz",\n"descricao": "Era uma vez um arrozinho",\n"regras": "Joga um arroz de cada vez"}');//`{ "nome": "${document.getElementById("inputName").value}","descricao": "${document.getElementById("inputDesc").value}","regras": "${document.getElementById("inputRules").value}"}`);
-formdata.append("imagem", reader);
+formdata.append("jogo", { "nome": "Arroz","descricao": "Era uma vez um arrozinho","regras": "Joga um arroz de cada vez"});//`{ "nome": "${document.getElementById("inputName").value}","descricao": "${document.getElementById("inputDesc").value}","regras": "${document.getElementById("inputRules").value}"}`);
+formdata.append("imagem", fileContent);
+
+console.log(formdata)
 
 var requestOptions = {
   method: 'POST',
-  headers: myHeaders,
+  //headers: myHeaders,
   body: formdata,
   redirect: 'follow'
 };
