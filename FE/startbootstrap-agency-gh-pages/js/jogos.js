@@ -7,7 +7,7 @@ let jogos /*= [
     "video": '<iframe width="560" height="315" src="https://www.youtube.com/embed/YSbKz66dwVQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
   },
   {
-    "nome": 'Jogo da macaca',
+    "nome": 'Jogo da macaca',https://www.youtube.com/watch?v=sgn6yrOJFX0
     "imagem": 'assets/img/portfolio/jogomacaca4.jpg',
     "descricao": 'O jogo tradicional da macaca, também conhecido como jogo do pé coxinho, remonta ao tempo das nossas avós. Este jogo tradicional pode ser jogado com apenas duas crianças. Ideal para o ar livre, por exemplo, jardim ou recreio. Material: espaço amplo, desenho de macaca e uma patela para cada jogador (por exemplo uma pequena pedra).',
     "regras": '1º: Desenhar a macaca\n2º: Começa a diversão\nPara jogar, a criança atira a patela para a primeira casa e desloca-se até lá ao pé-coxinho apanhando a mesma e voltando para trás;\nEfectua o mesmo processo até chegar ao último patamar;\nNa casa 4 e 5 e 7 e 8 os dois pés devem ser colocados em simultâneo;\nDepois de saltar as últimas casas é necessário efectuar o percurso contrário.',
@@ -26,6 +26,7 @@ let jogos /*= [
         fileContent = reader.result; 
       console.log(fileContent); 
       document.getElementById("x").setAttribute("src", fileContent);
+      console.log(fileContent.typeof);
       } 
   }}); 
 
@@ -45,22 +46,22 @@ console.log(data);*/
 //console.log(file.files[0].path);
 //var path = (window.URL || window.webkitURL).createObjectURL(file.files[0]);
     //console.log('path', path);
-    
-console.log(fileContent);
+let data = {};
+data.nome = document.getElementById("inputName").value;
+data.descricao = document.getElementById("inputDesc").value;
+data.regras = document.getElementById("inputRules").value;
+data.imagem = fileContent;
+data.video = getId(document.getElementById("inputVideo").value);
+
 var myHeaders = new Headers();
-myHeaders.append("Cookie", "JSESSIONID=B082F7E7ABE2EBF64420BBAB600DF404");
+//myHeaders.append("Cookie", "JSESSIONID=B082F7E7ABE2EBF64420BBAB600DF404");
 myHeaders.append("Content-Type", "application/json");
 
-var formdata = new FormData();
-formdata.append("jogo", { "nome": "Arroz","descricao": "Era uma vez um arrozinho","regras": "Joga um arroz de cada vez"});//`{ "nome": "${document.getElementById("inputName").value}","descricao": "${document.getElementById("inputDesc").value}","regras": "${document.getElementById("inputRules").value}"}`);
-formdata.append("imagem", fileContent);
-
-console.log(formdata)
 
 var requestOptions = {
   method: 'POST',
-  //headers: myHeaders,
-  body: formdata,
+  headers: myHeaders,
+  body: JSON.stringify(data),
   redirect: 'follow'
 };
 
@@ -68,33 +69,17 @@ fetch("http://localhost:8080/prochild/jogos", requestOptions)
   .then(response => response.text())
   .then(result => console.log(result))
   .catch(error => console.log('error', error));
-/*
-fetch('http://localhost:8080/prochild/jogos',
-        {
-            headers: { "Content-Type": "application/json" },
-            method: "POST",
-            body: JSON.stringify(data),
-        }
-    )
-        .then(function (response) {
-            if (!response.ok) {
-                console.log(response.status); //=> number 100–599
-                console.log(response.statusText); //=> String
-                console.log(response.headers); //=> Headers
-            } else {
-                console.log("Success POST");
-                console.log(response);
-            }
-        })
-        .then(function (result) {
-            console.log(result);
-        })
-        .catch(function (err) {
-            alert("Submission error");
-            console.error(err);
-        });  */
-}
 
+}
+function getId(ze) {
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+  const match = ze.match(regExp);
+
+  return (match && match[2].length === 11)
+    ? match[2]
+    : null;
+}
+  
 
 function fetchJogos() {
   let outside;
@@ -103,15 +88,16 @@ function fetchJogos() {
     const response = await fetch(`http://localhost:8080/prochild/jogos`);
     jogos = await response.json()
     console.log(jogos);
-    const response2 = await fetch(`http://localhost:8080/prochild/jogos/imagem/1`);
-    outside = await response2.blob()
-      .then(images => {
+    /*const response2 = await fetch(`http://localhost:8080/prochild/jogos/imagem/1`);
+    outside = await response2.json()
+      /*.then(images => {
         // Then create a local URL for that image and print it 
         for(i=0;i<jogos.length;i++){
-          jogos[i].imagem = URL.createObjectURL(images);
+          jogos[i].imagem = images;
         }
-      });
+      });console.log(outside);*/
     showJogos();
+    
   }
   fetchAsync()
     .then((data) => console.log("ok"))
@@ -152,16 +138,14 @@ function showJogos() {
 
     
     let video = ``
-    /*if (jogos[i].video !== '') {
-      video = video + `<div class="iframe-container">
-            ${jogos[i].video}
-            </div>`;
+    if (jogos[i].video !== '') {
+      video = video + `<iframe width="560" height="315" src="https://www.youtube.com/embed/${jogos[i].video}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
     }
-    else {*/
+    else {
       video = video + `<div>
-            <img class="img-fluid d-block mx-auto" style="height: 100%; width: 100%; object-fit: contain" src="${jogos[i].imagem}" alt="" />
+            <img class="img-fluid d-block mx-auto" style="height: 200px; width: 200px; object-fit: contain" src="${jogos[i].imagem}" alt="" />
         </div>`;
-    //}
+    }
 
 
 
