@@ -71,8 +71,8 @@
           aproveitar para desenvolver as tuas capacidades de leitura.
         </h3>
       </div>
-      <div class="row">
-        <div class="col-lg-4 col-sm-6 mb-4">
+      <div class="row" id="divLivros">
+        <!--div class="col-lg-4 col-sm-6 mb-4">
           <div class="portfolio-item">
             <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
               <div class="portfolio-hover">
@@ -178,7 +178,7 @@
                   class="fas fa-arrow-circle-down"></i></a>
               <div class="portfolio-caption-subheading text-muted"></div>
             </div>
-          </div>
+          </div-->
         </div>
       </div>
     </div>
@@ -204,7 +204,7 @@
             <h2 class="section-heading text-uppercase">Formulario para adicionar jogo</h2>
             <h3 class="section-subheading text-muted"></h3>
         </div>
-        <!--form>
+        <form>
             <div class="form-group row">
               <label class="col-sm-2 col-form-label">Nome</label>
               <div class="col-sm-10">
@@ -235,8 +235,16 @@
             <div class="form-group row">
               <label class="col-sm-2 col-form-label">Imagem</label>
               <div class="col-sm-10">
-                <!--<input type="" class="form-control" id="ChooseImage" value="" />->
+                <!--<input type="" class="form-control" id="ChooseImage" value="" />-->
                 <input type="file" id="file">
+                <label for="file" id="uploadBtn"></label>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label">Imagem</label>
+              <div class="col-sm-10">
+                <!--<input type="" class="form-control" id="ChooseImage" value="" />-->
+                <input type="file" id="filePdf">
                 <label for="file" id="uploadBtn"></label>
               </div>
             </div>
@@ -249,13 +257,14 @@
             <br>
             <br>
             <div align="center">
-              <button type="submit" class="btn btn-primary" align="center">Confirmar</button>
+              <a  class="btn btn-primary" align="center" onclick="saveLivro()">Confirmar</a>
             </div>
-          </form-->
+          </form>
     </div>
-</section>
+</section >
+<section id="divModelsLivros"></section>
   <!-- Portfolio Modals-->
-  <!-- Modal 1-->
+  <!-- Modal 1
   <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -266,21 +275,21 @@
           <div class="row justify-content-center">
             <div class="col-lg-8">
               <div class="modal-body">
-                <!-- Project Details Go Here-->
+                <!-- Project Details Go Here->
                 <h2 class="text-uppercase">Juju vai viajar</h2>
                 <p class="item-intro text-muted">
                   Juju vivia no lago caramelo, junto com milhares de outras gotinhas… como podem ver, ela é uma gota
                   d’água super charmosinha. Viver no lago era divertido e Juju estava acostumada a toda aquela agitação.
                   Sapos, peixinhos, patinhos…
                 </p>
-                <!--<img class="img-fluid d-block mx-auto" src="assets/img/portfolio/jujuagota.jpg" alt="" />-->
+                <!--<img class="img-fluid d-block mx-auto" src="assets/img/portfolio/jujuagota.jpg" alt="" />->
                 <div class="iframe-container">
                   <iframe width="560" height="315" src="https://www.youtube.com/embed/4i8yqVyoVY4"
                     title="YouTube video player" frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen></iframe>
                 </div>
-                <!--<a class="btn" href="https://www.youtube.com/watch?v=4i8yqVyoVY4" style="color: red"><i class="fab fa-youtube"></i></a>-->
+                <!--<a class="btn" href="https://www.youtube.com/watch?v=4i8yqVyoVY4" style="color: red"><i class="fab fa-youtube"></i></a>--
                 <p></p>
                 <button class="btn btn-primary" data-dismiss="modal" type="button">
                   <i class="fas fa-times mr-1"></i>
@@ -293,7 +302,7 @@
       </div>
     </div>
   </div>
-  <!-- Modal 2-->
+  <!-- Modal 2->
   <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -304,7 +313,7 @@
           <div class="row justify-content-center">
             <div class="col-lg-8">
               <div class="modal-body">
-                <!-- Project Details Go Here-->
+                <!-- Project Details Go Here->
                 <h2 class="text-uppercase">Amar o Mar</h2>
                 <p class="item-intro text-muted">O mar e seus encantos…
                   Belezas em todos os cantos.
@@ -317,7 +326,7 @@
                     allowfullscreen></iframe>
                 </div>
                 <!--<img class="img-fluid d-block mx-auto" src="assets/img/portfolio/amaromar.jpg" alt="" />
-                <a class="btn" href="https://www.youtube.com/watch?v=Ppyz4cLv-rk" style="color: red"><i class="fab fa-youtube"></i></a>-->
+                <a class="btn" href="https://www.youtube.com/watch?v=Ppyz4cLv-rk" style="color: red"><i class="fab fa-youtube"></i></a>->
                 <p></p>
                 <button class="btn btn-primary" data-dismiss="modal" type="button">
                   <i class="fas fa-times mr-1"></i>
@@ -330,7 +339,7 @@
       </div>
     </div>
   </div>
-  <!-- Modal 3-->
+  <!-- Modal 3->
   <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -341,7 +350,7 @@
           <div class="row justify-content-center">
             <div class="col-lg-8">
               <div class="modal-body">
-                <!-- Project Details Go Here-->
+                <!-- Project Details Go Here->
                 <h2 class="text-uppercase">A galinha que sabia ler</h2>
                 <p class="item-intro text-muted">
                   Galinha criada em uma chácara fica amiga dos livros de seu dono e acaba aprendendo a ler. Ao conhecer
@@ -355,7 +364,7 @@
                     allowfullscreen></iframe>
                 </div>
                 <!--<img class="img-fluid d-block mx-auto" src="assets/img/portfolio/a-galinha-que-sabia-ler-1.jpg" alt="" />
-                <a class="btn" href="https://www.youtube.com/watch?v=TOp8VhTbwn8" style="color: red"><i class="fab fa-youtube"></i></a>-->
+                <a class="btn" href="https://www.youtube.com/watch?v=TOp8VhTbwn8" style="color: red"><i class="fab fa-youtube"></i></a>->
                 <p></p>
                 <button class="btn btn-primary" data-dismiss="modal" type="button">
                   <i class="fas fa-times mr-1"></i>
@@ -368,7 +377,7 @@
       </div>
     </div>
   </div>
-  <!-- Modal 4-->
+  <!-- Modal 4->
   <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -379,7 +388,7 @@
           <div class="row justify-content-center">
             <div class="col-lg-8">
               <div class="modal-body">
-                <!-- Project Details Go Here-->
+                <!-- Project Details Go Here->
                 <h2 class="text-uppercase">Patinho feio</h2>
                 <p class="item-intro text-muted">
                   Não existe na literatura universal obra que tenha sido tão adaptada, reescrita e transcrita como os
@@ -393,7 +402,7 @@
                     allowfullscreen></iframe>
                 </div>
                 <!--<img class="img-fluid d-block mx-auto" src="assets/img/portfolio/patinhofeiojpg.jpg" alt="" />
-                <a class="btn" href="https://www.youtube.com/watch?v=ph3Q8bs3ny8" style="color: red"><i class="fab fa-youtube"></i></a>-->
+                <a class="btn" href="https://www.youtube.com/watch?v=ph3Q8bs3ny8" style="color: red"><i class="fab fa-youtube"></i></a>->
                 <p></p>
                 <button class="btn btn-primary" data-dismiss="modal" type="button">
                   <i class="fas fa-times mr-1"></i>
@@ -406,7 +415,7 @@
       </div>
     </div>
   </div>
-  <!-- Modal 5-->
+  <!-- Modal 5->
   <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -417,7 +426,7 @@
           <div class="row justify-content-center">
             <div class="col-lg-8">
               <div class="modal-body">
-                <!-- Project Details Go Here-->
+                <!-- Project Details Go Here->
                 <h2 class="text-uppercase">A menina das estrelas</h2>
                 <p class="item-intro text-muted">
 
@@ -429,7 +438,7 @@
                     allowfullscreen></iframe>
                 </div>
                 <!--<img class="img-fluid d-block mx-auto" src="assets/img/portfolio/ameninadaestrelas.jpg" alt="" />
-                <a class="btn" href="https://www.youtube.com/watch?v=Q9M1xkiTLgo" style="color: red"><i class="fab fa-youtube"></i></a>-->
+                <a class="btn" href="https://www.youtube.com/watch?v=Q9M1xkiTLgo" style="color: red"><i class="fab fa-youtube"></i></a>->
                 <p></p>
                 <button class="btn btn-primary" data-dismiss="modal" type="button">
                   <i class="fas fa-times mr-1"></i>
@@ -442,7 +451,7 @@
       </div>
     </div>
   </div>
-  <!-- Modal 6-->
+  <!-- Modal 6->
   <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -453,7 +462,7 @@
           <div class="row justify-content-center">
             <div class="col-lg-8">
               <div class="modal-body">
-                <!-- Project Details Go Here-->
+                <!-- Project Details Go Here->
                 <h2 class="text-uppercase">Os três Porquinhos</h2>
                 <p class="item-intro text-muted">
                   Os três porquinhos resolveram sair de casa e construir cada um a sua moradia. Mas aí veio o Lobo Mau e
@@ -466,7 +475,7 @@
                     allowfullscreen></iframe>
                 </div>
                 <!--<img class="img-fluid d-block mx-auto" src="assets/img/portfolio/tresporquinhos.jpg" alt="" />
-                <a class="btn" href="https://www.youtube.com/watch?v=lQ0DBez2Lx4" style="color: red"><i class="fab fa-youtube"></i></a>-->
+                <a class="btn" href="https://www.youtube.com/watch?v=lQ0DBez2Lx4" style="color: red"><i class="fab fa-youtube"></i></a>->
                 <p></p>
                 <button class="btn btn-primary" data-dismiss="modal" type="button">
                   <i class="fas fa-times mr-1"></i>
@@ -478,7 +487,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div>-->
   <!------------------------------------------------------------------------------------------------------------------------------------>
   <!-- Bootstrap core JS-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -490,7 +499,7 @@
   <script src="assets/mail/contact_me.js"></script>
   <!-- Core theme JS-->
   <script src="js/scripts.js"></script>
-  <!--<script src="js/fetch.js"></script>-->
+  <script src="js/livros.js"></script>
 </body>
 
 </html>
