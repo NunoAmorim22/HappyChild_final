@@ -11847,3 +11847,25 @@ li p {
 .paragrafo {
   white-space: pre-line;
 }
+
+
+.button_tuto {
+  padding: 15px 25px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: rgb(0, 0, 0);
+  background-color: #54e7f7ce;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button_tuto:hover {background-color: #54e7f78c}
+
+.button_tuto:active {
+  background-color: #54e7f762;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
