@@ -1,4 +1,4 @@
-let jogos /*= [
+let jogos; /*= [
   {
     "nome": 'Jogo do Galo',
     "imagem": 'assets/img/portfolio/jogodogalo.jpg',
@@ -16,19 +16,19 @@ let jogos /*= [
 ];*/
 /*window.addEventListener("load", function() { 
   }); */
-  let fileContent;
-  window.addEventListener("load", function() { 
-    document.getElementById("file").onchange = function(event) { 
-      var reader = new FileReader(); 
-      reader.readAsDataURL(event.srcElement.files[0]); 
-      var me = this; 
-      reader.onload = function () { 
-        fileContent = reader.result; 
-      console.log(fileContent); 
+let fileContent;
+window.addEventListener("load", function () {
+  document.getElementById("file").onchange = function (event) {
+    var reader = new FileReader();
+    reader.readAsDataURL(event.srcElement.files[0]);
+    var me = this;
+    reader.onload = function () {
+      fileContent = reader.result;
+      console.log(fileContent);
       document.getElementById("x").setAttribute("src", fileContent);
-      console.log(fileContent.typeof);
-      } 
-  }}); 
+    }
+  }
+});
 
 function getId(ze) {
   const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
@@ -39,46 +39,46 @@ function getId(ze) {
     : null;
 }
 
-function saveJogo(){
-let data = {};
-data.nome = document.getElementById("inputName").value;
-data.descricao = document.getElementById("inputDesc").value;
-data.regras = document.getElementById("inputRules").value;
-data.imagem = fileContent;
-data.video = getId(document.getElementById("inputVideo").value);
+function saveJogo() {
+  let data = {};
+  data.nome = document.getElementById("inputName").value;
+  data.descricao = document.getElementById("inputDesc").value;
+  data.regras = document.getElementById("inputRules").value;
+  data.imagem = fileContent;
+  data.video = getId(document.getElementById("inputVideo").value);
 
-var myHeaders = new Headers();
-//myHeaders.append("Cookie", "JSESSIONID=B082F7E7ABE2EBF64420BBAB600DF404");
-myHeaders.append("Content-Type", "application/json");
+  var myHeaders = new Headers();
+  //myHeaders.append("Cookie", "JSESSIONID=B082F7E7ABE2EBF64420BBAB600DF404");
+  myHeaders.append("Content-Type", "application/json");
 
 
-var requestOptions = {
-  method: 'POST',
-  headers: myHeaders,
-  body: JSON.stringify(data),
-  redirect: 'follow'
-};
+  var requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    body: JSON.stringify(data),
+    redirect: 'follow'
+  };
 
-fetch("http://localhost:8080/prochild/jogos", requestOptions)
-.then(function (response) {
-  if (!response.ok) {
-      console.log(response.status); //=> number 100–599
-      console.log(response.statusText); //=> String
-      console.log(response.headers); //=> Headers
-  } else {
-      console.log("Success POST");
-      console.log(response);
-      window.location.href = "./MenuJogos.html";
-  }
-})
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-  
+  fetch("http://localhost:8080/prochild/jogos", requestOptions)
+    .then(function (response) {
+      if (!response.ok) {
+        console.log(response.status); //=> number 100–599
+        console.log(response.statusText); //=> String
+        console.log(response.headers); //=> Headers
+      } else {
+        console.log("Success POST");
+        console.log(response);
+        window.location.href = "./MenuJogos.html";
+      }
+    })
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
+
 
 }
 
-  
+
 
 function fetchJogos() {
   async function fetchAsync() {
@@ -86,7 +86,7 @@ function fetchJogos() {
     jogos = await response.json()
     console.log(jogos);
     showJogos();
-    
+
   }
   fetchAsync()
     .then((data) => console.log("ok"))
@@ -117,7 +117,7 @@ function showJogos() {
           </div>
         </div>`;
 
-    
+
     let video = ``
     if (jogos[i].video !== null) {
       video = video + `<iframe width="560" height="315" src="https://www.youtube.com/embed/${jogos[i].video}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`

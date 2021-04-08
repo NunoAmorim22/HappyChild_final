@@ -1,4 +1,4 @@
-let videos = [
+let videos /*= [
     ["fairyTails", 
     ["https://www.youtube.com/embed/Kymxpr32uVQ", "O gato das botas"],
     ["https://www.youtube.com/embed/PL_ZU0xcqi8", "O feiticeiro de Oz"], 
@@ -31,22 +31,125 @@ let videos = [
     ["https://www.youtube.com/embed/u-nQ93vDT5c","Feromonas Minecraft"],
     ["https://www.youtube.com/embed/HVlIMDm64MQ", "Sea3po AmongUs"]
     ]
-];
+]*/;
+let tipo;
+function showAddFormVideo(genero){
+  document.getElementById("formAdd").style.display = "";
+  tipo = genero;
+  window.location.href = "#formAdd"
+}
+
+function getId(ze) {
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+  const match = ze.match(regExp);
+
+  return (match && match[2].length === 11)
+    ? match[2]
+    : null;
+}
+
+function saveVideo(){
+  let data = {};
+  data.nome = document.getElementById("inputName").value;
+  data.descricao = tipo;
+  data.link = getId(document.getElementById("inputVideo").value);
+  
+  var myHeaders = new Headers();
+  //myHeaders.append("Cookie", "JSESSIONID=B082F7E7ABE2EBF64420BBAB600DF404");
+  myHeaders.append("Content-Type", "application/json");
+  
+  
+  var requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    body: JSON.stringify(data),
+    redirect: 'follow'
+  };
+  
+  fetch("http://localhost:8080/prochild/videos", requestOptions)
+  .then(function (response) {
+    if (!response.ok) {
+        console.log(response.status); //=> number 100–599
+        console.log(response.statusText); //=> String
+        console.log(response.headers); //=> Headers
+    } else {
+        console.log("Success POST");
+        console.log(response);
+        window.location.href = "./MenuVideos.html";
+    }
+  })
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
+    
+  
+  }
+  function fetchVideos() {
+    async function fetchAsync() {
+      const response = await fetch(`http://localhost:8080/prochild/videos`);
+      videos = await response.json()
+      console.log(videos);
+      showVideos();
+      
+    }
+    fetchAsync()
+      .then((data) => console.log("ok"))
+      .catch((reason) => console.log(reason.message));
+  }
+
 
 function showVideos(){
+  let codef = ``;
+        let codel = ``;
+        let coded = ``;
+        let codeg = ``;
     for(i=0;i<videos.length;i++){
-        let code = ``;
-        for(n=1;n<videos[i].length;n++){
-            code = code + `<div class="col-lg-4 col-md-6 mb-4 justify-content-md-center">
-            <p>${videos[i][n][1]}</p>
-            <div class="iframe-container">
-              <iframe width="560" height="315" src="${videos[i][n][0]}"
-                title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
-            </div>
-          </div>`;
+        
+        if(videos[i].descricao === "Contos de fada"){
+          codef = codef + `<div class="col-lg-4 col-md-6 mb-4 justify-content-md-center">
+          <p>${videos[i].nome}</p>
+          <div class="iframe-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/${videos[i].link}"
+              title="YouTube video player" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+          </div>
+        </div>`;
+        }else if(videos[i].descricao === "Linguas"){
+          codel = codel + `<div class="col-lg-4 col-md-6 mb-4 justify-content-md-center">
+          <p>${videos[i].nome}</p>
+          <div class="iframe-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/${videos[i].link}"
+              title="YouTube video player" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+          </div>
+        </div>`;
+        }else if(videos[i].descricao === "Diversos"){
+          coded = coded + `<div class="col-lg-4 col-md-6 mb-4 justify-content-md-center">
+          <p>${videos[i].nome}</p>
+          <div class="iframe-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/${videos[i].link}"
+              title="YouTube video player" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+          </div>
+        </div>`;
+        }else if(videos[i].descricao === "Games"){
+          codeg = codeg + `<div class="col-lg-4 col-md-6 mb-4 justify-content-md-center">
+          <p>${videos[i].nome}</p>
+          <div class="iframe-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/${videos[i].link}"
+              title="YouTube video player" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+          </div>
+        </div>`;
         }
-        document.getElementById(videos[i][0]).innerHTML = code;
+        
     }
+    document.getElementById("fairyTails").innerHTML = codef;
+    document.getElementById("languages").innerHTML = codel;
+    document.getElementById("diverse").innerHTML = coded;
+    document.getElementById("gameplays").innerHTML = codeg;
 }
