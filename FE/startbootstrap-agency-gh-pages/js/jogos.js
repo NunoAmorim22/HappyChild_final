@@ -30,22 +30,16 @@ let jogos /*= [
       } 
   }}); 
 
-function saveJogo(){
-/*let data = {};
-data.jogo = {
-  "nome": document.getElementById("inputName").value,
-  "regras":document.getElementById("inputRules").value,
-  "descricao":document.getElementById("inputDesc").value
+function getId(ze) {
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+  const match = ze.match(regExp);
+
+  return (match && match[2].length === 11)
+    ? match[2]
+    : null;
 }
 
-data.imagem = document.getElementById("file").files[0];
-//data.video = document.getElementById("inputVideo").value;
-
-console.log(data);*/
-
-//console.log(file.files[0].path);
-//var path = (window.URL || window.webkitURL).createObjectURL(file.files[0]);
-    //console.log('path', path);
+function saveJogo(){
 let data = {};
 data.nome = document.getElementById("inputName").value;
 data.descricao = document.getElementById("inputDesc").value;
@@ -71,31 +65,14 @@ fetch("http://localhost:8080/prochild/jogos", requestOptions)
   .catch(error => console.log('error', error));
 
 }
-function getId(ze) {
-  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
-  const match = ze.match(regExp);
 
-  return (match && match[2].length === 11)
-    ? match[2]
-    : null;
-}
   
 
 function fetchJogos() {
-  let outside;
-
   async function fetchAsync() {
     const response = await fetch(`http://localhost:8080/prochild/jogos`);
     jogos = await response.json()
     console.log(jogos);
-    /*const response2 = await fetch(`http://localhost:8080/prochild/jogos/imagem/1`);
-    outside = await response2.json()
-      /*.then(images => {
-        // Then create a local URL for that image and print it 
-        for(i=0;i<jogos.length;i++){
-          jogos[i].imagem = images;
-        }
-      });console.log(outside);*/
     showJogos();
     
   }
@@ -104,14 +81,6 @@ function fetchJogos() {
     .catch((reason) => console.log(reason.message));
 }
 
-
-/*.then (res => res.Blob())
-    .then(images => {
-      // Then create a local URL for that image and print it 
-      outside = URL.createObjectURL(images)
-      console.log(outside) 
-    console.log(res);
-*/
 fetchJogos();
 
 function showJogos() {
