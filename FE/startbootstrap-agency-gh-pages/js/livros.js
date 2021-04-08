@@ -148,6 +148,5 @@ function showLivros() {
   </div>`;
   }
   document.getElementById("divLivros").innerHTML = table;
-  console.log(model);
   document.getElementById("divModelsLivros").innerHTML = model;
 }
