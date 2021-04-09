@@ -11,11 +11,13 @@ function login() {
       method: 'POST',
       headers: myHeaders,
       body: urlencoded,
-      redirect: 'follow'
+      mode: "no-cors"
     };
     
-    fetch("http://localhost:8080/login", requestOptions)
+    fetch("http://localhost:8080/prochild/login", requestOptions)
       .then(response => response.text())
-      .then(result => console.log(result))
+      .then(result => {
+        window.location.href = './MenuPrincipal.html';
+        })
       .catch(error => console.log('error', error))
 }
