@@ -57,12 +57,49 @@ function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
   } else {
-   ~console.log("Geolocation is not supported by this browser.");
+   console.log("Geolocation is not supported by this browser.");
   }
 }
 
 function showPosition(position) {
-  console.log(position.coords.latitude + "\n" + position.coords.longitude);
+  return (position.coords.latitude + "," + position.coords.longitude);
 }
 
 getLocation();
+
+function saveFamilia() {
+  var data = {};
+  data.sexo = localStorage.getItem("gender");
+  data.faixa_etaria = localStorage.getItem("age");
+  data.localizacao = getLocation();
+  data.acontecimento = document.getElementById("acontecimento").value;
+
+
+  console.log(data); //debugging para ver os dados que foram enviados
+
+  //chamada fetch para envio dos dados para o servior via POST
+  fetch('http://localhost:8080/prochild/denuncias',
+      {
+          headers: { "Content-Type": "application/json" },
+          method: "POST",
+          body: JSON.stringify(data),
+      }
+  )
+      .then(function (response) {
+          if (!response.ok) {
+              console.log(response.status); //=> number 100–599
+              console.log(response.statusText); //=> String
+              console.log(response.headers); //=> Headers
+          } else {
+              console.log("Success POST");
+              console.log(response);
+          }
+      })
+      .then(function (result) {
+          console.log(result);
+      })
+      .catch(function (err) {
+          alert("Submission error");
+          console.error(err);
+      });
+}
