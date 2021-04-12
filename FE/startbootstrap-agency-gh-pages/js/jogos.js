@@ -25,7 +25,6 @@ window.addEventListener("load", function () {
     reader.onload = function () {
       fileContent = reader.result;
       console.log(fileContent);
-      document.getElementById("x").setAttribute("src", fileContent);
     }
   }
 });

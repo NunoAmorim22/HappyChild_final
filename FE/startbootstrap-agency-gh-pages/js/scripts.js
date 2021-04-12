@@ -115,7 +115,7 @@ function changeMainMenu(){
         document.getElementById("perfilbtn").remove();
         document.getElementById("apoiosplace").innerHTML = '<a class="nav-link js-scroll-trigger" href="MenuSelecaoTipoInformacao.html"><i class="far fa-question-circle"></i> Ajudas</a>';
     }
-    else if(localStorage.getItem("function") == "seguranca"){
+    else if(localStorage.getItem("function") == "security"){
         document.getElementById("apoiosplace").innerHTML = '<a class="nav-link js-scroll-trigger" href="MenuVerDenuncias.html"><i class="fas fa-shield-alt"></i> Denuncias</a>';
     }
     else {
