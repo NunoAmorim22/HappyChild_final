@@ -112,7 +112,7 @@ function showJogos() {
             </a>
             <div class="portfolio-caption">
               <div class="portfolio-caption-heading">${jogos[i].nome} </div>
-              <a class="btn btn-primary" onclick=deleteJogo()><i class="far fa-trash-alt"></i></a>
+              <a class="btn btn-primary" onclick=deleteJogo(${jogos[i].id}) style="display: none" name="editingbtn"><i class="far fa-trash-alt"></i></a>
               <div class="portfolio-caption-subheading text-muted"></div>
             </div>
           </div>
@@ -166,4 +166,27 @@ function showJogos() {
   }
   document.getElementById("divJogos").innerHTML = table;
   document.getElementById("divModelsJogos").innerHTML = model;
+}
+
+function deleteJogo(id) {
+  var requestOptions = {
+    method: 'DELETE',
+  };
+
+  //selecionar o id do jogo selecionado
+  fetch(`http://localhost:8080/prochild/jogos/${id}`, requestOptions)
+    .then(function (response) {
+      if (!response.ok) {
+        console.log(response.status); //=> number 100–599
+        console.log(response.statusText); //=> String
+        console.log(response.headers); //=> Headers
+      } else {
+        console.log("Success POST");
+        console.log(response);  
+        window.location.href = "./MenuJogos.html";
+      }
+    })
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
 }

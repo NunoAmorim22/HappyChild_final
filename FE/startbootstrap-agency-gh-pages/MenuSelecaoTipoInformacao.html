@@ -19,7 +19,7 @@
   <link href="css/styles.css" rel="stylesheet" />
 </head>
 
-<body id="page-top">
+<body id="page-top" onload="changeMainMenu(); hideOption();">
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
     <div class="container">
@@ -62,18 +62,18 @@
   <div class="container">
     <br />
     <div class="row text-center justify-content-md-center">
-      <div class="col-lg-3 col-md-6 mb-4 justify-content-md-center border-magenta">
+      <div class="col-lg-3 col-md-6 mb-4 justify-content-md-center border-magenta h-100">
         <br />
         <br />
         <br />
         <div class="card h-85 border-azul">
           <a href="MenuLinhasApoio.html" class="stretched-link"></a>
           <h1 class="letra-azul">Linhas de Apoio</h1>
-          <img class="card-img-top" src="assets/img/linhasdeapoio.jpg" alt="" />
+          <img class="card-img-top responsive" src="assets/img/linhasdeapoio.jpg" alt="" />
         </div>
       </div>
 
-      <div class="col-lg-3 col-md-6 mb-4 justify-content-md-center">
+      <div class="col-lg-3 col-md-6 mb-4 justify-content-md-center h-100" id="paraFamilias" style="display: none;">
         <br />
         <br />
         <br />
@@ -81,11 +81,11 @@
           <a href="MenuApoiosFamiliares.html" class="stretched-link">
           </a>
           <h1 class="letra-amarela">Apoios Familiares</h1>
-          <img class="card-img-top" src="assets/img/apoio-familiar.jpg" alt="" />
+          <img class="card-img-top responsive" src="assets/img/apoio-familiar.jpg" alt="" />
         </div>
       </div>
 
-      <div class="col-lg-3 col-md-6 mb-4 justify-content-md-center">
+      <div class="col-lg-3 col-md-6 mb-4 justify-content-md-center h-100">
         <br />
         <br />
         <br />
@@ -93,10 +93,9 @@
           <a href="MenuLinhasPolicia.html" class="stretched-link">
           </a>
           <h1 class="letra-magenta">Denúncias</h1>
-          <img class="card-img-top" src="assets/img/Formulários.png" alt="" />
+          <img class="card-img-top responsive" src="assets/img/Formulários.png" alt="" />
         </div>
       </div>
-
     </div>
   </div>
   <br />

@@ -113,8 +113,10 @@ function showVideos(){
               title="YouTube video player" frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen></iframe>
-          </div>
-        </div>`;
+              </div>
+              <br>
+              <a class="btn btn-primary" onclick=deleteVideos(${videos[i].id}) style="display: none" name="editingbtn"><i class="far fa-trash-alt"></i></a>        
+              </div>`;
         }else if(videos[i].descricao === "Linguas"){
           codel = codel + `<div class="col-lg-4 col-md-6 mb-4 justify-content-md-center">
           <p>${videos[i].nome}</p>
@@ -123,7 +125,9 @@ function showVideos(){
               title="YouTube video player" frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen></iframe>
-          </div>
+              </div>
+              <br>
+              <a class="btn btn-primary" onclick=deleteVideos(${videos[i].id}) style="display: none" name="editingbtn"><i class="far fa-trash-alt"></i></a>
         </div>`;
         }else if(videos[i].descricao === "Diversos"){
           coded = coded + `<div class="col-lg-4 col-md-6 mb-4 justify-content-md-center">
@@ -133,7 +137,9 @@ function showVideos(){
               title="YouTube video player" frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen></iframe>
-          </div>
+             </div>
+             <br>
+             <a class="btn btn-primary" onclick=deleteVideos(${videos[i].id}) style="display: none" name="editingbtn"><i class="far fa-trash-alt"></i></a>
         </div>`;
         }else if(videos[i].descricao === "Games"){
           codeg = codeg + `<div class="col-lg-4 col-md-6 mb-4 justify-content-md-center">
@@ -143,7 +149,9 @@ function showVideos(){
               title="YouTube video player" frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen></iframe>
-          </div>
+              </div>
+              <br>
+              <a class="btn btn-primary" onclick=deleteVideos(${videos[i].id}) style="display: none" name="editingbtn"><i class="far fa-trash-alt"></i></a>
         </div>`;
         }
         
@@ -152,4 +160,28 @@ function showVideos(){
     document.getElementById("languages").innerHTML = codel;
     document.getElementById("diverse").innerHTML = coded;
     document.getElementById("gameplays").innerHTML = codeg;
+}
+
+
+function deleteVideos(id) {
+  var requestOptions = {
+    method: 'DELETE',
+  };
+
+  //selecionar o id do jogo selecionado
+  fetch(`http://localhost:8080/prochild/videos/${id}`, requestOptions)
+    .then(function (response) {
+      if (!response.ok) {
+        console.log(response.status); //=> number 100–599
+        console.log(response.statusText); //=> String
+        console.log(response.headers); //=> Headers
+      } else {
+        console.log("Success POST");
+        console.log(response);  
+        window.location.href = "./MenuVideos.html";
+      }
+    })
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
 }

@@ -37,7 +37,7 @@ data.nome = document.getElementById("inputName").value;
 data.descricao = document.getElementById("inputDesc").value;
 data.capa = imgFile;
 data.link = pdfFile;
-//data.video = getId(document.getElementById("inputVideo").value);
+data.video = getId(document.getElementById("inputLinkVideo").value);
 console.log(data);
 var myHeaders = new Headers();
 //myHeaders.append("Cookie", "JSESSIONID=B082F7E7ABE2EBF64420BBAB600DF404");
@@ -93,7 +93,7 @@ function showLivros() {
   for (i = 0; i < livros.length; i++) {
 
     table = table + `<div class="col-lg-4 col-sm-6 mb-4">
-    <div class="portfolio-item">
+    <div class="portfolio-item" align="center">
       <a class="portfolio-link" data-toggle="modal" href="#portfolioModal${i}">
         <div class="portfolio-hover">
           <div class="portfolio-hover-content">
@@ -105,11 +105,12 @@ function showLivros() {
       <div class="portfolio-caption">
         <div class="portfolio-caption-heading">${livros[0].nome}</div>
       </div>
+      <a class="btn btn-primary" onclick=deleteLivros(${livros[i].id}) style="display: none" name="editingbtn"><i class="far fa-trash-alt"></i></a>
     </div>
   </div>`;
 
     
-    let video = "";//`<iframe width="560" height="315" src="https://www.youtube.com/embed/${livros[i].video}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+    let video = `<iframe width="560" height="315" src="https://www.youtube.com/embed/${livros[i].video}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
     
 
 
@@ -131,8 +132,9 @@ function showLivros() {
                 <div class="iframe-container">
                  ${video}
                 </div>
+                <br>
                 <div align="center">
-                <iframe src="${livros[i].link}" style="width:718px; height:700px;" frameborder="0"></iframe>
+                <iframe src="${livros[i].link}" class="responsive" style="width:800px; height:700px;" frameborder="0"></iframe>
                 </div>
                 <p></p>
                 <button class="btn btn-primary" data-dismiss="modal" type="button">
@@ -149,4 +151,27 @@ function showLivros() {
   }
   document.getElementById("divLivros").innerHTML = table;
   document.getElementById("divModelsLivros").innerHTML = model;
+}
+
+function deleteLivros(id) {
+  var requestOptions = {
+    method: 'DELETE',
+  };
+
+  //selecionar o id do jogo selecionado
+  fetch(`http://localhost:8080/prochild/livros/${id}`, requestOptions)
+    .then(function (response) {
+      if (!response.ok) {
+        console.log(response.status); //=> number 100–599
+        console.log(response.statusText); //=> String
+        console.log(response.headers); //=> Headers
+      } else {
+        console.log("Success POST");
+        console.log(response);  
+        window.location.href = "./MenuLivros.html";
+      }
+    })
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
 }

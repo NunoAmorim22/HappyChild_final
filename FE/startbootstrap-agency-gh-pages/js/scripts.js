@@ -113,6 +113,7 @@ function changeMainMenu(){
             document.getElementById("direitosbtn").setAttribute("href", "MenuDireitosCriancas.html");
         }
         document.getElementById("perfilbtn").remove();
+        document.getElementById("apoiosplace").innerHTML = '<a class="nav-link js-scroll-trigger" href="MenuSelecaoTipoInformacao.html"><i class="far fa-question-circle"></i> Ajudas</a>';
     }
     else if(localStorage.getItem("function") == "seguranca"){
         document.getElementById("apoiosplace").innerHTML = '<a class="nav-link js-scroll-trigger" href="MenuVerDenuncias.html"><i class="fas fa-shield-alt"></i> Denuncias</a>';
@@ -128,11 +129,11 @@ function changeProfileMenu(){
     }
 }
 
-function changeLinhasApoio(){
+/*function changeLinhasApoio(){
     if(localStorage.getItem("type") !== "child"){
         document.getElementById("formComplaint").remove();
     }
-}
+}*/
 
 /*-----------------------------------------------------------------------------------------------*/
 function editAssets(){
@@ -150,6 +151,14 @@ function activeEdit(){
 
 function showAddForm(){
     document.getElementById("formAdd").style.display = "";
+    window.location.href = "#formAdd";
+}
+
+function hideOption() {
+    if(localStorage.getItem("type") != "child"){
+        document.getElementById("paraFamilias").style.display = "";
+    }
+    
 }
 
 //---------------------------------------Botão para ir para o topo da página------------------------------------------------------------------------
