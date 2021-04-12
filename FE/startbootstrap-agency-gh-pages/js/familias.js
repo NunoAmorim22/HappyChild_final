@@ -1,10 +1,10 @@
 function saveFamilia() {
     var data = {};
-    data.username = document.getElementById("nameFamily").value;
+    data.username = document.getElementById("usernameFamily").value;
     let password = document.getElementById("PwdFamily").value;
     let repPwd = document.getElementById("PwdFamily2").value;
     data.email = document.getElementById("mailFamily").value;
-    data.tipo = "familia";
+    data.tipo = "family";
     data.nome = document.getElementById("nameFamily").value;
     if (document.getElementById("inlineRadio1").checked) {
         data.sexo = document.getElementById("inlineRadio1").value;
@@ -12,9 +12,7 @@ function saveFamilia() {
     else if (document.getElementById("inlineRadio2").checked) {
         data.sexo = document.getElementById("inlineRadio2").value;
     }
-    data.localizacao = "1111";
-    data.concelho = document.getElementById("countyFamly");
-
+    data.concelho = document.getElementById("countyFamily").value;
     if (password === "" || repPwd === "") {
         return false;
     }
@@ -24,15 +22,7 @@ function saveFamilia() {
     else {
         data.password = password;
     }
-    /*data.nome = "Ruca";
-    data.email = "ruca@gmail.com";
-    data.username = "Ruca";
-    data.password = "1234";
-    data.tipo = "familia";
-    data.sexo = "M";
-    data.localizaca = "!!!";
-    data.concelho = "Guimarães";*/
-
+  
     console.log(data); //debugging para ver os dados que foram enviados
 
     //chamada fetch para envio dos dados para o servior via POST
@@ -49,6 +39,7 @@ function saveFamilia() {
                 console.log(response.statusText); //=> String
                 console.log(response.headers); //=> Headers
             } else {
+                window.location.href = "./LoginFamilias.html";
                 console.log("Success POST");
                 console.log(response);
             }
