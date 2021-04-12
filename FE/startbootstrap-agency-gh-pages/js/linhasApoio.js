@@ -32,7 +32,7 @@ function saveJogo() {
       redirect: 'follow'
     };
   
-    fetch("http://localhost:8080/prochild/linhas", requestOptions)
+    fetch("http://localhost:8080/prochild/linhasapoio", requestOptions)
       .then(function (response) {
         if (!response.ok) {
           console.log(response.status); //=> number 100–599
@@ -53,7 +53,7 @@ function saveJogo() {
 
 function fetchLinhas() {
     async function fetchAsync() {
-      const response = await fetch(`http://localhost:8080/prochild/linhas`);
+      const response = await fetch(`http://localhost:8080/prochild/linhasapoio`);
       linhas = await response.json()
       console.log(linhas);
       showLinhas();
