@@ -13,12 +13,14 @@ window.addEventListener("load", function () {
   }
 });
 
-function saveJogo() {
+function saveLinha() {
     let data = {};
     data.nome = document.getElementById("nomeLinha").value;
-    data.numero = document.getElementById("contactoLinha").value;
+    data.contacto = document.getElementById("contactoLinha").value;
     data.imagem = fileContent;
-    data.link = document.getElementById("inputSite")
+    data.link = document.getElementById("inputSite").value;
+
+    console.log(data);
   
     var myHeaders = new Headers();
     //myHeaders.append("Cookie", "JSESSIONID=B082F7E7ABE2EBF64420BBAB600DF404");
@@ -41,7 +43,7 @@ function saveJogo() {
         } else {
           console.log("Success POST");
           console.log(response);
-          window.location.href = "./MenuJogos.html";
+          window.location.href = "./MenuLinhasApoio.html";
         }
       })
       .then(response => response.text())
@@ -73,9 +75,10 @@ function showLinhas(){
         <div class="card h-100">
           <img class="card-img-top" src="${linhas[i].imagem}" alt=""> <br>
           <p style="font-weight: bold; font-size:15px; color: ${colors[color]}" class="">${linhas[i].nome}</p>
-          <p style="font-weight: bold; font-size:15px; color: ${colors[color]}" class="">${linhas[i].numero}</p>
-          <a href="${linhas[i].link}"> <i class="fas fa-globe fa-3x"></i></a>
+          <p style="font-weight: bold; font-size:15px; color: ${colors[color]}" class="">${linhas[i].contacto}</p>
+          <a href="${linhas[i].link}" target="_blank"> <i class="fas fa-globe fa-3x"></i></a>
           <br>
+          <a class="btn btn-primary" onclick=deleteLinha(${linhas[i].id}) style="display: none" name="editingbtn"><i class="far fa-trash-alt"></i></a>
         </div>
       </div>`;
       color++;
@@ -85,3 +88,26 @@ function showLinhas(){
     }
     document.getElementById("sitioLinhas").innerHTML = code;
 }
+
+function deleteLinha(id) {
+    var requestOptions = {
+      method: 'DELETE',
+    };
+  
+    //selecionar o id do jogo selecionado
+    fetch(`http://localhost:8080/prochild/linhasapoio/${id}`, requestOptions)
+      .then(function (response) {
+        if (!response.ok) {
+          console.log(response.status); //=> number 100–599
+          console.log(response.statusText); //=> String
+          console.log(response.headers); //=> Headers
+        } else {
+          console.log("Success POST");
+          console.log(response);  
+          window.location.href = "./MenuLinhasApoio.html";
+        }
+      })
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
+  }

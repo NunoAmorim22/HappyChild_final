@@ -19,7 +19,7 @@
   <link href="css/styles.css" rel="stylesheet" />
 </head>
 
-<body onload="changeMainMenu();  activeEdit()">
+<body onload="changeMainMenu();  activeEdit(); fetchLinhas()">
 
   <button onclick="topFunction()" id="topBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>
 
@@ -82,13 +82,13 @@
       -->
     <!-- Page Features -->
     <div class="row text-center justify-content-center" id="sitioLinhas">
-      <div class="col-lg-3 col-md-6 mb-4 ">
+      <!--div class="col-lg-3 col-md-6 mb-4 ">
         <div class="card h-100">
           <img class="card-img-top" src="assets/img/Saude24.jpg" alt=""> <br>
-          <!--<div class="card-body">-->
+          <!--<div class="card-body">->
           <p style="font-weight: bold; font-size:15px; color: #43bbc9" class="">Linha Saúde 24</p>
           <p style="font-weight: bold; font-size:15px; color: #43bbc9" class="">808 24 24 24</p>
-          <!--</div>-->
+          <!--</div>->
           <a href="#"> <i class="fas fa-globe fa-3x"></i></a>
         </div>
       </div>
@@ -96,10 +96,10 @@
       <div class="col-lg-3 col-md-6 mb-4">
         <div class="card h-100">
           <img class="card-img-top" src="assets/img/SOSCrianca.png" alt=""> <br>
-          <!--<div class="card-body">-->
+          <!--<div class="card-body">->
           <p class="" style="font-weight: bold; font-size:15px; color: #e5004e;">Linha SOS-Criança</p>
           <p style="font-weight: bold; font-size:15px; color: #e5004e;" class="">166 111</p>
-          <!--</div>-->
+          <!--</div>->
           <a href="#"> <i class="fas fa-globe fa-3x"></i></a>
         </div>
       </div>
@@ -107,10 +107,10 @@
       <div class="col-lg-3 col-md-6 mb-4">
         <div class="card h-100">
           <img class="card-img-top" src="assets/img/112.jpg" alt=""> <br>
-          <!--<div class="card-body">-->
+          <!--<div class="card-body">->
           <p class="" style="font-weight: bold; font-size:15px; color: #f7be00;">Nº Europeu de Emergência</p>
           <p class="" style="font-weight: bold; font-size:15px; color: #f7be00;">112</p>
-          <!--</div>-->
+          <!--</div>->
           <a href="#"> <i class="fas fa-globe fa-3x"></i></a>
           <br>
         </div>
@@ -119,10 +119,10 @@
       <div class="col-lg-3 col-md-6 mb-4">
         <div class="card h-100">
           <img class="card-img-top" src="assets/img/PSP.jpg" alt=""> <br>
-          <!--<div class="card-body">-->
+          <!--<div class="card-body">->
           <p class="" style="font-weight: bold; font-size:15px; color:#43bbc9;">Linha de Apoio - Polícia</p>
           <p class="" style="font-weight: bold; font-size:15px; color:#43bbc9;">112</p>
-          <!--</div>-->
+          <!--</div>--
           <a href="#"> <i class="fas fa-globe fa-3x"></i></a>
         </div>
       </div>
@@ -130,11 +130,11 @@
       <div class="col-lg-3 col-md-6 mb-4">
         <div class="card h-100">
           <img class="card-img-top" src="assets/img/GNR.png" alt=""> <br>
-          <!--<div class="card-body">-->
+          <!--<div class="card-body">->
           <p class="" style="font-weight: bold; font-size:15px; color: #e5004e;">Guarda Nacional Republicana-GNR
           </p>
           <p class="" style="font-weight: bold; font-size:15px; color: #e5004e;">112</p>
-          <!--</div>-->
+          <!--</div>->
           <a href="#"> <i class="fas fa-globe fa-3x"></i></a>
         </div>
       </div>
@@ -164,8 +164,8 @@
                       <td>965986741</td>
                       <td><a href="#detalhes-denuncias"><i class="fas fa-phone-alt"></i></a></td>
                   </tr>
-              </tbody>-->
-          </table>
+              </tbody>
+          </table>-->
       </div>
   </div>
 </div>
@@ -215,7 +215,7 @@
           </div>
           
           <div align="center">
-            <button type="submit" class="btn btn-primary" align="center">Confirmar</button>
+            <a  class="btn btn-primary" align="center" onclick="saveLinha()">Confirmar</a>
           </div>
         </form>
   </div>
@@ -233,7 +233,7 @@
   <script src="assets/mail/contact_me.js"></script>
   <!-- Core theme JS-->
   <script src="js/scripts.js"></script>
-  <script src="js/linhasDeApoio.js"></script>
+  <script src="js/linhasApoio.js"></script>
 </body>
 
 </html>
