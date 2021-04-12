@@ -164,9 +164,11 @@ function hideOption() {
 function perfil() {
     if(localStorage.getItem("type") == "family"){
       fetchFamilia();
+      document.getElementById("editBTN").setAttribute("onclick", "editDataFamily()");
     }
     if(localStorage.getItem("type") == "institution"){
         fetchInstituicao();
+        document.getElementById("editBTN").setAttribute("onclick", "editDataInstitution()");
     }
 }
 

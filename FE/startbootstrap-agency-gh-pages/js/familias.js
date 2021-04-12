@@ -53,92 +53,19 @@ function saveFamilia() {
         });
 }
 
-
-//Eviar dados de perfil editados para a base de dados
-function EditProfileFamily() {
-    var data = {};
-    let id_family = localStorage.getItem("!!!!!");
-    data.email = document.getElementById("inputEmail").value;
-    data.name = document.getElementById("inputNome").value;
-    let palavraPass = document.getElementById("passwordEditar").value;
-    let rep_password = document.getElementById("rep_passwordEditar").value;
-    if (
-      palavraPass === "" ||
-      rep_password === "" ||
-      data.email === "" ||
-      data.name === ""
-    ) {
-     /* swal
-        .fire({
-          icon: "warning",
-          title: "Alerta!",
-          text: "Preencha todos os campos!",
-        })
-        .then(function () {
-          console.log("The Ok Button was clicked.");
-        });*/
-      document.getElementById("inputPassword").focus();
-      return false;
-    } else if (palavraPass != rep_password) {
-     /* swal
-        .fire({
-          icon: "warning",
-          title: "Alerta!",
-          text: "Senhas diferentes!",
-        })
-        .then(function () {
-          console.log("The Ok Button was clicked.");
-        });*/
-      document.getElementById("inputPassword").focus();
-      return false;
-    } else {
-      data.password = palavraPass;
-    }
+function editDataFamily() {
   
-    console.log(data); //debugging para ver os dados que foram enviados
-  
-    //chamada fetch para envio dos dados para o servior via PUT
 
-
-    //Como no login temos de ir buscar as informações depois faz se o put por id
-    fetch(
-      `link here`,
-      {
-        headers: { "Content-Type": "application/json" },
-        method: "PUT",
-        body: JSON.stringify(data),
-      }
-    )
-      .then(function (response) {
-        if (!response.ok) {
-          console.log(response.status); //=> number 100â€“599
-          console.log(response.statusText); //=> String
-          console.log(response.headers); //=> Headers
-        } else {
-          console.log("Success PUT");
-          console.log(response);
-          /*swal
-            .fire({
-              icon: "success",
-              title: "Sucesso!",
-              text: "Perfil Atualizado",
-            })
-            .then(function () {
-              // Redirect the user
-              window.location.href = "./Perfil.html";
-              console.log("The Ok Button was clicked.");
-            });*/
-        }
-      })
-      .then(function (result) {
-        console.log(result);
-      })
-      .catch(function (err) {
-        alert("Submission error");
-        console.error(err);
-      });
-  }
-
+var requestOptions = {
+  method: 'PUT',
+  redirect: 'follow'
+};
+let nome =
+fetch(`http://localhost:8080/prochild/users/familias/1?concelho=${document.getElementById("inputConcelho").value}&nome=${document.getElementById("inputNome").value}`, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+}
   function fetchFamilia(/*id*/){
     async function fetchAsync() {
     const response = await fetch(`http://localhost:8080/prochild/users/familias/1`);
