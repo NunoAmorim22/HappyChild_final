@@ -111,7 +111,8 @@ function showJogos() {
               <img class="img-fluid" style="height: 200px; width: 200px;" src="${jogos[i].imagem}" alt="" />
             </a>
             <div class="portfolio-caption">
-              <div class="portfolio-caption-heading">${jogos[i].nome}</div>
+              <div class="portfolio-caption-heading">${jogos[i].nome} </div>
+              <a class="btn btn-primary"><i class="fas fa-arrow-circle-down" onclick=""></i></a>
               <div class="portfolio-caption-subheading text-muted"></div>
             </div>
           </div>
