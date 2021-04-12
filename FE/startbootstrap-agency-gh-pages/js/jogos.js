@@ -99,7 +99,6 @@ function showJogos() {
   let table = ``;
   let model = ``;
   for (i = 0; i < jogos.length; i++) {
-
     table = table + `<div class="col-lg-4 col-sm-6 mb-4">
           <div class="portfolio-item" align="center">
             <a class="portfolio-link" data-toggle="modal" href="#portfolioModal${i}">
@@ -112,7 +111,7 @@ function showJogos() {
             </a>
             <div class="portfolio-caption">
               <div class="portfolio-caption-heading">${jogos[i].nome} </div>
-              <a class="btn btn-primary"><i class="fas fa-arrow-circle-down" onclick=""></i></a>
+              <a class="btn btn-primary"><i class="fas fa-arrow-circle-down" onclick="deleteJogo()"></i></a>
               <div class="portfolio-caption-subheading text-muted"></div>
             </div>
           </div>
@@ -166,4 +165,16 @@ function showJogos() {
   }
   document.getElementById("divJogos").innerHTML = table;
   document.getElementById("divModelsJogos").innerHTML = model;
+}
+
+function deleteJogo() {
+  var requestOptions = {
+    method: 'DELETE',
+  };
+  
+  //selecionar o id do jogo selecionado
+  fetch(`http://localhost:8080/prochild/jogos/${id}`, requestOptions)
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
 }
