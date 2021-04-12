@@ -41,10 +41,16 @@ function showDetails(id){
     const response = await fetch(`http://localhost:8080/prochild/denuncias/${id}`);
     var data = await response.json();
       window.location.href = "#detalhes-denuncias";
+      //var mySQLDate = data.data; new Date(Date.parse(mySQLDate.replace(/-/g, '/')))
+      var d = new Date(data.data);
+      var mes = d.getMonth() + 1;
+      let de = (d.getDate() + "/" + mes + "/" + d.getFullYear() /*+ " " + d.getHours() + ":" + d.getMinutes()*/);
     document.getElementById("idDenuncia").setAttribute("value", data.id);
-    document.getElementById("descricaoDenuncia").setAttribute("value", data.acontecimento);
-    document.getElementById("dataDenuncia").setAttribute("value", data.data);
+    document.getElementById("descricaoDenuncia").setAttribute("value", data.acontecimento); 
+    document.getElementById("dataDenuncia").setAttribute("value", de);
     document.getElementById("localDenuncia").setAttribute("value", data.localizacao); 
+
+    console.log(data.localizacao);
 
     document.href="#detalhes-denuncias";
     }
@@ -52,6 +58,8 @@ function showDetails(id){
       .then((data) => console.log("ok"))
       .catch((reason) => console.log(reason.message));
 }
+
+let localizacao;
 
 function getLocation() {
   if (navigator.geolocation) {
@@ -62,17 +70,129 @@ function getLocation() {
 }
 
 function showPosition(position) {
-  return (position.coords.latitude + "," + position.coords.longitude);
+  localizacao = position.coords.latitude + "," + position.coords.longitude;
 }
 
 getLocation();
 
-function saveFamilia() {
+function saveDenuncia() {
   var data = {};
   data.sexo = localStorage.getItem("gender");
   data.faixa_etaria = localStorage.getItem("age");
-  data.localizacao = getLocation();
+  data.localizacao = localizacao;
   data.acontecimento = document.getElementById("acontecimento").value;
+
+
+  console.log(data); //debugging para ver os dados que foram enviados
+
+  //chamada fetch para envio dos dados para o servior via POST
+  fetch('http://localhost:8080/prochild/denuncias',
+      {
+          headers: { "Content-Type": "application/json" },
+          method: "POST",
+          body: JSON.stringify(data),
+      }
+  )
+      .then(function (response) {
+          if (!response.ok) {
+              console.log(response.status); //=> number 100–599
+              console.log(response.statusText); //=> String
+              console.log(response.headers); //=> Headers
+          } else {
+              console.log("Success POST");
+              console.log(response);
+          }
+      })
+      .then(function (result) {
+          console.log(result);
+      })
+      .catch(function (err) {
+          alert("Submission error");
+          console.error(err);
+      });
+}
+
+
+function postDenuncia1() {
+  var data = {};
+  data.sexo = localStorage.getItem("gender");
+  data.faixa_etaria = localStorage.getItem("age");
+  data.localizacao = localizacao;
+  data.acontecimento = "Violência verbal entre Pais";
+
+
+  console.log(data); //debugging para ver os dados que foram enviados
+
+  //chamada fetch para envio dos dados para o servior via POST
+  fetch('http://localhost:8080/prochild/denuncias',
+      {
+          headers: { "Content-Type": "application/json" },
+          method: "POST",
+          body: JSON.stringify(data),
+      }
+  )
+      .then(function (response) {
+          if (!response.ok) {
+              console.log(response.status); //=> number 100–599
+              console.log(response.statusText); //=> String
+              console.log(response.headers); //=> Headers
+          } else {
+              console.log("Success POST");
+              console.log(response);
+          }
+      })
+      .then(function (result) {
+          console.log(result);
+      })
+      .catch(function (err) {
+          alert("Submission error");
+          console.error(err);
+      });
+}
+
+function postDenuncia2() {
+  var data = {};
+  data.sexo = localStorage.getItem("gender");
+  data.faixa_etaria = localStorage.getItem("age");
+  data.localizacao = localizacao;
+  data.acontecimento = "Violência física entre Pais";
+
+
+  console.log(data); //debugging para ver os dados que foram enviados
+
+  //chamada fetch para envio dos dados para o servior via POST
+  fetch('http://localhost:8080/prochild/denuncias',
+      {
+          headers: { "Content-Type": "application/json" },
+          method: "POST",
+          body: JSON.stringify(data),
+      }
+  )
+      .then(function (response) {
+          if (!response.ok) {
+              console.log(response.status); //=> number 100–599
+              console.log(response.statusText); //=> String
+              console.log(response.headers); //=> Headers
+          } else {
+              console.log("Success POST");
+              console.log(response);
+          }
+      })
+      .then(function (result) {
+          console.log(result);
+      })
+      .catch(function (err) {
+          alert("Submission error");
+          console.error(err);
+      });
+}
+
+function postDenuncia3() {
+  var data = {};
+  data.sexo = localStorage.getItem("gender");
+  data.faixa_etaria = localStorage.getItem("age");
+  data.localizacao = localizacao;
+  data.acontecimento = "Violência com Filhos";
 
 
   console.log(data); //debugging para ver os dados que foram enviados
