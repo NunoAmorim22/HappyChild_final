@@ -40,7 +40,7 @@ function showDetails(id){
     async function fetchAsync() {
     const response = await fetch(`http://localhost:8080/prochild/denuncias/${id}`);
     var data = await response.json();
-
+      window.location.href = "#detalhes-denuncias";
     document.getElementById("idDenuncia").setAttribute("value", data.id);
     document.getElementById("descricaoDenuncia").setAttribute("value", data.acontecimento);
     document.getElementById("dataDenuncia").setAttribute("value", data.data);
