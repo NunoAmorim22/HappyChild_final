@@ -1,15 +1,13 @@
 function saveInstitution() {
   var data = {};
-  data.username = document.getElementById("exampleFirstName").value;
+  data.username = document.getElementById("inputUsername").value;
   data.email = document.getElementById("exampleInputEmail").value;
   let password = document.getElementById("InputPwd").value;
   let repPwd = document.getElementById("InputPwd2").value;
-  data.tipo = "instituicao";
+  data.tipo = "institution";
   data.nome = document.getElementById("exampleFirstName").value;
-  data.localizacao = "!!!"
-  data.conselho = document.getElementById("InputConcelho").value;
+  data.concelho = document.getElementById("InputConcelho").value;
   data.funcao = document.getElementById("InputFuncao").value;
-
 
   if (password === "" || repPwd === "") {
     return false;
@@ -36,6 +34,7 @@ function saveInstitution() {
         console.log(response.statusText); //=> String
         console.log(response.headers); //=> Headers
       } else {
+        window.location.href = "./LoginInstituicoes.html";
         console.log("Success POST");
         console.log(response);
       }
