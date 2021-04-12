@@ -161,6 +161,15 @@ function hideOption() {
     
 }
 
+function perfil() {
+    if(localStorage.getItem("type") == "family"){
+      fetchFamilia();
+    }
+    if(localStorage.getItem("type") == "institution"){
+        fetchInstituicao();
+    }
+}
+
 //---------------------------------------Botão para ir para o topo da página------------------------------------------------------------------------
 //Get the button
 var mybutton = document.getElementById("topBtn");

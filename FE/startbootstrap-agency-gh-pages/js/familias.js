@@ -138,3 +138,20 @@ function EditProfileFamily() {
         console.error(err);
       });
   }
+
+  function fetchFamilia(/*id*/){
+    async function fetchAsync() {
+    const response = await fetch(`http://localhost:8080/prochild/users/familias/1`);
+    var data = await response.json();
+    document.getElementById("inputNome").setAttribute("value", data.nome);
+    document.getElementById("inputEmail").setAttribute("value", data.usersId.email); 
+    document.getElementById("inputConcelho").setAttribute("value", data.concelho);
+
+    console.log(data.password);
+
+    document.href="#detalhes-denuncias";
+    }
+    fetchAsync()
+      .then((data) => console.log("ok"))
+      .catch((reason) => console.log(reason.message));
+}
