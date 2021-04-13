@@ -172,6 +172,13 @@ function perfil() {
     }
 }
 
+
+function editPass() {
+    let btns = document.getElementsByName("pass");
+    for(n = 0; n < btns.length; n++){
+        btns[n].style.display = "";
+    }
+}
 //---------------------------------------Botão para ir para o topo da página------------------------------------------------------------------------
 //Get the button
 var mybutton = document.getElementById("topBtn");
