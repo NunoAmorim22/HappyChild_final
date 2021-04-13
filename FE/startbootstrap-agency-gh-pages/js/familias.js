@@ -68,8 +68,8 @@ function editDataFamily() {
 
         //verificar confirmação password
     fetch(`http://localhost:8080/prochild/users/1?email=${document.getElementById("inputEmail").value}&password=${document.getElementById("inputPassword").value}`, requestOptions)
-        .then(response => response.text())
-        .then(result => console.log(result))
+        .then(response => response.json())
+        .then(result => console.log(result.message))
         .catch(error => console.log('error', error));
 
 }
