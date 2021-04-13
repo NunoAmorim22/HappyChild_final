@@ -80,6 +80,7 @@ function editDataFamily() {
             console.log("ta a qui");
             pass = password;
             console.log(pass);
+             //nestas tem de ser o id do UsersId
             fetch(`http://localhost:8080/prochild/users/1?password=${pass}`, requestOptions)
                 .then(response => response.text())
                 .then(result => console.log(result))
@@ -92,7 +93,7 @@ function editDataFamily() {
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
-
+ //nestas tem de ser o id do UsersId
     fetch(`http://localhost:8080/prochild/users/1?email=${document.getElementById("inputEmail").value}`, requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
