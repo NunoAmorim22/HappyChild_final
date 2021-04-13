@@ -61,7 +61,7 @@
     <header class="masthead9">
         <div class="container">
             <div class="masthead9-heading">Fórum</div>
-            <button class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" id="startDiscussion" style=""
+            <button class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" id="startDiscussion"
                 onclick="StartDiscussion()">Criar discussão</button>
         </div>
     </header>
@@ -72,13 +72,13 @@
                 <form>
                     <div class="form-group">
                         Título
-                        <input type="text" name="novaDiscussao" class="form-control" size="40"></input>
+                        <input type="text" id="novaDiscussaoTitulo" class="form-control" size="40"></input>
                         <br>
                         Descrição
-                        <textarea class="newDiscussionText form-control" name="novaDiscussaoTexto" rows="5"></textarea>
+                        <textarea class="newDiscussionText form-control" id="novaDiscussaoTexto" rows="5"></textarea>
                     </div>
                 </form>
-                <a  class="btn btn-primary" align="center" onclick="">Confirmar</a>
+                <a  class="btn btn-primary" align="center" onclick="addDiscuss()">Confirmar</a>
             </div>
         </div>
     </div>
