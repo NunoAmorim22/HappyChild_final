@@ -61,14 +61,14 @@
     <header class="masthead9">
         <div class="container">
             <div class="masthead9-heading">Fórum</div>
-            <button class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" id="startDiscussion"
-                onclick="StartDiscussion()">Criar discussão</button>
+            <button class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" id="startDiscussion1"
+                onclick="StartDiscussion(1)">Criar discussão</button>
         </div>
     </header>
     <br>
     <section class="page-section">
     <div class="container">
-        <div id="formForum" clas="row forumPad" style="display: none;">
+        <div id="formForum1" clas="row forumPad" style="display: none;">
             <div class="col-lg-12">
                 <form>
                     <div class="form-group">
@@ -129,38 +129,23 @@
     <br>
     <br>
 </section>
-<section class="page-section bg-light">
-    <div class="container">
-        <div id="formForum" clas="row forumPad" style="">
-            <div class="col-lg-12">
-                <form>
-                    <div class="form-group">
-                        Título
-                        <input type="text" id="novaDiscussaoTitulo" class="form-control" size="40"></input>
-                        <br>
-                        Mensagem
-                        <textarea class="newDiscussionText form-control" id="novaDiscussaoTexto" rows="5"></textarea>
-                    </div>
-                </form>
-                <a  class="btn btn-primary" align="center" onclick="addDiscuss()">Confirmar</a>
-            </div>
-        </div>
-    </div>
+<section class="page-section bg-light" id="sexaoMensagem" style="display: none;">
+    
     <div class="container">
         <div id="topico_1" class="row categoryModule forumMargin">
             <!-- produzir esta função! -->
             <a>
                 <div class="col-lg-12 columnPad">
                     <div class="pullLeft">
-                        <h1>Nome do topico de cima</h1>
+                        <h1 id="titulo"></h1>
                     </div>
                 </div>
             </a>
         </div>
         <!-- classs forun-fundo diferente-->
         <div id="discussao_1" class="row fundo-forum forumPad">
-            <table class="forumTable" id="discussTable">
-                <thead>
+            <table class="forumTable" id="messageTable">
+                <!--thead>
                     <th>
                         Mensagem
                     </th>
@@ -177,33 +162,36 @@
                             <a href="#">Ruben </a>
                         </td>
                     </tr>
-                </tbody>
+                </tbody-->
             </table>
         </div>
+        <button class="btn btn-primary js-scroll-trigger" id="startDiscussion2"
+                onclick="StartDiscussion(2)">Responder</button>
     </div>
     <br>
     <br>
+    <div class="container">
+        <div id="formForum2" clas="row forumPad" style="display: none;">
+            <div class="col-lg-12">
+                <form>
+                    <div class="form-group">
+                        Mensagem
+                        <textarea class="newDiscussionText form-control" id="novaMensagem" rows="5"></textarea>
+                    </div>
+                </form>
+                <a  class="btn btn-primary" id="btnSendAnswer" align="center" onclick="answer()">Confirmar</a>
+            </div>
+        </div>
+    </div>
     <br>
 </section>
 </body>
 
 
-<!-- Passar para uma pasta JVS -->
 <script>
-    function showDiscussions(discussao_id) {
-        var html_id = "#discussao_" + discussao_id;
-        if ($(html_id).css("display") == "block") {
-            $(html_id).css("display", "none");
-        } else {
-            $(html_id).css("display", "block");
-        }
-    }
-</script>
-
-<script>
-    function StartDiscussion() {
-        var html_id = "#formForum";
-        var button_id = "#startDiscussion";
+    function StartDiscussion(n) {
+        var html_id = "#formForum"+n;
+        var button_id = "#startDiscussion"+n;
         if ($(html_id).css("display") == "block") {
             $(html_id).css("display", "none");
             $(button_id).text("Criar Discussão");
