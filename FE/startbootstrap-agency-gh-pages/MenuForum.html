@@ -19,7 +19,7 @@
     <link href="css/styles.css" rel="stylesheet" />
 </head>
 
-<body id="page-top" onload="changeMainMenu()">
+<body id="page-top" onload="changeMainMenu(); fetchForums()">
 
     <button onclick="topFunction()" id="topBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>
 
@@ -36,154 +36,78 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ml-auto">
-                  <li class="nav-item"><a class="nav-link js-scroll-trigger" href="MenuPrincipal.html"><i
-                        class="fas fa-home"></i> Menu Principal</a></li>
-                  <li class="nav-item" id="forumbtn"><a class="nav-link js-scroll-trigger" href="MenuForum.html"><i
-                        class="fas fa-comments"></i> Fórum</a></li>
-                  <li class="nav-item"><a class="nav-link js-scroll-trigger" id="direitosbtn" href="MenuDireitos.html"><i
-                        class="fas fa-balance-scale"></i> Direitos das Crianças</a></li>
-                  <li class="nav-item"><a class="nav-link js-scroll-trigger" href="MenuDiversoes.html"><i
-                        class="fas fa-puzzle-piece"></i> Diversões</a></li>
-                  <li class="nav-item" id="apoiosplace"><a class="nav-link js-scroll-trigger" href="MenuLinhasApoio.html"><i
-                        class="fas fa-headset"></i> Ajudas</a></li>
-                  <li class="nav-item" id="perfilbtn">
-                    <a class="nav-link js-scroll-trigger" href="DadosPerfil.html"><i class="fas fa-user"></i>
-                      Perfil</a>
-                  </li>
-                  <li class="nav-item"><a class="nav-link js-scroll-trigger" href=""><i class="fas fa-sign-out-alt"></i>
-                      Logout</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="MenuPrincipal.html"><i
+                                class="fas fa-home"></i> Menu Principal</a></li>
+                    <li class="nav-item" id="forumbtn"><a class="nav-link js-scroll-trigger" href="MenuForum.html"><i
+                                class="fas fa-comments"></i> Fórum</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" id="direitosbtn"
+                            href="MenuDireitos.html"><i class="fas fa-balance-scale"></i> Direitos das Crianças</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="MenuDiversoes.html"><i
+                                class="fas fa-puzzle-piece"></i> Diversões</a></li>
+                    <li class="nav-item" id="apoiosplace"><a class="nav-link js-scroll-trigger"
+                            href="MenuLinhasApoio.html"><i class="fas fa-headset"></i> Ajudas</a></li>
+                    <li class="nav-item" id="perfilbtn">
+                        <a class="nav-link js-scroll-trigger" href="DadosPerfil.html"><i class="fas fa-user"></i>
+                            Perfil</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href=""><i
+                                class="fas fa-sign-out-alt"></i>
+                            Logout</a></li>
                 </ul>
-              </div>
+            </div>
         </div>
     </nav>
     <!-- Masthead-->
     <header class="masthead9">
         <div class="container">
             <div class="masthead9-heading">Fórum</div>
-            <!--<a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">Saber mais</a>-->
+            <button class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" id="startDiscussion" style=""
+                onclick="StartDiscussion()">Criar discussão</button>
         </div>
     </header>
     <br>
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12 fundo-forum forumMargin">
-                <a href="#">Tópicos</a>
-                <!-- <i class="fa fa-chevron-circle-right pagination-arrow"></i> <a
-                    href="#">Discussão</a> -->
+        <div id="formForum" clas="row forumPad" style="display: none;">
+            <div class="col-lg-12">
+                <form>
+                    <div class="form-group">
+                        Título
+                        <input type="text" name="novaDiscussao" class="form-control" size="40"></input>
+                        <br>
+                        Descrição
+                        <textarea class="newDiscussionText form-control" name="novaDiscussaoTexto" rows="5"></textarea>
+                    </div>
+                </form>
+                <a  class="btn btn-primary" align="center" onclick="">Confirmar</a>
             </div>
         </div>
+    </div>
+    <div class="container">
         <div id="topico_1" class="row categoryModule forumMargin">
             <!-- produzir esta função! -->
-            <a href="#" onclick="showDiscussions(1);">
+            <a>
                 <div class="col-lg-12 columnPad">
                     <div class="pullLeft">
                         <h1>Discussão</h1>
                     </div>
-                   <!--<div class="pullRight">
-                        <a id="startDiscussion_1" class="btn btn-primary themeButton" href="#"
-                            onclick="StartDiscussion(1);">Criar Discussão</a>
-                    </div>-->
                 </div>
             </a>
         </div>
 
-        <div id="cat_new_discussion_1" clas="row forumPad" style="display: none;">
-            <div class="col-lg-12">
-                <form>
-                    <div class="form-group">
-                        Título
-                        <input type="text" name="novaDiscussao" class="form-control" size="40"></input>
-                        <br>
-                        Descrição
-                        <textarea class="newDiscussionText form-control" name="novaDiscussaoTexto" rows="5"></textarea>
-                    </div>
-                </form>
-            </div>
-        </div>
+
 
         <!-- classs forun-fundo diferente-->
-        <div id="discussao_1" class="row fundo-forum forumPad" style="display: none;">
-            <table class="forumTable">
-                <thead>
+        <div id="discussao_1" class="row fundo-forum forumPad">
+            <table class="forumTable" id="discussTable">
+                <!--thead>
                     <th>
-                        Autor                    
+                        Nome
                     </th>
                     <th>
                         Autor
                     </th>
-                    
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <a href="#"> Nome da discussão </a>
-                        </td>
-                        <td>
-                            <a href="#">Ruben </a>
-                        </td>
-                        
-                    </tr>
-                    <tr>
-                        <td>
-                            <a href="#"> Nome da discussão </a>
-                        </td>
-                        <td>
-                            <a href="#">Ruben </a>
-                        </td>
-                        
-                    </tr>
-                </tbody>
-            </table>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="pullRight" style="padding-right: 15px">
-                        <a class="label label-primary" href="#"> Ver mais </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!--<div id="topico_2" class="row categoryModule forumMargin">
-            
-            <a href="#" onclick="showDiscussions(2);">
-                <div class="col-lg-12 columnPad">
-                    <div class="pullLeft">
-                        <h1>Discussão</h1>
-                    </div>
-                    <div class="pullRight">
-                        <a id="startDiscussion_2" class="btn btn-primary themeButton" href="#"
-                            onclick="StartDiscussion(2);">Criar Discussão</a>
-                    </div>
-                </div>
-            </a>
-        </div>-->
-
-       <!--<div id="cat_new_discussion_2" clas="row forumPad" style="display: none;">
-            <div class="col-lg-12">
-                <form>
-                    <div class="form-group">
-                        Título
-                        <input type="text" name="novaDiscussao" class="form-control" size="40"></input>
-                        <br>
-                        Descrição
-                        <textarea class="newDiscussionText form-control" name="novaDiscussaoTexto" rows="5"></textarea>
-                    </div>
-                </form>
-            </div>
-        </div>-->
-
-        <!-- classs forun-fundo diferente-->
-        <!--<div id="discussao_2" class="row fundo-forum forumPad" style="display: none;">
-            <table class="forumTable">
-                <thead>
                     <th>
-                        Discussão
-                    </th>
-                    <th>
-                        Autor
-                    </th>
-                    <th class="pullRight">
-                        Respostas
+
                     </th>
                 </thead>
                 <tbody>
@@ -194,31 +118,16 @@
                         <td>
                             <a href="#">Ruben </a>
                         </td>
-                        <td class="pullRight">
-                            10
-                        </td>
-                    </tr>
-                    <tr>
                         <td>
-                            <a href="#"> Nome da discussão </a>
+                            <a href="#"><i class="fas fa-search-plus"></i> </a>
                         </td>
-                        <td>
-                            <a href="#">Ruben </a>
-                        </td>
-                        <td class="pullRight">
-                            10
-                        </td>
+
                     </tr>
-                </tbody>
+                </tbody-->
             </table>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="pullRight" style="padding-right: 15px">
-                        <a class="label label-primary" href="#"> Ver mais </a>
-                    </div>
-                </div>
-            </div>
-        </div>-->
+        </div>
+
+
     </div>
     <br>
     <br>
@@ -239,9 +148,9 @@
 </script>
 
 <script>
-    function StartDiscussion(discussao_id) {
-        var html_id = "#cat_new_discussion_" + discussao_id;
-        var button_id = "#startDiscussion_" + discussao_id;
+    function StartDiscussion() {
+        var html_id = "#formForum";
+        var button_id = "#startDiscussion";
         if ($(html_id).css("display") == "block") {
             $(html_id).css("display", "none");
             $(button_id).text("Criar Discussão");
@@ -264,5 +173,6 @@
 <script src="assets/mail/contact_me.js"></script>
 <!-- Core theme JS-->
 <script src="js/scripts.js"></script>
+<script src="js/forum.js"></script>
 
 </html>
