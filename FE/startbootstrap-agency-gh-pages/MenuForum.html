@@ -66,6 +66,7 @@
         </div>
     </header>
     <br>
+    <section class="page-section">
     <div class="container">
         <div id="formForum" clas="row forumPad" style="display: none;">
             <div class="col-lg-12">
@@ -93,9 +94,6 @@
                 </div>
             </a>
         </div>
-
-
-
         <!-- classs forun-fundo diferente-->
         <div id="discussao_1" class="row fundo-forum forumPad">
             <table class="forumTable" id="discussTable">
@@ -126,12 +124,67 @@
                 </tbody-->
             </table>
         </div>
-
-
     </div>
     <br>
     <br>
     <br>
+</section>
+<section class="page-section bg-light">
+    <div class="container">
+        <div id="formForum" clas="row forumPad" style="">
+            <div class="col-lg-12">
+                <form>
+                    <div class="form-group">
+                        Título
+                        <input type="text" id="novaDiscussaoTitulo" class="form-control" size="40"></input>
+                        <br>
+                        Mensagem
+                        <textarea class="newDiscussionText form-control" id="novaDiscussaoTexto" rows="5"></textarea>
+                    </div>
+                </form>
+                <a  class="btn btn-primary" align="center" onclick="addDiscuss()">Confirmar</a>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div id="topico_1" class="row categoryModule forumMargin">
+            <!-- produzir esta função! -->
+            <a>
+                <div class="col-lg-12 columnPad">
+                    <div class="pullLeft">
+                        <h1>Nome do topico de cima</h1>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <!-- classs forun-fundo diferente-->
+        <div id="discussao_1" class="row fundo-forum forumPad">
+            <table class="forumTable" id="discussTable">
+                <thead>
+                    <th>
+                        Mensagem
+                    </th>
+                    <th>
+                        Autor
+                    </th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <a href="#"> aqui vem a mensagem que o utilizador quiser enviar...........cona e fixe</a>
+                        </td>
+                        <td>
+                            <a href="#">Ruben </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+</section>
 </body>
 
 
