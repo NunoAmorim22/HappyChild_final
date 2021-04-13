@@ -47,9 +47,13 @@ function saveInstitution() {
       console.error(err);
     });
 }
-
+/*
 //ver
 function EditProfileInstituition() {
+  var requestOptions = {
+    method: 'PUT',
+    redirect: 'follow'
+  };
   var data = {};
   let id_instituitions = localStorage.getItem("!!!!!");
   data.email = document.getElementById("inputEmail").value;
@@ -63,28 +67,28 @@ function EditProfileInstituition() {
     data.email === "" ||
     data.name === ""
   ) {
-   /* swal
-      .fire({
-        icon: "warning",
-        title: "Alerta!",
-        text: "Preencha todos os campos!",
-      })
-      .then(function () {
-        console.log("The Ok Button was clicked.");
-      });*/
-    document.getElementById("inputPassword").focus();
+    /* swal
+       .fire({
+         icon: "warning",
+         title: "Alerta!",
+         text: "Preencha todos os campos!",
+       })
+       .then(function () {
+         console.log("The Ok Button was clicked.");
+       });*/
+   /* document.getElementById("inputPassword").focus();
     return false;
   } else if (palavraPass != rep_password) {
-   /* swal
-      .fire({
-        icon: "warning",
-        title: "Alerta!",
-        text: "Senhas diferentes!",
-      })
-      .then(function () {
-        console.log("The Ok Button was clicked.");
-      });*/
-    document.getElementById("inputPassword").focus();
+    /* swal
+       .fire({
+         icon: "warning",
+         title: "Alerta!",
+         text: "Senhas diferentes!",
+       })
+       .then(function () {
+         console.log("The Ok Button was clicked.");
+       });*/
+   /* document.getElementById("inputPassword").focus();
     return false;
   } else {
     data.password = palavraPass;
@@ -123,7 +127,7 @@ function EditProfileInstituition() {
             window.location.href = "./Perfil.html";
             console.log("The Ok Button was clicked.");
           });*/
-      }
+     /* }
     })
     .then(function (result) {
       console.log(result);
@@ -133,5 +137,45 @@ function EditProfileInstituition() {
       console.error(err);
     });
 }
+*/
+function editDataInstitution() {
 
 
+  var requestOptions = {
+    method: 'PUT',
+    redirect: 'follow'
+  };
+
+    //verificar confirmação password
+  //colocar id da instituicao
+  fetch(`http://localhost:8080/prochild/users/instituicoes/1?concelho=${document.getElementById("inputConcelho").value}&nome=${document.getElementById("inputNome").value}`, requestOptions)
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
+
+  //verificar confirmação password
+  //colocar id do user
+  fetch(`http://localhost:8080/prochild/users/1?email=${document.getElementById("inputEmail").value}&password=${document.getElementById("inputPassword").value}`, requestOptions)
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
+}
+
+function fetchInstituicao(/*id*/) {
+  async function fetchAsync() {
+      const response = await fetch(`http://localhost:8080/prochild/users/instituicoes/1`);
+      var data = await response.json();
+      document.getElementById("inputNome").setAttribute("value", data.nome);
+      document.getElementById("inputEmail").setAttribute("value", data.usersId.email);
+      document.getElementById("inputConcelho").setAttribute("value", data.concelho);
+      document.getElementById("inputUsername").setAttribute("value", data.usersId.username);
+      document.getElementById("inputFuncao").setAttribute("value", data.funcao);
+      
+      console.log(data.password);
+
+      //document.href = "#detalhes-denuncias";
+  }
+  fetchAsync()
+      .then((data) => console.log("ok"))
+      .catch((reason) => console.log(reason.message));
+}
