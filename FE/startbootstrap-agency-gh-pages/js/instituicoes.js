@@ -156,8 +156,8 @@ function editDataInstitution() {
   //verificar confirmação password
   //colocar id do user
   fetch(`http://localhost:8080/prochild/users/1?email=${document.getElementById("inputEmail").value}&password=${document.getElementById("inputPassword").value}`, requestOptions)
-    .then(response => response.text())
-    .then(result => console.log(result))
+    .then(response => response.json())
+    .then(result => console.log(result.message))
     .catch(error => console.log('error', error));
 }
 
@@ -170,7 +170,7 @@ function fetchInstituicao(/*id*/) {
       document.getElementById("inputConcelho").setAttribute("value", data.concelho);
       document.getElementById("inputUsername").setAttribute("value", data.usersId.username);
       document.getElementById("inputFuncao").setAttribute("value", data.funcao);
-      
+
       console.log(data.password);
 
       //document.href = "#detalhes-denuncias";
