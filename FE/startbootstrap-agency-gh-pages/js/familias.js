@@ -22,7 +22,7 @@ function saveFamilia() {
     else {
         data.password = password;
     }
-  
+
     console.log(data); //debugging para ver os dados que foram enviados
 
     //chamada fetch para envio dos dados para o servior via POST
@@ -54,31 +54,39 @@ function saveFamilia() {
 }
 
 function editDataFamily() {
-  
 
-var requestOptions = {
-  method: 'PUT',
-  redirect: 'follow'
-};
-let nome =
-fetch(`http://localhost:8080/prochild/users/familias/1?concelho=${document.getElementById("inputConcelho").value}&nome=${document.getElementById("inputNome").value}`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
+
+    var requestOptions = {
+        method: 'PUT',
+        redirect: 'follow'
+    };
+
+    fetch(`http://localhost:8080/prochild/users/familias/1?concelho=${document.getElementById("inputConcelho").value}&nome=${document.getElementById("inputNome").value}`, requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+
+        //verificar confirmação password
+    fetch(`http://localhost:8080/prochild/users/1?email=${document.getElementById("inputEmail").value}&password=${document.getElementById("inputPassword").value}`, requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+
 }
-  function fetchFamilia(/*id*/){
+
+function fetchFamilia(/*id*/) {
     async function fetchAsync() {
-    const response = await fetch(`http://localhost:8080/prochild/users/familias/1`);
-    var data = await response.json();
-    document.getElementById("inputNome").setAttribute("value", data.nome);
-    document.getElementById("inputEmail").setAttribute("value", data.usersId.email); 
-    document.getElementById("inputConcelho").setAttribute("value", data.concelho);
+        const response = await fetch(`http://localhost:8080/prochild/users/familias/1`);
+        var data = await response.json();
+        document.getElementById("inputNome").setAttribute("value", data.nome);
+        document.getElementById("inputEmail").setAttribute("value", data.usersId.email);
+        document.getElementById("inputConcelho").setAttribute("value", data.concelho);
+        document.getElementById("inputUsername").setAttribute("value", data.usersId.username);
+        console.log(data.password);
 
-    console.log(data.password);
-
-    document.href="#detalhes-denuncias";
+        //document.href = "#detalhes-denuncias";
     }
     fetchAsync()
-      .then((data) => console.log("ok"))
-      .catch((reason) => console.log(reason.message));
+        .then((data) => console.log("ok"))
+        .catch((reason) => console.log(reason.message));
 }
