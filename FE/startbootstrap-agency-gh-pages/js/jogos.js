@@ -61,13 +61,19 @@ function saveJogo() {
   fetch("http://localhost:8080/prochild/jogos", requestOptions)
     .then(function (response) {
       if (!response.ok) {
-        console.log(response.status); //=> number 100–599
-        console.log(response.statusText); //=> String
-        console.log(response.headers); //=> Headers
+        swal.fire({
+          icon: "error",
+          title: "Erro",
+          text: "Falha de submissão"
+        })
       } else {
-        console.log("Success POST");
-        console.log(response);
-        window.location.href = "./MenuJogos.html";
+        swal.fire({
+          icon: "success",
+          title: "Sucesso",
+          text: "Vídeo inserido com sucesso"
+        }).then(function () {
+          window.location.href = "./MenuJogos.html";
+        })
       }
     })
     .then(response => response.text())
@@ -111,7 +117,7 @@ function showJogos() {
             </a>
             <div class="portfolio-caption">
               <div class="portfolio-caption-heading">${jogos[i].nome} </div>
-              <a class="btn btn-primary" onclick=deleteJogo(${jogos[i].id}) style="display: none" name="editingbtn"><i class="far fa-trash-alt"></i></a>
+              <a class="btn btn-primary" onclick="deleteJogo(${jogos[i].id}, '${jogos[i].nome}')" style="display: none" name="editingbtn"><i class="far fa-trash-alt"></i></a>
               <div class="portfolio-caption-subheading text-muted"></div>
             </div>
           </div>
@@ -167,25 +173,42 @@ function showJogos() {
   document.getElementById("divModelsJogos").innerHTML = model;
 }
 
-function deleteJogo(id) {
-  var requestOptions = {
-    method: 'DELETE',
-  };
+function deleteJogo(id, nome) {
+  swal.fire({
+    icon: "warning",
+    title: "Concluir",
+    text: "Deseja apagar o jogo: " + nome + " ?",
+    showCancelButton: true,
+    confirmButtonText: 'Sim, apagar!',
+    cancelButtonText: "Cancelar",
+    showLoaderOnConfirm: true,
+    preConfirm: () => {
+      var requestOptions = {
+        method: 'DELETE',
+      };
 
-  //selecionar o id do jogo selecionado
-  fetch(`http://localhost:8080/prochild/jogos/${id}`, requestOptions)
-    .then(function (response) {
-      if (!response.ok) {
-        console.log(response.status); //=> number 100–599
-        console.log(response.statusText); //=> String
-        console.log(response.headers); //=> Headers
-      } else {
-        console.log("Success POST");
-        console.log(response);  
-        window.location.href = "./MenuJogos.html";
-      }
-    })
-    .then(response => response.text())
-    .then(result => console.log(result))
-    .catch(error => console.log('error', error));
+      //selecionar o id do jogo selecionado
+      fetch(`http://localhost:8080/prochild/jogos/${id}`, requestOptions)
+        .then(function (response) {
+          if (!response.ok) {
+            swal.fire({
+              icon: "error",
+              title: "Erro",
+              text: "Falha ao eliminar jogo " + nome
+            })
+          } else {
+            swal.fire({
+              icon: "success",
+              title: "Sucesso",
+              text: "Jogo " + nome + "apagado com sucesso"
+            }).then(function () {
+              window.location.href = "./MenuJogos.html";
+            })
+          }
+        })
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+    }
+  })
 }

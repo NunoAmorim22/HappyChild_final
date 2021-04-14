@@ -30,11 +30,14 @@ function saveInstitution() {
   )
     .then(function (response) {
       if (!response.ok) {
+        console.log(response.status); //=> number 100–599
+        console.log(response.statusText); //=> String
+        console.log(response.headers); //=> Headers
         swal.fire({
           icon: "error",
           title: "Erro",
           text: "Falha de submissão"
-      })
+        })
       } else {
         swal.fire({
           icon: "success",
@@ -79,59 +82,85 @@ function editDataInstitution() {
       console.log(pass);
       //nestas tem de ser o id do UsersId
       fetch(`http://localhost:8080/prochild/users/2?password=${pass}`, requestOptions)
-      .then(function (response) {
-        if (!response.ok) {
-          swal.fire({
-            icon: "error",
-            title: "Erro",
-            text: "Falha de submissão"
+        .then(function (response) {
+          if (!response.ok) {
+            console.log(response.status); //=> number 100–599
+            console.log(response.statusText); //=> String
+            console.log(response.headers); //=> Headers
+            swal.fire({
+              icon: "error",
+              title: "Erro",
+              text: "Falha de submissão"
+            })
+          } else {
+            swal.fire({
+              icon: "success",
+              title: "Sucesso",
+              text: "Password alterada com sucesso"
+            }).then(function () {
+              window.location.href = "./DadosPerfil.html";
+            })
+
+          }
         })
-        } else {
-          swal.fire({
-            icon: "success",
-            title: "Sucesso",
-            text: "Password alterada com sucesso"
-          }).then(function () {
-            window.location.href = "./DadosPerfil.html";
-          })
-  
-        }
-      })
-      .then(result => console.log(result))
-      .catch(error => console.log('error', error));
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
     }
   }
 
   //verificar confirmação password
   //colocar id da instituicao
   fetch(`http://localhost:8080/prochild/users/instituicoes/1?concelho=${document.getElementById("inputConcelho").value}&nome=${document.getElementById("inputNome").value}`, requestOptions)
-    .then(response => response.text())
+    .then(function (response) {
+      if (!response.ok) {
+        console.log(response.status); //=> number 100–599
+        console.log(response.statusText); //=> String
+        console.log(response.headers); //=> Headers
+        swal.fire({
+          icon: "error",
+          title: "Erro",
+          text: "Falha de submissão"
+        })
+      } else {
+        swal.fire({
+          icon: "success",
+          title: "Sucesso",
+          text: "Dados alterados com sucesso"
+        }).then(function () {
+          window.location.href = "./DadosPerfil.html";
+        })
+
+      }
+    })
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
 
   //verificar confirmação password
   //colocar id do user
   fetch(`http://localhost:8080/prochild/users/2?email=${document.getElementById("inputEmail").value}`, requestOptions)
-  .then(function (response) {
-    if (!response.ok) {
-      swal.fire({
-        icon: "error",
-        title: "Erro",
-        text: "Falha de submissão"
-    })
-    } else {
-      swal.fire({
-        icon: "success",
-        title: "Sucesso",
-        text: "Dados alterados com sucesso"
-      }).then(function () {
-        window.location.href = "./DadosPerfil.html";
-      })
+    .then(function (response) {
+      if (!response.ok) {
+        console.log(response.status); //=> number 100–599
+        console.log(response.statusText); //=> String
+        console.log(response.headers); //=> Headers
+        swal.fire({
+          icon: "error",
+          title: "Erro",
+          text: "Falha de submissão"
+        })
+      } else {
+        swal.fire({
+          icon: "success",
+          title: "Sucesso",
+          text: "Dados alterados com sucesso"
+        }).then(function () {
+          window.location.href = "./DadosPerfil.html";
+        })
 
-    }
-  })
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
+      }
+    })
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
 }
 
 function fetchInstituicao(/*id*/) {

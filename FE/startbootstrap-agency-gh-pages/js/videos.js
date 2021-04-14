@@ -33,7 +33,7 @@ let videos /*= [
     ]
 ]*/;
 let tipo;
-function showAddFormVideo(genero){
+function showAddFormVideo(genero) {
   document.getElementById("formAdd").style.display = "";
   tipo = genero;
   window.location.href = "#formAdd"
@@ -48,65 +48,74 @@ function getId(ze) {
     : null;
 }
 
-function saveVideo(){
+function saveVideo() {
   let data = {};
   data.nome = document.getElementById("inputName").value;
   data.descricao = tipo;
   data.link = getId(document.getElementById("inputVideo").value);
-  
+
   var myHeaders = new Headers();
   //myHeaders.append("Cookie", "JSESSIONID=B082F7E7ABE2EBF64420BBAB600DF404");
   myHeaders.append("Content-Type", "application/json");
-  
-  
+
+
   var requestOptions = {
     method: 'POST',
     headers: myHeaders,
     body: JSON.stringify(data),
     redirect: 'follow'
   };
-  
+
   fetch("http://localhost:8080/prochild/videos", requestOptions)
-  .then(function (response) {
-    if (!response.ok) {
+    .then(function (response) {
+      if (!response.ok) {
         console.log(response.status); //=> number 100–599
         console.log(response.statusText); //=> String
         console.log(response.headers); //=> Headers
-    } else {
-        console.log("Success POST");
-        console.log(response);
-        window.location.href = "./MenuVideos.html";
-    }
-  })
+        swal.fire({
+          icon: "error",
+          title: "Erro",
+          text: "Falha de submissão"
+        })
+      } else {
+        swal.fire({
+          icon: "success",
+          title: "Sucesso",
+          text: "Vídeo inserido com sucesso"
+        }).then(function () {
+          window.location.href = "./MenuVideos.html";
+        })
+      }
+    })
     .then(response => response.text())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
-    
-  
-  }
-  function fetchVideos() {
-    async function fetchAsync() {
-      const response = await fetch(`http://localhost:8080/prochild/videos`);
-      videos = await response.json()
-      console.log(videos);
-      showVideos();
-      
-    }
-    fetchAsync()
-      .then((data) => console.log("ok"))
-      .catch((reason) => console.log(reason.message));
-  }
 
 
-function showVideos(){
+}
+function fetchVideos() {
+  async function fetchAsync() {
+    const response = await fetch(`http://localhost:8080/prochild/videos`);
+    videos = await response.json()
+    console.log(videos);
+    showVideos();
+
+  }
+  fetchAsync()
+    .then((data) => console.log("ok"))
+    .catch((reason) => console.log(reason.message));
+}
+
+
+function showVideos() {
   let codef = ``;
-        let codel = ``;
-        let coded = ``;
-        let codeg = ``;
-    for(i=0;i<videos.length;i++){
-        
-        if(videos[i].descricao === "Contos de fada"){
-          codef = codef + `<div class="col-lg-4 col-md-6 mb-4 justify-content-md-center">
+  let codel = ``;
+  let coded = ``;
+  let codeg = ``;
+  for (i = 0; i < videos.length; i++) {
+
+    if (videos[i].descricao === "Contos de fada") {
+      codef = codef + `<div class="col-lg-4 col-md-6 mb-4 justify-content-md-center">
           <p>${videos[i].nome}</p>
           <div class="iframe-container">
             <iframe width="560" height="315" src="https://www.youtube.com/embed/${videos[i].link}"
@@ -115,10 +124,10 @@ function showVideos(){
               allowfullscreen></iframe>
               </div>
               <br>
-              <a class="btn btn-primary" onclick=deleteVideos(${videos[i].id}) style="display: none" name="editingbtn"><i class="far fa-trash-alt"></i></a>        
+              <a class="btn btn-primary" onclick="deleteVideos(${videos[i].id}, '${videos[i].nome}')" style="display: none" name="editingbtn"><i class="far fa-trash-alt"></i></a>        
               </div>`;
-        }else if(videos[i].descricao === "Linguas"){
-          codel = codel + `<div class="col-lg-4 col-md-6 mb-4 justify-content-md-center">
+    } else if (videos[i].descricao === "Linguas") {
+      codel = codel + `<div class="col-lg-4 col-md-6 mb-4 justify-content-md-center">
           <p>${videos[i].nome}</p>
           <div class="iframe-container">
             <iframe width="560" height="315" src="https://www.youtube.com/embed/${videos[i].link}"
@@ -129,8 +138,8 @@ function showVideos(){
               <br>
               <a class="btn btn-primary" onclick=deleteVideos(${videos[i].id}) style="display: none" name="editingbtn"><i class="far fa-trash-alt"></i></a>
         </div>`;
-        }else if(videos[i].descricao === "Diversos"){
-          coded = coded + `<div class="col-lg-4 col-md-6 mb-4 justify-content-md-center">
+    } else if (videos[i].descricao === "Diversos") {
+      coded = coded + `<div class="col-lg-4 col-md-6 mb-4 justify-content-md-center">
           <p>${videos[i].nome}</p>
           <div class="iframe-container">
             <iframe width="560" height="315" src="https://www.youtube.com/embed/${videos[i].link}"
@@ -141,8 +150,8 @@ function showVideos(){
              <br>
              <a class="btn btn-primary" onclick=deleteVideos(${videos[i].id}) style="display: none" name="editingbtn"><i class="far fa-trash-alt"></i></a>
         </div>`;
-        }else if(videos[i].descricao === "Games"){
-          codeg = codeg + `<div class="col-lg-4 col-md-6 mb-4 justify-content-md-center">
+    } else if (videos[i].descricao === "Games") {
+      codeg = codeg + `<div class="col-lg-4 col-md-6 mb-4 justify-content-md-center">
           <p>${videos[i].nome}</p>
           <div class="iframe-container">
             <iframe width="560" height="315" src="https://www.youtube.com/embed/${videos[i].link}"
@@ -153,35 +162,55 @@ function showVideos(){
               <br>
               <a class="btn btn-primary" onclick=deleteVideos(${videos[i].id}) style="display: none" name="editingbtn"><i class="far fa-trash-alt"></i></a>
         </div>`;
-        }
-        
     }
-    document.getElementById("fairyTails").innerHTML = codef;
-    document.getElementById("languages").innerHTML = codel;
-    document.getElementById("diverse").innerHTML = coded;
-    document.getElementById("gameplays").innerHTML = codeg;
+
+  }
+  document.getElementById("fairyTails").innerHTML = codef;
+  document.getElementById("languages").innerHTML = codel;
+  document.getElementById("diverse").innerHTML = coded;
+  document.getElementById("gameplays").innerHTML = codeg;
 }
 
 
-function deleteVideos(id) {
-  var requestOptions = {
-    method: 'DELETE',
-  };
+function deleteVideos(id, nome) {
+  swal.fire({
+    icon: "warning",
+    title: "Concluir",
+    text: "Deseja apagar o video: " + nome + " ?",
+    showCancelButton: true,
+    confirmButtonText: 'Sim, apagar!',
+    cancelButtonText: "Cancelar",
+    showLoaderOnConfirm: true,
+    preConfirm: () => {
+      var requestOptions = {
+        method: 'DELETE',
+      };
 
-  //selecionar o id do jogo selecionado
-  fetch(`http://localhost:8080/prochild/videos/${id}`, requestOptions)
-    .then(function (response) {
-      if (!response.ok) {
-        console.log(response.status); //=> number 100–599
-        console.log(response.statusText); //=> String
-        console.log(response.headers); //=> Headers
-      } else {
-        console.log("Success POST");
-        console.log(response);  
-        window.location.href = "./MenuVideos.html";
-      }
-    })
-    .then(response => response.text())
-    .then(result => console.log(result))
-    .catch(error => console.log('error', error));
+      //selecionar o id do jogo selecionado
+      fetch(`http://localhost:8080/prochild/videos/${id}`, requestOptions)
+        .then(function (response) {
+          if (!response.ok) {
+            console.log(response.status); //=> number 100–599
+            console.log(response.statusText); //=> String
+            console.log(response.headers); //=> Headers
+            swal.fire({
+              icon: "error",
+              title: "Erro",
+              text: "Falha ao eliminar video " + nome
+            })
+          } else {
+            swal.fire({
+              icon: "success",
+              title: "Sucesso",
+              text: "Livro " + nome + "apagado com sucesso"
+            }).then(function () {
+              window.location.href = "./MenuVideos.html";
+            })
+          }
+        })
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+    }
+  })
 }

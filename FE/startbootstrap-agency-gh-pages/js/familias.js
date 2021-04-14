@@ -38,28 +38,26 @@ function saveFamilia() {
                 console.log(response.status); //=> number 100–599
                 console.log(response.statusText); //=> String
                 console.log(response.headers); //=> Headers
+                swal.fire({
+                    icon: "error",
+                    title: "Erro",
+                    text: "Falha de submissão"
+                });
             } else {
                 swal.fire({
                     icon: "success",
                     title: "Sucesso",
                     text: "Conta criada com sucesso"
-                });
-                window.location.href = "./LoginFamilias.html";
+                })
+                    .then(function () {
+                        window.location.href = "./LoginFamilias.html";
+                    })
                 console.log("Success POST");
                 console.log(response);
             }
         })
-        .then(function (result) {
-            console.log(result);
-        })
-        .catch(function (err) {
-            swal.fire({
-                icon: "error",
-                title: "Erro",
-                text: "Falha de submissão"
-            });
-            console.error(err);
-        });
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
 }
 
 function editDataFamily() {
@@ -86,29 +84,84 @@ function editDataFamily() {
             return false;
         }
         else {
-            console.log("ta a qui");
             pass = password;
-            console.log(pass);
+
             //nestas tem de ser o id do UsersId
             fetch(`http://localhost:8080/prochild/users/1?password=${pass}`, requestOptions)
-                .then(response => response.text())
+                .then(function (response) {
+                    if (!response.ok) {
+                        console.log(response.status); //=> number 100–599
+                        console.log(response.statusText); //=> String
+                        console.log(response.headers); //=> Headers
+                        swal.fire({
+                            icon: "error",
+                            title: "Erro",
+                            text: "Falha ao alterar password"
+                        })
+                    } else {
+                        swal.fire({
+                            icon: "success",
+                            title: "Sucesso",
+                            text: "Password alterada com sucesso"
+                        }).then(function () {
+                            window.location.href = "./DadosPerfil.html";
+                        })
+
+                    }
+                })
                 .then(result => console.log(result))
-                .catch(error => swal.fire({
-                    icon: "error",
-                    title: "Erro",
-                    text: "Falha de submissão"
-                }));
+                .catch(error => console.log('error', error));
         }
     }
 
 
     fetch(`http://localhost:8080/prochild/users/familias/1?concelho=${document.getElementById("inputConcelho").value}&nome=${document.getElementById("inputNome").value}`, requestOptions)
-        .then(response => response.text())
+        .then(function (response) {
+            if (!response.ok) {
+                console.log(response.status); //=> number 100–599
+                console.log(response.statusText); //=> String
+                console.log(response.headers); //=> Headers
+                swal.fire({
+                    icon: "error",
+                    title: "Erro",
+                    text: "Falha ao alterar dados de perfil"
+                })
+            } else {
+                swal.fire({
+                    icon: "success",
+                    title: "Sucesso",
+                    text: "Dados ao alterar dados"
+                }).then(function () {
+                    window.location.href = "./DadosPerfil.html";
+                })
+
+            }
+        })
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
     //nestas tem de ser o id do UsersId
     fetch(`http://localhost:8080/prochild/users/1?email=${document.getElementById("inputEmail").value}`, requestOptions)
-        .then(response => response.text())
+        .then(function (response) {
+            if (!response.ok) {
+                console.log(response.status); //=> number 100–599
+                console.log(response.statusText); //=> String
+                console.log(response.headers); //=> Headers
+                swal.fire({
+                    icon: "error",
+                    title: "Erro",
+                    text: "Falha ao alterar email"
+                })
+            } else {
+                swal.fire({
+                    icon: "success",
+                    title: "Sucesso",
+                    text: "Email alterado com sucesso"
+                }).then(function () {
+                    window.location.href = "./DadosPerfil.html";
+                })
+
+            }
+        })
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
 }
