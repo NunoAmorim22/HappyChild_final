@@ -31,10 +31,21 @@ function addDiscuss() {
                 console.log(response.status); //=> number 100–599
                 console.log(response.statusText); //=> String
                 console.log(response.headers); //=> Headers
+                swal.fire({
+                    icon: "error",
+                    title: "Erro",
+                    text: "Falha de submissão"
+                })
             } else {
                 console.log("Success POST");
                 console.log(response);
-                window.location.href = "./MenuForum.html";
+                swal.fire({
+                    icon: "success",
+                    title: "Sucesso",
+                    text: "Livro inserido com sucesso"
+                }).then(function () {
+                    window.location.href = "./MenuForum.html";
+                })
             }
         })
         .then(response => response.text())
@@ -66,11 +77,21 @@ function answer(topico) {
                 console.log(response.status); //=> number 100–599
                 console.log(response.statusText); //=> String
                 console.log(response.headers); //=> Headers
+                swal.fire({
+                    icon: "error",
+                    title: "Erro",
+                    text: "Falha de submissão"
+                })
             } else {
                 console.log("Success POST");
                 console.log(response);
-                window.location.href = "./MenuForum.html";
-
+                swal.fire({
+                    icon: "success",
+                    title: "Sucesso",
+                    text: "Livro inserido com sucesso"
+                }).then(function () {
+                    window.location.href = "./MenuForum.html";
+                })
             }
         })
         .then(response => response.text())
@@ -86,11 +107,11 @@ function fetchForum() {
         forum = await response.json()
         console.log(forum);
         console.log(forum.length);
-        if(isAdmin){
+        if (isAdmin) {
             document.getElementById("totalTopicos").innerHTML = forum.length;
         }
-        else{
-        show();
+        else {
+            show();
         }
     }
     fetchAsync()
@@ -110,9 +131,9 @@ function fetchMessages() {
             console.log("ola0");
         }
         else{*/
-            reloadSame();
+        reloadSame();
         //}
-        
+
     }
     fetchAsync()
         .then((data) => console.log("ok"))
@@ -149,7 +170,7 @@ function show() {
 
       </tr>
   </tbody>`;
-  console.log(forum[r].descricao);
+        console.log(forum[r].descricao);
     }
     // Setting innerHTML as tab variable
     document.getElementById("discussTable").innerHTML = tab;
@@ -184,7 +205,7 @@ function showDetail(id, title, descricao) {
                 ${messages[i].usersId.username}
                 </td>
             </tr>
-       `;        
+       `;
         }
     }
     resp += `</tbody>`;
@@ -202,32 +223,54 @@ function reloadSame() {
 
 
 function deleteMessage(id) {
-    var requestOptions = {
-        method: 'DELETE',
-    };
-    console.log(id);
-    //selecionar o id do jogo selecionado
-    for(let i=0;i<messages.length;i++){
-        let message = messages[i].topicosId.id;
-        if(message == id){
-            fetch(`http://localhost:8080/prochild/mensagens/${messages[i].id}`, requestOptions)
-            .then(function (response) {
-                if (!response.ok) {
-                    console.log(response.status); //=> number 100–599
-                    console.log(response.statusText); //=> String
-                    console.log(response.headers); //=> Headers
-                } else {
-                    console.log("Success POST");
-                    console.log(response);
+    swal.fire({
+        icon: "warning",
+        title: "Concluir",
+        text: "Deseja apagar a mensagem: " + id + " ?",
+        showCancelButton: true,
+        confirmButtonText: 'Sim, apagar!',
+        cancelButtonText: "Cancelar",
+        showLoaderOnConfirm: true,
+        preConfirm: () => {
+            var requestOptions = {
+                method: 'DELETE',
+            };
+            console.log(id);
+            //selecionar o id do jogo selecionado
+            for (let i = 0; i < messages.length; i++) {
+                let message = messages[i].topicosId.id;
+                if (message == id) {
+                    fetch(`http://localhost:8080/prochild/mensagens/${messages[i].id}`, requestOptions)
+                        .then(function (response) {
+                            if (!response.ok) {
+                                console.log(response.status); //=> number 100–599
+                                console.log(response.statusText); //=> String
+                                console.log(response.headers); //=> Headers
+                                swal.fire({
+                                    icon: "error",
+                                    title: "Erro",
+                                    text: "Falha ao eliminar mensagem " + id
+                                })
+                            } else {
+                                console.log("Success POST");
+                                console.log(response);
+                                swal.fire({
+                                    icon: "success",
+                                    title: "Sucesso",
+                                    text: "Mensagem " + id + "apagada com sucesso"
+                                })
+                            }
+                        })
+                        .then(response => response.text())
+                        .then(result => console.log(result))
+                        .catch(error => console.log('error', error));
                 }
-            })
-            .then(response => response.text())
-            .then(result => console.log(result))
-            .catch(error => console.log('error', error)); 
+            }
+            deleteForum(id);
         }
-    }
-    deleteForum(id);
+    })
 }
+
 function deleteForum(params) {
     var requestOptions = {
         method: 'DELETE',
@@ -239,13 +282,24 @@ function deleteForum(params) {
                 console.log(response.status); //=> number 100–599
                 console.log(response.statusText); //=> String
                 console.log(response.headers); //=> Headers
+                swal.fire({
+                    icon: "error",
+                    title: "Erro",
+                    text: "Falha ao eliminar Tópico " + params
+                })
             } else {
                 console.log("Success POST");
                 console.log(response);
                 localStorage.removeItem("idMessage");
                 localStorage.removeItem("titleMessage");
                 localStorage.removeItem("descMessage");
-                window.location.href = "./MenuForum.html";
+                swal.fire({
+                    icon: "success",
+                    title: "Sucesso",
+                    text: "Tópico " + params + "apagado com sucesso"
+                }).then(function () {
+                    window.location.href = "./MenuForum.html";
+                })
             }
         })
         .then(response => response.text())
