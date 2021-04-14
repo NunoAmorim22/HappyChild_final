@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>HappyChild - Fórum</title>
+    <title>Fórum</title>
     <link rel="icon" type="image/x-icon" href="assets/img/logos/LogoApp-small.png" />
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
@@ -18,13 +18,10 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-
 </head>
 
 <body id="page-top" onload="changeMainMenu(); fetchForum(); fetchMessages()">
-
     <button onclick="topFunction()" id="topBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>
-
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <div class="container">
@@ -69,132 +66,87 @@
     </header>
     <br>
     <section class="page-section">
-    <div class="container">
-        <div id="formForum1" clas="row forumPad" style="display: none;">
-            <div class="col-lg-12">
-                <form>
-                    <div class="form-group">
-                        Título
-                        <input type="text" id="novaDiscussaoTitulo" class="form-control" size="40"></input>
-                        <br>
-                        Descrição
-                        <textarea class="newDiscussionText form-control" id="novaDiscussaoTexto" rows="5"></textarea>
-                    </div>
-                </form>
-                <a  class="btn btn-primary" align="center" onclick="addDiscuss()">Confirmar</a>
+        <div class="container">
+            <div id="formForum1" clas="row forumPad" style="display: none;">
+                <div class="col-lg-12">
+                    <form>
+                        <div class="form-group">
+                            Título
+                            <input type="text" id="novaDiscussaoTitulo" class="form-control" size="40"></input>
+                            <br>
+                            Descrição
+                            <textarea class="newDiscussionText form-control" id="novaDiscussaoTexto"
+                                rows="5"></textarea>
+                        </div>
+                    </form>
+                    <a class="btn btn-primary" align="center" onclick="addDiscuss()">Confirmar</a>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container">
-        <div id="topico_1" class="row categoryModule forumMargin">
-            <!-- produzir esta função! -->
-            <a>
-                <div class="col-lg-12 columnPad">
-                    <div class="pullLeft">
-                        <h1>Discussão</h1>
+        <div class="container">
+            <div id="topico_1" class="row categoryModule forumMargin">
+                <a>
+                    <div class="col-lg-12 columnPad">
+                        <div class="pullLeft">
+                            <h1>Discussão</h1>
+                        </div>
                     </div>
-                </div>
-            </a>
+                </a>
+            </div>
+            <!-- class forum-fundo diferente-->
+            <div id="discussao_1" class="row fundo-forum forumPad">
+                <table class="forumTable" id="discussTable">
+                </table>
+            </div>
         </div>
-        <!-- classs forun-fundo diferente-->
-        <div id="discussao_1" class="row fundo-forum forumPad">
-            <table class="forumTable" id="discussTable">
-                <!--thead>
-                    <th>
-                        Nome
-                    </th>
-                    <th>
-                        Autor
-                    </th>
-                    <th>
+        <br>
+        <br>
+        <br>
+    </section>
+    <section class="page-section bg-light" id="sexaoMensagem" style="display: none;">
 
-                    </th>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <a href="#"> Nome da discussão </a>
-                        </td>
-                        <td>
-                            <a href="#">Ruben </a>
-                        </td>
-                        <td>
-                            <a href="#"><i class="fas fa-search-plus"></i> </a>
-                        </td>
-
-                    </tr>
-                </tbody-->
-            </table>
-        </div>
-    </div>
-    <br>
-    <br>
-    <br>
-</section>
-<section class="page-section bg-light" id="sexaoMensagem" style="display: none;">
-    
-    <div class="container">
-        <div id="topico_1" class="row categoryModule forumMargin">
-            <!-- produzir esta função! -->
-            <a>
-                <div class="col-lg-12 columnPad">
-                    <div class="pullLeft">
-                        <h1 id="titulo"></h1>
-                        <p id="descricao"></p>
+        <div class="container">
+            <div id="topico_1" class="row categoryModule forumMargin">
+                <a>
+                    <div class="col-lg-12 columnPad">
+                        <div class="pullLeft">
+                            <h1 id="titulo"></h1>
+                            <p id="descricao"></p>
+                        </div>
                     </div>
-                </div>
-            </a>
-        </div>
-        <!-- classs forun-fundo diferente-->
-        <div id="discussao_1" class="row fundo-forum forumPad">
-            <table class="forumTable" id="messageTable">
-                <!--thead>
-                    <th>
-                        Mensagem
-                    </th>
-                    <th>
-                        Autor
-                    </th>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <a href="#"> aqui vem a mensagem que o utilizador quiser enviar...........cona e fixe</a>
-                        </td>
-                        <td>
-                            <a href="#">Ruben </a>
-                        </td>
-                    </tr>
-                </tbody-->
-            </table>
-        </div>
-        <button class="btn btn-primary js-scroll-trigger" id="startDiscussion2"
+                </a>
+            </div>
+            <!-- class forum-fundo diferente-->
+            <div id="discussao_1" class="row fundo-forum forumPad">
+                <table class="forumTable" id="messageTable">
+                </table>
+            </div>
+            <button class="btn btn-primary js-scroll-trigger" id="startDiscussion2"
                 onclick="StartDiscussion(2)">Responder</button>
-    </div>
-    <br>
-    <br>
-    <div class="container">
-        <div id="formForum2" clas="row forumPad" style="display: none;">
-            <div class="col-lg-12">
-                <form>
-                    <div class="form-group">
-                        Mensagem
-                        <textarea class="newDiscussionText form-control" id="novaMensagem" rows="5"></textarea>
-                    </div>
-                </form>
-                <a  class="btn btn-primary" id="btnSendAnswer" align="center" onclick="answer()">Confirmar</a>
+        </div>
+        <br>
+        <br>
+        <div class="container">
+            <div id="formForum2" clas="row forumPad" style="display: none;">
+                <div class="col-lg-12">
+                    <form>
+                        <div class="form-group">
+                            Mensagem
+                            <textarea class="newDiscussionText form-control" id="novaMensagem" rows="5"></textarea>
+                        </div>
+                    </form>
+                    <a class="btn btn-primary" id="btnSendAnswer" align="center" onclick="answer()">Confirmar</a>
+                </div>
             </div>
         </div>
-    </div>
-    <br>
-</section>
+        <br>
+    </section>
 </body>
-
 
 <script>
     function StartDiscussion(n) {
-        var html_id = "#formForum"+n;
-        var button_id = "#startDiscussion"+n;
+        var html_id = "#formForum" + n;
+        var button_id = "#startDiscussion" + n;
         if ($(html_id).css("display") == "block") {
             $(html_id).css("display", "none");
             $(button_id).text("Criar Discussão");
@@ -204,7 +156,6 @@
         }
     }
 </script>
-
 
 <!------------------------------------------------------------------------------------------------------------------------------------>
 <!-- Bootstrap core JS-->
