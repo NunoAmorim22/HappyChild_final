@@ -34,17 +34,29 @@ function saveInstitution() {
         console.log(response.statusText); //=> String
         console.log(response.headers); //=> Headers
       } else {
-        window.location.href = "./LoginInstituicoes.html";
         console.log("Success POST");
         console.log(response);
+        swal.fire({
+          icon: "success",
+          title: "Sucesso",
+          text: "Perfil alterado com sucesso"
+      }).then(function () {
+        window.location.href = "./LoginInstituicoes.html";
+      })
+        
+        
       }
     })
     .then(function (result) {
       console.log(result);
     })
     .catch(function (err) {
-      alert("Submission error");
       console.error(err);
+      swal.fire({
+        icon: "error",
+        title: "Erro",
+        text: "Falha de submissão"
+    })
     });
 }
 
@@ -77,9 +89,34 @@ function editDataInstitution() {
       console.log(pass);
       //nestas tem de ser o id do UsersId
       fetch(`http://localhost:8080/prochild/users/2?password=${pass}`, requestOptions)
-        .then(response => response.text())
+      .then(function (response) {
+        if (!response.ok) {
+          console.log(response.status); //=> number 100–599
+          console.log(response.statusText); //=> String
+          console.log(response.headers); //=> Headers
+        } else {
+          console.log("Success POST");
+          console.log(response);
+          swal.fire({
+            icon: "success",
+            title: "Sucesso",
+            text: "Perfil alterado com sucesso"
+        }).then(function () {
+          window.location.href = "./LoginInstituicoes.html";
+        })
+          
+          
+        }
+      })
         .then(result => console.log(result))
-        .catch(error => console.log('error', error));
+        .catch(function (err) {
+          console.error(err);
+          swal.fire({
+            icon: "error",
+            title: "Erro",
+            text: "Falha de submissão"
+        })
+        });
     }
   }
 
@@ -93,9 +130,34 @@ function editDataInstitution() {
   //verificar confirmação password
   //colocar id do user
   fetch(`http://localhost:8080/prochild/users/2?email=${document.getElementById("inputEmail").value}`, requestOptions)
-    .then(response => response.text())
+  .then(function (response) {
+    if (!response.ok) {
+      console.log(response.status); //=> number 100–599
+      console.log(response.statusText); //=> String
+      console.log(response.headers); //=> Headers
+    } else {
+      console.log("Success POST");
+      console.log(response);
+      swal.fire({
+        icon: "success",
+        title: "Sucesso",
+        text: "Perfil alterado com sucesso"
+    }).then(function () {
+      window.location.href = "./LoginInstituicoes.html";
+    })
+      
+      
+    }
+  })
     .then(result => console.log(result.message))
-    .catch(error => console.log('error', error));
+    .catch(function (err) {
+      console.error(err);
+      swal.fire({
+        icon: "error",
+        title: "Erro",
+        text: "Falha de submissão"
+    })
+    });
 }
 
 function fetchInstituicao(/*id*/) {
@@ -110,7 +172,7 @@ function fetchInstituicao(/*id*/) {
 
     console.log(data.usersId.password);
 
-    //document.href = "#detalhes-denuncias";
+    window.location.href = "#detalhes-denuncias";
   }
   fetchAsync()
     .then((data) => console.log("ok"))
