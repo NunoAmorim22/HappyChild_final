@@ -39,6 +39,11 @@ function saveFamilia() {
                 console.log(response.statusText); //=> String
                 console.log(response.headers); //=> Headers
             } else {
+                swal.fire({
+                    icon: "success",
+                    title: "Sucesso",
+                    text: "Conta criada com sucesso"
+                });
                 window.location.href = "./LoginFamilias.html";
                 console.log("Success POST");
                 console.log(response);
@@ -48,7 +53,11 @@ function saveFamilia() {
             console.log(result);
         })
         .catch(function (err) {
-            alert("Submission error");
+            swal.fire({
+                icon: "error",
+                title: "Erro",
+                text: "Falha de submissão"
+            });
             console.error(err);
         });
 }
@@ -80,11 +89,15 @@ function editDataFamily() {
             console.log("ta a qui");
             pass = password;
             console.log(pass);
-             //nestas tem de ser o id do UsersId
+            //nestas tem de ser o id do UsersId
             fetch(`http://localhost:8080/prochild/users/1?password=${pass}`, requestOptions)
                 .then(response => response.text())
                 .then(result => console.log(result))
-                .catch(error => console.log('error', error));
+                .catch(error => swal.fire({
+                    icon: "error",
+                    title: "Erro",
+                    text: "Falha de submissão"
+                }));
         }
     }
 
@@ -93,7 +106,7 @@ function editDataFamily() {
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
- //nestas tem de ser o id do UsersId
+    //nestas tem de ser o id do UsersId
     fetch(`http://localhost:8080/prochild/users/1?email=${document.getElementById("inputEmail").value}`, requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
