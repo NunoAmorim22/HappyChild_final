@@ -164,7 +164,17 @@ function showLivros() {
   document.getElementById("divModelsLivros").innerHTML = model;
 }
 
+
 function deleteLivros(id) {
+  swal.fire({
+    icon: "warning",
+    title: "Concluir",
+    text: "Deseja concluir a ocorrência: " + id_ocorrencia + " ?",
+    showCancelButton: true,
+    confirmButtonText: 'Sim, concluir!',
+    cancelButtonText: "Cancelar",
+    showLoaderOnConfirm: true,
+    preConfirm: () => {
   var requestOptions = {
     method: 'DELETE',
   };
@@ -185,4 +195,5 @@ function deleteLivros(id) {
     .then(response => response.text())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
+  }
 }
