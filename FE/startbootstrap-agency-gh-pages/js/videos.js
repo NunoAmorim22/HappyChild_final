@@ -69,6 +69,9 @@ function saveVideo() {
   fetch("http://localhost:8080/prochild/videos", requestOptions)
     .then(function (response) {
       if (!response.ok) {
+        console.log(response.status); //=> number 100–599
+        console.log(response.statusText); //=> String
+        console.log(response.headers); //=> Headers
         swal.fire({
           icon: "error",
           title: "Erro",
@@ -187,6 +190,9 @@ function deleteVideos(id, nome) {
       fetch(`http://localhost:8080/prochild/videos/${id}`, requestOptions)
         .then(function (response) {
           if (!response.ok) {
+            console.log(response.status); //=> number 100–599
+            console.log(response.statusText); //=> String
+            console.log(response.headers); //=> Headers
             swal.fire({
               icon: "error",
               title: "Erro",
