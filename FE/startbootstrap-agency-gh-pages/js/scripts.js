@@ -205,6 +205,13 @@ function dashboardBtn() {
     }
 }
 
+
+function clearReloadDiscuss() {
+    localStorage.removeItem("idMessage");
+    localStorage.removeItem("titleMessage");
+    localStorage.removeItem("descMessage");
+}
+
 //---------------------------------------Botão para ir para o topo da página------------------------------------------------------------------------
 //Get the button
 var mybutton = document.getElementById("topBtn");
