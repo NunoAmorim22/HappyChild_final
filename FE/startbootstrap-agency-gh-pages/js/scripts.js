@@ -112,6 +112,7 @@ function clearLocalStorage() {
 }
 
 function changeMainMenu() {
+   // document.getElementById("btnLogout").setAttribute("href", "MenuEscolherPerfil.html");
     if (localStorage.getItem("type") == "Child") {
         if (localStorage.getItem("age") === "1" || localStorage.getItem("age") === "2" || localStorage.getItem("age") === "3") {
             if(localStorage.getItem("age") === "1" || localStorage.getItem("age") === "2"){
@@ -171,9 +172,10 @@ function hideOption() {
 function perfil() {
     if (localStorage.getItem("type") == "Family") {
         fetchFamilia();
+        console.log("oi");
         document.getElementById("editBTN").setAttribute("onclick", "editDataFamily()");
     }
-    if (localStorage.getItem("type") == "institution") {
+    if (localStorage.getItem("type") == "Institution") {
         fetchInstituicao();
         document.getElementById("editBTN").setAttribute("onclick", "editDataInstitution()");
     }

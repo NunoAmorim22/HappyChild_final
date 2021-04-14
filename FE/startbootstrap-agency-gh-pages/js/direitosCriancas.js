@@ -43,7 +43,16 @@ var fotos1 = [
 ["assets/img/Direitos/41.png", "Qualquer lei nacional que seja mais favorável do que a correspondente na Convenção, deve ser aplicada preferencialmente.", "assets/audios/41.mp3"]
 ];
 var slides = fotos1.length;
-showSlides(slideIndex);
+let small;
+function pag() {
+  small = true;
+  console.log("aqui");
+  if(small){
+    console.log("oi");
+    showSlides(slideIndex);
+  }
+}
+
 
 
 // Next/previous controls

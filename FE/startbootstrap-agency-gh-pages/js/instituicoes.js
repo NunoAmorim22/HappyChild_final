@@ -81,7 +81,7 @@ function editDataInstitution() {
       pass = password;
       console.log(pass);
       //nestas tem de ser o id do UsersId
-      fetch(`http://localhost:8080/prochild/users/2?password=${pass}`, requestOptions)
+      fetch(`http://localhost:8080/prochild/users/3?password=${pass}`, requestOptions)
         .then(function (response) {
           if (!response.ok) {
             console.log(response.status); //=> number 100–599
@@ -137,7 +137,7 @@ function editDataInstitution() {
 
   //verificar confirmação password
   //colocar id do user
-  fetch(`http://localhost:8080/prochild/users/2?email=${document.getElementById("inputEmail").value}`, requestOptions)
+  fetch(`http://localhost:8080/prochild/users/3?email=${document.getElementById("inputEmail").value}`, requestOptions)
     .then(function (response) {
       if (!response.ok) {
         console.log(response.status); //=> number 100–599

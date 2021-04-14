@@ -29,7 +29,7 @@ function addDiscuss() {
     let data = {};
     data.nome = document.getElementById("novaDiscussaoTitulo").value;
     data.descricao = document.getElementById("novaDiscussaoTexto").value;
-    data.usersId = "1";
+    data.usersId = "2";
     console.log(data);
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -119,7 +119,7 @@ function addDiscussChild() {
 function answer(topico) {
     let data = {};
     data.conteudo = document.getElementById("novaMensagem").value;
-    data.usersId = "1";
+    data.usersId = "2";
     data.topicosId = topico;
     console.log(data);
     var myHeaders = new Headers();
