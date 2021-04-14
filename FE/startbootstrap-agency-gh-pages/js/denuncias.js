@@ -26,7 +26,7 @@ function hideloader() {
 
 // Function to define innerHTML for HTML table
 function show(data) {
-  let tab = `<tr><th>Nº de denuncia</th> <th>Descrição</th></tr>`;
+  let tab = `<tr><th>Nº de denuncia</th> <th>Descrição</th> </tr>`;
 
   // Loop to access all rows
   for (let r of data) {
@@ -51,6 +51,9 @@ function showDetails(id){
     document.getElementById("descricaoDenuncia").setAttribute("value", data.acontecimento); 
     document.getElementById("dataDenuncia").setAttribute("value", de);
     document.getElementById("localDenuncia").setAttribute("value", data.localizacao); 
+    document.getElementById("idadeDenuncia").setAttribute("value", data.idade); 
+    document.getElementById("sexoDenuncia").setAttribute("value", data.sexo); 
+    
 
     console.log(data.localizacao);
 
