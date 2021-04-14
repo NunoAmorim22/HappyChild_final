@@ -1,26 +1,26 @@
 let livros;
 let imgFile;
 let pdfFile;
-window.addEventListener("load", function() { 
-    document.getElementById("file").onchange = function(event) { 
-      var reader = new FileReader(); 
-      reader.readAsDataURL(event.srcElement.files[0]); 
-      var me = this; 
-      reader.onload = function () { 
-        imgFile = reader.result; 
-      console.log(imgFile); 
-      } 
-  }}); 
-  window.addEventListener("load", function() { 
-    document.getElementById("filePdf").onchange = function(event) { 
-      var reader = new FileReader(); 
-      reader.readAsDataURL(event.srcElement.files[0]); 
-      var me = this; 
-      reader.onload = function () { 
-        pdfFile = reader.result; 
-      console.log(pdfFile); 
-      } 
-  }}); 
+window.addEventListener("load", function () {
+  document.getElementById("file").onchange = function (event) {
+    var reader = new FileReader();
+    reader.readAsDataURL(event.srcElement.files[0]);
+    var me = this;
+    reader.onload = function () {
+      imgFile = reader.result;
+    }
+  }
+});
+window.addEventListener("load", function () {
+  document.getElementById("filePdf").onchange = function (event) {
+    var reader = new FileReader();
+    reader.readAsDataURL(event.srcElement.files[0]);
+    var me = this;
+    reader.onload = function () {
+      pdfFile = reader.result;
+    }
+  }
+});
 
 function getId(ze) {
   const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
@@ -31,46 +31,50 @@ function getId(ze) {
     : null;
 }
 
-function saveLivro(){
-let data = {};
-data.nome = document.getElementById("inputName").value;
-data.descricao = document.getElementById("inputDesc").value;
-data.capa = imgFile;
-data.link = pdfFile;
-data.video = getId(document.getElementById("inputLinkVideo").value);
-console.log(data);
-var myHeaders = new Headers();
-//myHeaders.append("Cookie", "JSESSIONID=B082F7E7ABE2EBF64420BBAB600DF404");
-myHeaders.append("Content-Type", "application/json");
+function saveLivro() {
+  let data = {};
+  data.nome = document.getElementById("inputName").value;
+  data.descricao = document.getElementById("inputDesc").value;
+  data.capa = imgFile;
+  data.link = pdfFile;
+  data.video = getId(document.getElementById("inputLinkVideo").value);
+  var myHeaders = new Headers();
+  //myHeaders.append("Cookie", "JSESSIONID=B082F7E7ABE2EBF64420BBAB600DF404");
+  myHeaders.append("Content-Type", "application/json");
 
 
-var requestOptions = {
-  method: 'POST',
-  headers: myHeaders,
-  body: JSON.stringify(data),
-  redirect: 'follow'
-};
+  var requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    body: JSON.stringify(data),
+    redirect: 'follow'
+  };
 
-fetch("http://localhost:8080/prochild/livros", requestOptions)
-.then(function (response) {
-  if (!response.ok) {
-      console.log(response.status); //=> number 100–599
-      console.log(response.statusText); //=> String
-      console.log(response.headers); //=> Headers
-  } else {
-      console.log("Success POST");
-      console.log(response);
-      window.location.href = "./MenuLivros.html";
-  }
-})
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-  
+  fetch("http://localhost:8080/prochild/livros", requestOptions)
+    .then(function (response) {
+      if (!response.ok) {
+        swal.fire({
+          icon: "error",
+          title: "Erro",
+          text: "Falha de submissão"
+      })
+      } else {
+        swal.fire({
+          icon: "success",
+          title: "Sucesso",
+          text: "Livro inserido com sucesso"
+        }).then(function () {
+          window.location.href = "./MenuLivros.html";
+        })
+
+      }
+    })
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
 
 }
 
-  
+
 
 function fetchLivros() {
   async function fetchAsync() {
@@ -78,7 +82,7 @@ function fetchLivros() {
     livros = await response.json()
     console.log(livros);
     showLivros();
-    
+
   }
   fetchAsync()
     .then((data) => console.log("ok"))
@@ -100,18 +104,25 @@ function showLivros() {
             <i class="fas fa-plus fa-3x"></i>
           </div>
         </div>
-        <img class="img-fluid" src="${livros[0].capa}" alt="" />
+        <img class="img-fluid" src="${livros[i].capa}" alt="" />
       </a>
       <div class="portfolio-caption">
-        <div class="portfolio-caption-heading">${livros[0].nome}</div>
+        <div class="portfolio-caption-heading">${livros[i].nome}</div>
       </div>
       <a class="btn btn-primary" onclick=deleteLivros(${livros[i].id}) style="display: none" name="editingbtn"><i class="far fa-trash-alt"></i></a>
     </div>
   </div>`;
 
-    
-    let video = `<iframe width="560" height="315" src="https://www.youtube.com/embed/${livros[i].video}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-    
+  let video = ``
+  if (livros[i].video !== null) {
+    video = video + `<iframe width="560" height="315" src="https://www.youtube.com/embed/${livros[i].video}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+  }
+  else {
+    video = video + `<div>
+          <img class="img-fluid d-block mx-auto" style="height: 200px; width: 200px; object-fit: contain" src="${livros[i].capa}" alt="" />
+      </div>`;
+  }
+
 
 
 
@@ -167,7 +178,7 @@ function deleteLivros(id) {
         console.log(response.headers); //=> Headers
       } else {
         console.log("Success POST");
-        console.log(response);  
+        console.log(response);
         window.location.href = "./MenuLivros.html";
       }
     })
