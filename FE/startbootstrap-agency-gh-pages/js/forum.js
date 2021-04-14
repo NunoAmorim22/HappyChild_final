@@ -1,5 +1,13 @@
 let forum;
 let messages;
+let isAdmin = false;
+
+function pagAdmin() {
+    isAdmin = true;
+    console.log("é a pag admin");
+}
+
+
 function addDiscuss() {
     let data = {};
     data.nome = document.getElementById("novaDiscussaoTitulo").value;
@@ -72,17 +80,18 @@ function answer(topico) {
 
 }
 
-function fetchForums() {
+function fetchForum() {
     async function fetchAsync() {
         const response = await fetch(`http://localhost:8080/prochild/topicos`);
         forum = await response.json()
         console.log(forum);
         console.log(forum.length);
-        if(window.location.href === "index.html"){
+        if(isAdmin){
             document.getElementById("totalTopicos").innerHTML = forum.length;
         }
+        else{
         show();
-
+        }
     }
     fetchAsync()
         .then((data) => console.log("ok"))
@@ -95,8 +104,15 @@ function fetchMessages() {
         messages = await response.json()
         console.log(messages);
         console.log(messages.length);
-        reloadSame();
-
+        console.log(isAdmin);
+        /*if(isAdmin){
+            document.getElementById("totalTopicos").innerHTML = messages.length;
+            console.log("ola0");
+        }
+        else{*/
+            reloadSame();
+        //}
+        
     }
     fetchAsync()
         .then((data) => console.log("ok"))
@@ -140,7 +156,6 @@ function show() {
 
     garbage();
 }
-fetchMessages();
 function showDetail(id, title, descricao) {
     localStorage.setItem("titleMessage", title);
     localStorage.setItem("idMessage", id);
@@ -176,6 +191,7 @@ function showDetail(id, title, descricao) {
     document.getElementById("messageTable").innerHTML = resp;
     console.log(id);
     document.getElementById("btnSendAnswer").setAttribute("onclick", `answer(${id})`);
+    window.location.href = "#messageTable";
 }
 
 function reloadSame() {

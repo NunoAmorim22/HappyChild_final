@@ -59,17 +59,17 @@
 //-------------------------------------------NOVO----------------------------------------------------//
 
 function chooseTypeChild() {
-    localStorage.setItem("type", "child");
+    localStorage.setItem("type", "Child");
     window.location.href = "./MenuEscolherIdade.html";
 }
 
 function chooseTypeFamily() {
-    localStorage.setItem("type", "family");
+    localStorage.setItem("type", "Family");
     window.location.href = "./LoginFamilias.html";
 }
 
 function chooseTypeInstitution() {
-    localStorage.setItem("type", "institution");
+    localStorage.setItem("type", "Institution");
     window.location.href = "./LoginInstituicoes.html";
 }
 
@@ -107,7 +107,7 @@ function clearLocalStorage() {
 }
 
 function changeMainMenu() {
-    if (localStorage.getItem("type") == "child") {
+    if (localStorage.getItem("type") == "Child") {
         if (localStorage.getItem("age") === "1" || localStorage.getItem("age") === "2" || localStorage.getItem("age") === "3") {
             document.getElementById("forumbtn").remove();
             document.getElementById("direitosbtn").setAttribute("href", "MenuDireitosCriancas.html");
@@ -124,7 +124,7 @@ function changeMainMenu() {
 }
 
 function changeProfileMenu() {
-    if (localStorage.getItem("type") == "family") {
+    if (localStorage.getItem("type") == "Family") {
         document.getElementById("instituitiontype").remove();
     }
 }
@@ -191,6 +191,12 @@ function garbage() {
     }
 }
 
+
+function dashboardBtn() {
+    if(localStorage.getItem("type") !== "Admin"){
+        document.getElementById("btnGoDash").remove();
+    }
+}
 
 //---------------------------------------Botão para ir para o topo da página------------------------------------------------------------------------
 //Get the button
