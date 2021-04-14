@@ -141,17 +141,8 @@ function saveDenuncia() {
                 });
             }
         })
-        .then(function (result) {
-            console.log(result);
-        })
-        .catch(function (err) {
-            swal.fire({
-                icon: "error",
-                title: "Erro",
-                text: "Falha de submissão"
-            });
-            console.error(err);
-        });
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
 }
 
 
@@ -181,6 +172,11 @@ function postDenuncia1() {
             } else {
                 console.log("Success POST");
                 console.log(response);
+                swal.fire({
+                    icon: "success",
+                    title: "Sucesso",
+                    text: "Denúncia enviada com sucesso"
+                });
             }
         })
         .then(function (result) {
@@ -218,6 +214,11 @@ function postDenuncia2() {
             } else {
                 console.log("Success POST");
                 console.log(response);
+                swal.fire({
+                    icon: "success",
+                    title: "Sucesso",
+                    text: "Denúncia enviada com sucesso"
+                });
             }
         })
         .then(function (result) {
@@ -255,6 +256,11 @@ function postDenuncia3() {
             } else {
                 console.log("Success POST");
                 console.log(response);
+                swal.fire({
+                    icon: "success",
+                    title: "Sucesso",
+                    text: "Denúncia enviada com sucesso"
+                });
             }
         })
         .then(function (result) {
