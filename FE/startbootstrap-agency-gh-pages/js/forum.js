@@ -78,7 +78,9 @@ function fetchForums() {
         forum = await response.json()
         console.log(forum);
         console.log(forum.length);
-        document.getElementById("totalTopicos").innerHTML = forum.length;
+        if(window.location.href === "index.html"){
+            document.getElementById("totalTopicos").innerHTML = forum.length;
+        }
         show();
 
     }
@@ -125,23 +127,27 @@ function show() {
               ${forum[r].usersId.username}
           </td>
           <td>
-              <a onclick="showDetail(${forum[r].id}, '${forum[r].nome}'); "><i class="fas fa-search-plus"></i> </a>
+              <a onclick="showDetail(${forum[r].id}, '${forum[r].nome}', '${forum[r].descricao}'); "><i class="fas fa-search-plus"></i> </a>
               <a name="garbage" id="${forum[r].usersId.id}" style="display: none;" onclick="deleteMessage(${forum[r].id});"><i class="far fa-trash-alt"></i> </a>
           </td>
 
       </tr>
   </tbody>`;
+  console.log(forum[r].descricao);
     }
     // Setting innerHTML as tab variable
     document.getElementById("discussTable").innerHTML = tab;
+
     garbage();
 }
 fetchMessages();
-function showDetail(id, title) {
+function showDetail(id, title, descricao) {
     localStorage.setItem("titleMessage", title);
     localStorage.setItem("idMessage", id);
+    localStorage.setItem("descMessage", descricao);
     document.getElementById("titulo").innerHTML = title;
     document.getElementById("sexaoMensagem").style.display = "";
+    document.getElementById("descricao").innerHTML = descricao;
     let resp = `<thead>
     <th>
         Mensagem
@@ -163,7 +169,7 @@ function showDetail(id, title) {
                 ${messages[i].usersId.username}
                 </td>
             </tr>
-       `;
+       `;        
         }
     }
     resp += `</tbody>`;
@@ -174,7 +180,7 @@ function showDetail(id, title) {
 
 function reloadSame() {
     if (localStorage.hasOwnProperty("titleMessage") && localStorage.hasOwnProperty("idMessage")) {
-        showDetail(localStorage.getItem("idMessage"), localStorage.getItem("titleMessage"));
+        showDetail(localStorage.getItem("idMessage"), localStorage.getItem("titleMessage"), localStorage.getItem("descMessage"));
     }
 }
 
@@ -220,6 +226,9 @@ function deleteForum(params) {
             } else {
                 console.log("Success POST");
                 console.log(response);
+                localStorage.removeItem("idMessage");
+                localStorage.removeItem("titleMessage");
+                localStorage.removeItem("descMessage");
                 window.location.href = "./MenuForum.html";
             }
         })
