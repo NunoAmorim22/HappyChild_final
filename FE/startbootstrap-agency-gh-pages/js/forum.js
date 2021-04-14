@@ -1,5 +1,13 @@
 let forum;
 let messages;
+let isAdmin = false;
+
+function pagAdmin() {
+    isAdmin = true;
+    console.log("é a pag admin");
+}
+
+
 function addDiscuss() {
     let data = {};
     data.nome = document.getElementById("novaDiscussaoTitulo").value;
@@ -72,15 +80,18 @@ function answer(topico) {
 
 }
 
-function fetchForums() {
+function fetchForum() {
     async function fetchAsync() {
         const response = await fetch(`http://localhost:8080/prochild/topicos`);
         forum = await response.json()
         console.log(forum);
         console.log(forum.length);
-        document.getElementById("totalTopicos").innerHTML = forum.length;
+        if(isAdmin){
+            document.getElementById("totalTopicos").innerHTML = forum.length;
+        }
+        else{
         show();
-
+        }
     }
     fetchAsync()
         .then((data) => console.log("ok"))
@@ -93,8 +104,15 @@ function fetchMessages() {
         messages = await response.json()
         console.log(messages);
         console.log(messages.length);
-        reloadSame();
-
+        console.log(isAdmin);
+        /*if(isAdmin){
+            document.getElementById("totalTopicos").innerHTML = messages.length;
+            console.log("ola0");
+        }
+        else{*/
+            reloadSame();
+        //}
+        
     }
     fetchAsync()
         .then((data) => console.log("ok"))
@@ -125,23 +143,26 @@ function show() {
               ${forum[r].usersId.username}
           </td>
           <td>
-              <a onclick="showDetail(${forum[r].id}, '${forum[r].nome}'); "><i class="fas fa-search-plus"></i> </a>
+              <a onclick="showDetail(${forum[r].id}, '${forum[r].nome}', '${forum[r].descricao}'); "><i class="fas fa-search-plus"></i> </a>
               <a name="garbage" id="${forum[r].usersId.id}" style="display: none;" onclick="deleteMessage(${forum[r].id});"><i class="far fa-trash-alt"></i> </a>
           </td>
 
       </tr>
   </tbody>`;
+  console.log(forum[r].descricao);
     }
     // Setting innerHTML as tab variable
     document.getElementById("discussTable").innerHTML = tab;
+
     garbage();
 }
-fetchMessages();
-function showDetail(id, title) {
+function showDetail(id, title, descricao) {
     localStorage.setItem("titleMessage", title);
     localStorage.setItem("idMessage", id);
+    localStorage.setItem("descMessage", descricao);
     document.getElementById("titulo").innerHTML = title;
     document.getElementById("sexaoMensagem").style.display = "";
+    document.getElementById("descricao").innerHTML = descricao;
     let resp = `<thead>
     <th>
         Mensagem
@@ -163,18 +184,19 @@ function showDetail(id, title) {
                 ${messages[i].usersId.username}
                 </td>
             </tr>
-       `;
+       `;        
         }
     }
     resp += `</tbody>`;
     document.getElementById("messageTable").innerHTML = resp;
     console.log(id);
     document.getElementById("btnSendAnswer").setAttribute("onclick", `answer(${id})`);
+    window.location.href = "#messageTable";
 }
 
 function reloadSame() {
     if (localStorage.hasOwnProperty("titleMessage") && localStorage.hasOwnProperty("idMessage")) {
-        showDetail(localStorage.getItem("idMessage"), localStorage.getItem("titleMessage"));
+        showDetail(localStorage.getItem("idMessage"), localStorage.getItem("titleMessage"), localStorage.getItem("descMessage"));
     }
 }
 
@@ -220,6 +242,9 @@ function deleteForum(params) {
             } else {
                 console.log("Success POST");
                 console.log(response);
+                localStorage.removeItem("idMessage");
+                localStorage.removeItem("titleMessage");
+                localStorage.removeItem("descMessage");
                 window.location.href = "./MenuForum.html";
             }
         })
