@@ -183,13 +183,19 @@ function deleteLivros(id, nome) {
   fetch(`http://localhost:8080/prochild/livros/${id}`, requestOptions)
     .then(function (response) {
       if (!response.ok) {
-        console.log(response.status); //=> number 100–599
-        console.log(response.statusText); //=> String
-        console.log(response.headers); //=> Headers
+        swal.fire({
+          icon: "error",
+          title: "Erro",
+          text: "Falha ao eliminar livro " + nome
+      })
       } else {
-        console.log("Success POST");
-        console.log(response);
-        window.location.href = "./MenuLivros.html";
+        swal.fire({
+          icon: "success",
+          title: "Sucesso",
+          text: "Livro " + nome + "apagado com sucesso"
+        }).then(function () {
+          window.location.href = "./MenuLivros.html";
+        })
       }
     })
     .then(response => response.text())
