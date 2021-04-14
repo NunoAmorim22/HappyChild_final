@@ -151,7 +151,7 @@ function editAssets() {
 }
 
 function activeEdit() {
-    if (localStorage.getItem("type") == "institution" || localStorage.getItem("type") == "admin") {
+    if (localStorage.getItem("type") == "Institution" || localStorage.getItem("type") == "Admin") {
         document.getElementById("btnEdit").style.display = "";
     }
 }
@@ -162,14 +162,14 @@ function showAddForm() {
 }
 
 function hideOption() {
-    if (localStorage.getItem("type") != "child") {
+    if (localStorage.getItem("type") != "Child") {
         document.getElementById("paraFamilias").style.display = "";
     }
 
 }
 
 function perfil() {
-    if (localStorage.getItem("type") == "family") {
+    if (localStorage.getItem("type") == "Family") {
         fetchFamilia();
         document.getElementById("editBTN").setAttribute("onclick", "editDataFamily()");
     }
