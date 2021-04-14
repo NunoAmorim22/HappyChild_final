@@ -1,10 +1,17 @@
 let forum;
 let messages;
 let isAdmin = false;
-
+let answerFunction = "answer";
 function pagAdmin() {
     isAdmin = true;
     console.log("é a pag admin");
+}
+
+function isChild() {
+    if(localStorage.getItem("type") === "Child"){
+        document.getElementById("btnAddDiscuss").setAttribute("onclick", "addDiscussChild()");
+        answerFunction = "answerChild";
+    }
 }
 
 
@@ -42,7 +49,51 @@ function addDiscuss() {
                 swal.fire({
                     icon: "success",
                     title: "Sucesso",
-                    text: "Livro inserido com sucesso"
+                    text: "Discussão inserida com sucesso"
+                }).then(function () {
+                    window.location.href = "./MenuForum.html";
+                })
+            }
+        })
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+}
+
+function addDiscussChild() {
+    let data = {};
+    data.nome = document.getElementById("novaDiscussaoTitulo").value;
+    data.descricao = document.getElementById("novaDiscussaoTexto").value;
+    console.log(data);
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+
+    var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: JSON.stringify(data),
+        redirect: 'follow'
+    };
+
+    fetch("http://localhost:8080/prochild/topicos/child", requestOptions)
+        .then(function (response) {
+            if (!response.ok) {
+                console.log(response.status); //=> number 100–599
+                console.log(response.statusText); //=> String
+                console.log(response.headers); //=> Headers
+                swal.fire({
+                    icon: "error",
+                    title: "Erro",
+                    text: "Falha de submissão"
+                })
+            } else {
+                console.log("Success POST");
+                console.log(response);
+                swal.fire({
+                    icon: "success",
+                    title: "Sucesso",
+                    text: "Discussão inserida com sucesso"
                 }).then(function () {
                     window.location.href = "./MenuForum.html";
                 })
@@ -54,6 +105,7 @@ function addDiscuss() {
 
 
 }
+
 function answer(topico) {
     let data = {};
     data.conteudo = document.getElementById("novaMensagem").value;
@@ -88,7 +140,7 @@ function answer(topico) {
                 swal.fire({
                     icon: "success",
                     title: "Sucesso",
-                    text: "Livro inserido com sucesso"
+                    text: "Resposta inserida com sucesso"
                 }).then(function () {
                     window.location.href = "./MenuForum.html";
                 })
@@ -97,9 +149,52 @@ function answer(topico) {
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
-
-
 }
+
+function answerChild(topico) {
+    let data = {};
+    data.conteudo = document.getElementById("novaMensagem").value;
+    data.topicosId = topico;
+    console.log(data);
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+
+    var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: JSON.stringify(data),
+        redirect: 'follow'
+    };
+
+    fetch("http://localhost:8080/prochild/mensagens/child", requestOptions)
+        .then(function (response) {
+            if (!response.ok) {
+                console.log(response.status); //=> number 100–599
+                console.log(response.statusText); //=> String
+                console.log(response.headers); //=> Headers
+                swal.fire({
+                    icon: "error",
+                    title: "Erro",
+                    text: "Falha de submissão"
+                })
+            } else {
+                console.log("Success POST");
+                console.log(response);
+                swal.fire({
+                    icon: "success",
+                    title: "Sucesso",
+                    text: "Resposta inserida com sucesso"
+                }).then(function () {
+                    window.location.href = "./MenuForum.html";
+                })
+            }
+        })
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+}
+
 
 function fetchForum() {
     async function fetchAsync() {
@@ -155,17 +250,27 @@ function show() {
 
     // Loop to access all rows
     for (let r = 0; r < forum.length; r++) {
+        let owner;
+        let idOwner;
+        if(forum[r].usersId === null){
+            owner = "Criança";
+            console.log("ola"); 
+            idOwner = "crianca";
+        }else {
+            owner = forum[r].usersId.username;
+            idOwner = forum[r].usersId.id;
+        } 
         tab += `<tbody>
       <tr>
           <td>
               ${forum[r].nome}
           </td>
           <td>
-              ${forum[r].usersId.username}
+              ${owner}
           </td>
           <td>
               <a onclick="showDetail(${forum[r].id}, '${forum[r].nome}', '${forum[r].descricao}'); "><i class="fas fa-search-plus"></i> </a>
-              <a name="garbage" id="${forum[r].usersId.id}" style="display: none;" onclick="deleteMessage(${forum[r].id});"><i class="far fa-trash-alt"></i> </a>
+              <a name="garbage" id="${idOwner}" style="display: none;" onclick="deleteMessage(${forum[r].id});"><i class="far fa-trash-alt"></i> </a>
           </td>
 
       </tr>
@@ -196,13 +301,19 @@ function showDetail(id, title, descricao) {
     console.log(messages);
     for (let i = 0; i < messages.length; i++) {
         if (messages[i].topicosId.id == id) {
+            let owner;
+        if(messages[i].usersId === null){
+            owner = "Criança";
+        }else {
+            owner = messages[i].usersId.username;
+        } 
             resp += `
             <tr>
                 <td>
                 ${messages[i].conteudo}
                 </td>
                 <td>
-                ${messages[i].usersId.username}
+                ${owner}
                 </td>
             </tr>
        `;
@@ -211,7 +322,7 @@ function showDetail(id, title, descricao) {
     resp += `</tbody>`;
     document.getElementById("messageTable").innerHTML = resp;
     console.log(id);
-    document.getElementById("btnSendAnswer").setAttribute("onclick", `answer(${id})`);
+    document.getElementById("btnSendAnswer").setAttribute("onclick", `${answerFunction}(${id})`);
     window.location.href = "#messageTable";
 }
 
