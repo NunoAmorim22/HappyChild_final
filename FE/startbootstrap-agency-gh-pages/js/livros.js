@@ -109,7 +109,7 @@ function showLivros() {
       <div class="portfolio-caption">
         <div class="portfolio-caption-heading">${livros[i].nome}</div>
       </div>
-      <a class="btn btn-primary" onclick=deleteLivros(${livros[i].id}) style="display: none" name="editingbtn"><i class="far fa-trash-alt"></i></a>
+      <a class="btn btn-primary" onclick="deleteLivros(${livros[i].id}, '${livros[i].nome}')" style="display: none" name="editingbtn"><i class="far fa-trash-alt"></i></a>
     </div>
   </div>`;
 
@@ -165,13 +165,13 @@ function showLivros() {
 }
 
 
-function deleteLivros(id) {
+function deleteLivros(id, nome) {
   swal.fire({
     icon: "warning",
     title: "Concluir",
-    text: "Deseja concluir a ocorrência: " + id_ocorrencia + " ?",
+    text: "Deseja apagar o livro: " + nome + " ?",
     showCancelButton: true,
-    confirmButtonText: 'Sim, concluir!',
+    confirmButtonText: 'Sim, apagar!',
     cancelButtonText: "Cancelar",
     showLoaderOnConfirm: true,
     preConfirm: () => {
@@ -196,4 +196,5 @@ function deleteLivros(id) {
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
   }
+})
 }
