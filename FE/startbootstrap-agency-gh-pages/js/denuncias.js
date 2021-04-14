@@ -1,3 +1,11 @@
+
+let isAdmin = false;
+
+function pagAdmin() {
+    isAdmin = true;
+    console.log("é a pag admin");
+}
+
 //funcao que faz get de todas as denuncias e coloca na tabela
 const api_url = "http://localhost:8080/prochild/denuncias";
 
@@ -10,7 +18,10 @@ async function getapi(url) {
   var data = await response.json();
   console.log(data);
   console.log(data.length);
-  document.getElementById("totalDenuncias").innerHTML = data.length;
+  if(isAdmin){
+    document.getElementById("totalDenuncias").innerHTML = data.length;
+}
+  
   if (response) {
     //hideloader();
   }
@@ -26,7 +37,7 @@ function hideloader() {
 
 // Function to define innerHTML for HTML table
 function show(data) {
-  let tab = `<tr><th>Nº de denuncia</th> <th>Descrição</th></tr>`;
+  let tab = `<tr><th>Nº de denuncia</th> <th>Descrição</th>  <th></th></tr>`;
 
   // Loop to access all rows
   for (let r of data) {
@@ -51,6 +62,22 @@ function showDetails(id){
     document.getElementById("descricaoDenuncia").setAttribute("value", data.acontecimento); 
     document.getElementById("dataDenuncia").setAttribute("value", de);
     document.getElementById("localDenuncia").setAttribute("value", data.localizacao); 
+    let idade;
+    if(data.criancasId.faixa_etaria == 1){
+        idade = "3-6";
+    }
+    else if(data.criancasId.faixa_etaria == 2){
+        idade = "6-9";
+    }
+    else if(data.criancasId.faixa_etaria == 3){
+        idade = "9-12";
+    }
+    else if(data.criancasId.faixa_etaria == 1){
+        idade = "12-15";
+    }
+    document.getElementById("idadeDenuncia").setAttribute("value", idade); 
+    document.getElementById("sexoDenuncia").setAttribute("value", data.criancasId.sexo); 
+    
 
     console.log(data.localizacao);
 
