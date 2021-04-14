@@ -18,14 +18,10 @@
   <!-- Core theme CSS (includes Bootstrap)-->
   <link href="css/styles.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-
 </head>
 
 <body onload="changeMainMenu();  activeEdit(); fetchLinhas()">
-
   <button onclick="topFunction()" id="topBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>
-
-
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
     <div class="container">
       <a class="navbar-brand js-scroll-trigger" href="#page-top"><img src="assets/img/logos/LogoApp.png" alt="" /></a>
@@ -60,168 +56,72 @@
   <header class="masthead6">
     <div class="container">
       <div class="masthead6-heading text-uppercase">Linhas de Apoio</div>
-      <button class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" style="display: none;" id="btnEdit" onclick="editAssets()">Editar</button>
+      <button class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" style="display: none;" id="btnEdit"
+        onclick="editAssets()">Editar</button>
     </div>
   </header>
 
   <div class="container">
     <br />
-    <div align=left><a href="MenuSelecaoTipoInformacao.html"><i class="far fa-arrow-alt-circle-left"></i> Go back</a></div>
+    <div align=left><a href="MenuSelecaoTipoInformacao.html"><i class="far fa-arrow-alt-circle-left"></i> Go back</a>
+    </div>
     <br />
-    <!--<div class="row justify-content-center">
-          <img class="responsive" src="assets/img/logos/LogoApp.png" alt="Logo HappyChild">
-        </div>-->
-
-    <!--
-        <header class="jumbotron my-4">
-          <img src="img/LogoApp.png" alt="Logo HappyChild">
-          
-          <h1 class="display-3">A Warm Welcome!</h1>
-          <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, ipsam, eligendi, in quo sunt possimus non incidunt odit vero aliquid similique quaerat nam nobis illo aspernatur vitae fugiat numquam repellat.</p>
-          <a href="#" class="btn btn-primary btn-lg">Call to action!</a>
-          
-        </header>
-      -->
     <!-- Page Features -->
     <div class="row text-center justify-content-center" id="sitioLinhas">
-      <!--div class="col-lg-3 col-md-6 mb-4 ">
-        <div class="card h-100">
-          <img class="card-img-top" src="assets/img/Saude24.jpg" alt=""> <br>
-          <!--<div class="card-body">->
-          <p style="font-weight: bold; font-size:15px; color: #43bbc9" class="">Linha Saúde 24</p>
-          <p style="font-weight: bold; font-size:15px; color: #43bbc9" class="">808 24 24 24</p>
-          <!--</div>->
-          <a href="#"> <i class="fas fa-globe fa-3x"></i></a>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-6 mb-4">
-        <div class="card h-100">
-          <img class="card-img-top" src="assets/img/SOSCrianca.png" alt=""> <br>
-          <!--<div class="card-body">->
-          <p class="" style="font-weight: bold; font-size:15px; color: #e5004e;">Linha SOS-Criança</p>
-          <p style="font-weight: bold; font-size:15px; color: #e5004e;" class="">166 111</p>
-          <!--</div>->
-          <a href="#"> <i class="fas fa-globe fa-3x"></i></a>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-6 mb-4">
-        <div class="card h-100">
-          <img class="card-img-top" src="assets/img/112.jpg" alt=""> <br>
-          <!--<div class="card-body">->
-          <p class="" style="font-weight: bold; font-size:15px; color: #f7be00;">Nº Europeu de Emergência</p>
-          <p class="" style="font-weight: bold; font-size:15px; color: #f7be00;">112</p>
-          <!--</div>->
-          <a href="#"> <i class="fas fa-globe fa-3x"></i></a>
-          <br>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-6 mb-4">
-        <div class="card h-100">
-          <img class="card-img-top" src="assets/img/PSP.jpg" alt=""> <br>
-          <!--<div class="card-body">->
-          <p class="" style="font-weight: bold; font-size:15px; color:#43bbc9;">Linha de Apoio - Polícia</p>
-          <p class="" style="font-weight: bold; font-size:15px; color:#43bbc9;">112</p>
-          <!--</div>--
-          <a href="#"> <i class="fas fa-globe fa-3x"></i></a>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-6 mb-4">
-        <div class="card h-100">
-          <img class="card-img-top" src="assets/img/GNR.png" alt=""> <br>
-          <!--<div class="card-body">->
-          <p class="" style="font-weight: bold; font-size:15px; color: #e5004e;">Guarda Nacional Republicana-GNR
-          </p>
-          <p class="" style="font-weight: bold; font-size:15px; color: #e5004e;">112</p>
-          <!--</div>->
-          <a href="#"> <i class="fas fa-globe fa-3x"></i></a>
-        </div>
-      </div>
-
-    </div>
-    <br />
-
-    <div class="card-body">
-      <div class="table-responsive">
-          <table class="table table-bordered" id="dataTableLinhas" width="100%" cellspacing="0">
-              <!--<thead>
-                  <tr>
-                      <th>Nome</th>
-                      <th>Contacto</th>
-                      <th></th>
-                  </tr>
-              </thead>
-              <tbody>
-                  <tr>
-                      <td>COna</td>
-                      <td>9677tiratira mete mete</td>
-                      <td><a href="#detalhes-denuncias"><i class="fas fa-phone-alt"></i></a></td>
-
-                  </tr>
-                  <tr>
-                      <td>Chupas</td>
-                      <td>965986741</td>
-                      <td><a href="#detalhes-denuncias"><i class="fas fa-phone-alt"></i></a></td>
-                  </tr>
-              </tbody>
-          </table>-->
-      </div>
-  </div>
-</div>
-</div>
-<section class="page-section" id="portfolio">
-  <div class="container">
-    <div class="text-center">
-    </div>
-    <div align=center>
-      <button class="btn btn-primary" name="editingbtn" style="display: none;" onclick="showAddForm()">Adicionar</button>
-      <button class="btn btn-primary" name="editingbtn" style="display: none;">Eliminar</button>
     </div>
   </div>
-</section>
-<section class="page-section fundo-azul" id="formAdd" style="display: none;">
-  <div class="container">
+  </div>
+  </div>
+  <section class="page-section" id="portfolio">
+    <div class="container">
       <div class="text-center">
-          <h2 class="section-heading text-uppercase">Formulário para adicionar linhas de apoio</h2>
-          <h3 class="section-subheading text-muted"></h3>
+      </div>
+      <div align=center>
+        <button class="btn btn-primary" name="editingbtn" style="display: none;"
+          onclick="showAddForm()">Adicionar</button>
+        <button class="btn btn-primary" name="editingbtn" style="display: none;">Eliminar</button>
+      </div>
+    </div>
+  </section>
+  <section class="page-section fundo-azul" id="formAdd" style="display: none;">
+    <div class="container">
+      <div class="text-center">
+        <h2 class="section-heading text-uppercase">Formulário para adicionar linhas de apoio</h2>
+        <h3 class="section-subheading text-muted"></h3>
       </div>
       <form>
-          <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Nome</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="nomeLinha" value="" />
-            </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Nome</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="nomeLinha" value="" />
           </div>
-    
-          <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Contacto</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="contactoLinha" value="" />
-            </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Contacto</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="contactoLinha" value="" />
           </div>
-          <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Imagem</label>
-            <div class="col-sm-10">
-              <input type="file" id="file" accept=".png, .jpg, .jpeg">
-              <label for="file" id="uploadBtn"></label>
-            </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Imagem</label>
+          <div class="col-sm-10">
+            <input type="file" id="file" accept=".png, .jpg, .jpeg">
+            <label for="file" id="uploadBtn"></label>
           </div>
-          <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Site</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="inputSite" value=""/>
-            </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Site</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputSite" value="" />
           </div>
-          
-          <div align="center">
-            <a  class="btn btn-primary" align="center" onclick="saveLinha()">Confirmar</a>
-          </div>
-        </form>
-  </div>
-</section>
+        </div>
+        <div align="center">
+          <a class="btn btn-primary" align="center" onclick="saveLinha()">Confirmar</a>
+        </div>
+      </form>
+    </div>
+  </section>
   </div>
 
   <!------------------------------------------------------------------------------------------------------------------------------------>
