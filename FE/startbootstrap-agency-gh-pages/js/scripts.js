@@ -191,6 +191,7 @@ function garbage() {
     }
 }
 
+
 //---------------------------------------Botão para ir para o topo da página------------------------------------------------------------------------
 //Get the button
 var mybutton = document.getElementById("topBtn");
