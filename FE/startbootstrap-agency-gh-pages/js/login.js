@@ -15,11 +15,26 @@ function login() {
   };
 
   fetch("http://localhost:8080/prochild/login", requestOptions)
-    .then(response => console.log(response))
-    .then(result => {
-      window.location.href = './MenuPrincipal.html';
+    .then(function (response) {
+      if (!response.ok) {
+        swal.fire({
+          icon: "error",
+          title: "Erro",
+          text: "Falha ao efetuar Login"
+        })
+      } else {
+        swal.fire({
+          icon: "success",
+          title: "Sucesso",
+          text: "Login efetuado com sucesso"
+        }).then(function () {
+          window.location.href = './MenuPrincipal.html';
+        })
+      }
     })
-    .catch(error => console.log('error', error))
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
 }
 
 function recuperarPassword() {
@@ -28,7 +43,7 @@ function recuperarPassword() {
 
   var data = {};
   data.username = document.getElementById("inputUsername").value,
-  data.email = document.getElementById("inputEmail").value
+    data.email = document.getElementById("inputEmail").value
 
   var requestOptions = {
     method: 'POST',
@@ -38,6 +53,21 @@ function recuperarPassword() {
   };
 
   fetch("http://localhost:8080/prochild/email", requestOptions)
+    .then(function (response) {
+      if (!response.ok) {
+        swal.fire({
+          icon: "error",
+          title: "Erro",
+          text: "Username e Email não coincidem"
+        })
+      } else {
+        swal.fire({
+          icon: "success",
+          title: "Sucesso",
+          text: "Password de recuperação enviada para o seu email " + data.email
+        })
+      }
+    })
     .then(response => response.text())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
