@@ -17,6 +17,9 @@ function login() {
   fetch("http://localhost:8080/prochild/login", requestOptions)
     .then(function (response) {
       if (!response.ok) {
+        console.log(response.status); //=> number 100–599
+        console.log(response.statusText); //=> String
+        console.log(response.headers); //=> Headers
         swal.fire({
           icon: "error",
           title: "Erro",
@@ -55,6 +58,9 @@ function recuperarPassword() {
   fetch("http://localhost:8080/prochild/email", requestOptions)
     .then(function (response) {
       if (!response.ok) {
+        console.log(response.status); //=> number 100–599
+        console.log(response.statusText); //=> String
+        console.log(response.headers); //=> Headers
         swal.fire({
           icon: "error",
           title: "Erro",
