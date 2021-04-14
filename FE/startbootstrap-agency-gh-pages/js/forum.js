@@ -334,52 +334,32 @@ function reloadSame() {
 
 
 function deleteMessage(id) {
-    swal.fire({
-        icon: "warning",
-        title: "Concluir",
-        text: "Deseja apagar a mensagem: " + id + " ?",
-        showCancelButton: true,
-        confirmButtonText: 'Sim, apagar!',
-        cancelButtonText: "Cancelar",
-        showLoaderOnConfirm: true,
-        preConfirm: () => {
-            var requestOptions = {
-                method: 'DELETE',
-            };
-            console.log(id);
-            //selecionar o id do jogo selecionado
-            for (let i = 0; i < messages.length; i++) {
-                let message = messages[i].topicosId.id;
-                if (message == id) {
-                    fetch(`http://localhost:8080/prochild/mensagens/${messages[i].id}`, requestOptions)
-                        .then(function (response) {
-                            if (!response.ok) {
-                                console.log(response.status); //=> number 100–599
-                                console.log(response.statusText); //=> String
-                                console.log(response.headers); //=> Headers
-                                swal.fire({
-                                    icon: "error",
-                                    title: "Erro",
-                                    text: "Falha ao eliminar mensagem " + id
-                                })
-                            } else {
-                                console.log("Success POST");
-                                console.log(response);
-                                swal.fire({
-                                    icon: "success",
-                                    title: "Sucesso",
-                                    text: "Mensagem " + id + "apagada com sucesso"
-                                })
-                            }
-                        })
-                        .then(response => response.text())
-                        .then(result => console.log(result))
-                        .catch(error => console.log('error', error));
-                }
-            }
-            deleteForum(id);
+    var requestOptions = {
+        method: 'DELETE',
+    };
+    console.log(id);
+    //selecionar o id do jogo selecionado
+    for (let i = 0; i < messages.length; i++) {
+        let message = messages[i].topicosId.id;
+        if (message == id) {
+            fetch(`http://localhost:8080/prochild/mensagens/${messages[i].id}`, requestOptions)
+                .then(function (response) {
+                    if (!response.ok) {
+                        console.log(response.status); //=> number 100–599
+                        console.log(response.statusText); //=> String
+                        console.log(response.headers); //=> Headers
+                    } else {
+                        console.log("Success POST");
+                        console.log(response);
+                    }
+                })
+                .then(response => response.text())
+                .then(result => console.log(result))
+                .catch(error => console.log('error', error));
         }
-    })
+    }
+    deleteForum(id);
+
 }
 
 function deleteForum(params) {
