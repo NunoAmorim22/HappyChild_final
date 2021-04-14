@@ -30,34 +30,24 @@ function saveInstitution() {
   )
     .then(function (response) {
       if (!response.ok) {
-        console.log(response.status); //=> number 100–599
-        console.log(response.statusText); //=> String
-        console.log(response.headers); //=> Headers
+        swal.fire({
+          icon: "error",
+          title: "Erro",
+          text: "Falha de submissão"
+      })
       } else {
-        console.log("Success POST");
-        console.log(response);
         swal.fire({
           icon: "success",
           title: "Sucesso",
-          text: "Perfil alterado com sucesso"
-      }).then(function () {
-        window.location.href = "./LoginInstituicoes.html";
-      })
-        
-        
+          text: "Instituição inserida com sucesso"
+        }).then(function () {
+          window.location.href = "./LoginInstituicoes.html";
+        })
+
       }
     })
-    .then(function (result) {
-      console.log(result);
-    })
-    .catch(function (err) {
-      console.error(err);
-      swal.fire({
-        icon: "error",
-        title: "Erro",
-        text: "Falha de submissão"
-    })
-    });
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
 }
 
 function editDataInstitution() {
@@ -91,32 +81,24 @@ function editDataInstitution() {
       fetch(`http://localhost:8080/prochild/users/2?password=${pass}`, requestOptions)
       .then(function (response) {
         if (!response.ok) {
-          console.log(response.status); //=> number 100–599
-          console.log(response.statusText); //=> String
-          console.log(response.headers); //=> Headers
-        } else {
-          console.log("Success POST");
-          console.log(response);
-          swal.fire({
-            icon: "success",
-            title: "Sucesso",
-            text: "Perfil alterado com sucesso"
-        }).then(function () {
-          window.location.href = "./LoginInstituicoes.html";
-        })
-          
-          
-        }
-      })
-        .then(result => console.log(result))
-        .catch(function (err) {
-          console.error(err);
           swal.fire({
             icon: "error",
             title: "Erro",
             text: "Falha de submissão"
         })
-        });
+        } else {
+          swal.fire({
+            icon: "success",
+            title: "Sucesso",
+            text: "Password alterada com sucesso"
+          }).then(function () {
+            window.location.href = "./DadosPerfil.html";
+          })
+  
+        }
+      })
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
     }
   }
 
@@ -132,32 +114,24 @@ function editDataInstitution() {
   fetch(`http://localhost:8080/prochild/users/2?email=${document.getElementById("inputEmail").value}`, requestOptions)
   .then(function (response) {
     if (!response.ok) {
-      console.log(response.status); //=> number 100–599
-      console.log(response.statusText); //=> String
-      console.log(response.headers); //=> Headers
-    } else {
-      console.log("Success POST");
-      console.log(response);
-      swal.fire({
-        icon: "success",
-        title: "Sucesso",
-        text: "Perfil alterado com sucesso"
-    }).then(function () {
-      window.location.href = "./LoginInstituicoes.html";
-    })
-      
-      
-    }
-  })
-    .then(result => console.log(result.message))
-    .catch(function (err) {
-      console.error(err);
       swal.fire({
         icon: "error",
         title: "Erro",
         text: "Falha de submissão"
     })
-    });
+    } else {
+      swal.fire({
+        icon: "success",
+        title: "Sucesso",
+        text: "Dados alterados com sucesso"
+      }).then(function () {
+        window.location.href = "./DadosPerfil.html";
+      })
+
+    }
+  })
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
 }
 
 function fetchInstituicao(/*id*/) {
@@ -171,8 +145,6 @@ function fetchInstituicao(/*id*/) {
     document.getElementById("inputFuncao").setAttribute("value", data.funcao);
 
     console.log(data.usersId.password);
-
-    window.location.href = "#detalhes-denuncias";
   }
   fetchAsync()
     .then((data) => console.log("ok"))
