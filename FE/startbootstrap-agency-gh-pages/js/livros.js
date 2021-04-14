@@ -53,11 +53,14 @@ function saveLivro() {
   fetch("http://localhost:8080/prochild/livros", requestOptions)
     .then(function (response) {
       if (!response.ok) {
+        console.log(response.status); //=> number 100–599
+        console.log(response.statusText); //=> String
+        console.log(response.headers); //=> Headers
         swal.fire({
           icon: "error",
           title: "Erro",
           text: "Falha de submissão"
-      })
+        })
       } else {
         swal.fire({
           icon: "success",
@@ -113,15 +116,15 @@ function showLivros() {
     </div>
   </div>`;
 
-  let video = ``
-  if (livros[i].video !== null) {
-    video = video + `<iframe width="560" height="315" src="https://www.youtube.com/embed/${livros[i].video}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
-  }
-  else {
-    video = video + `<div>
+    let video = ``
+    if (livros[i].video !== null) {
+      video = video + `<iframe width="560" height="315" src="https://www.youtube.com/embed/${livros[i].video}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+    }
+    else {
+      video = video + `<div>
           <img class="img-fluid d-block mx-auto" style="height: 200px; width: 200px; object-fit: contain" src="${livros[i].capa}" alt="" />
       </div>`;
-  }
+    }
 
 
 
@@ -175,32 +178,35 @@ function deleteLivros(id, nome) {
     cancelButtonText: "Cancelar",
     showLoaderOnConfirm: true,
     preConfirm: () => {
-  var requestOptions = {
-    method: 'DELETE',
-  };
+      var requestOptions = {
+        method: 'DELETE',
+      };
 
-  //selecionar o id do jogo selecionado
-  fetch(`http://localhost:8080/prochild/livros/${id}`, requestOptions)
-    .then(function (response) {
-      if (!response.ok) {
-        swal.fire({
-          icon: "error",
-          title: "Erro",
-          text: "Falha ao eliminar livro " + nome
-      })
-      } else {
-        swal.fire({
-          icon: "success",
-          title: "Sucesso",
-          text: "Livro " + nome + "apagado com sucesso"
-        }).then(function () {
-          window.location.href = "./MenuLivros.html";
+      //selecionar o id do jogo selecionado
+      fetch(`http://localhost:8080/prochild/livros/${id}`, requestOptions)
+        .then(function (response) {
+          if (!response.ok) {
+            console.log(response.status); //=> number 100–599
+            console.log(response.statusText); //=> String
+            console.log(response.headers); //=> Headers
+            swal.fire({
+              icon: "error",
+              title: "Erro",
+              text: "Falha ao eliminar livro " + nome
+            })
+          } else {
+            swal.fire({
+              icon: "success",
+              title: "Sucesso",
+              text: "Livro " + nome + "apagado com sucesso"
+            }).then(function () {
+              window.location.href = "./MenuLivros.html";
+            })
+          }
         })
-      }
-    })
-    .then(response => response.text())
-    .then(result => console.log(result))
-    .catch(error => console.log('error', error));
-  }
-})
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+    }
+  })
 }
