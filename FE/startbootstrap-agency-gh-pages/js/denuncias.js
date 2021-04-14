@@ -9,6 +9,8 @@ async function getapi(url) {
   // Storing data in form of JSON
   var data = await response.json();
   console.log(data);
+  console.log(data.length);
+  document.getElementById("totalDenuncias").innerHTML = data.length;
   if (response) {
     //hideloader();
   }
