@@ -71,11 +71,14 @@ function answer(topico) {
 
 
 }
+
 function fetchForums() {
     async function fetchAsync() {
         const response = await fetch(`http://localhost:8080/prochild/topicos`);
         forum = await response.json()
         console.log(forum);
+        console.log(forum.length);
+        document.getElementById("totalTopicos").innerHTML = forum.length;
         show();
 
     }
@@ -83,11 +86,13 @@ function fetchForums() {
         .then((data) => console.log("ok"))
         .catch((reason) => console.log(reason.message));
 }
+
 function fetchMessages() {
     async function fetchAsync() {
         const response = await fetch(`http://localhost:8080/prochild/mensagens`);
         messages = await response.json()
         console.log(messages);
+        console.log(messages.length);
         reloadSame();
 
     }
