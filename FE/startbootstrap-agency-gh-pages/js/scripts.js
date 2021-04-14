@@ -73,6 +73,11 @@ function chooseTypeInstitution() {
     window.location.href = "./LoginInstituicoes.html";
 }
 
+function chooseTypeInstitution() {
+    localStorage.setItem("type", "Admin");
+    window.location.href = "./LoginAdmin.html";
+}
+
 function moveOn() {
     if (localStorage.getItem("age") !== null && localStorage.getItem("gender") !== null) {
         window.location.href = "./MenuPrincipal.html";
@@ -109,7 +114,9 @@ function clearLocalStorage() {
 function changeMainMenu() {
     if (localStorage.getItem("type") == "Child") {
         if (localStorage.getItem("age") === "1" || localStorage.getItem("age") === "2" || localStorage.getItem("age") === "3") {
+            if(localStorage.getItem("age") === "1" || localStorage.getItem("age") === "2"){
             document.getElementById("forumbtn").remove();
+            }
             document.getElementById("direitosbtn").setAttribute("href", "MenuDireitosCriancas.html");
         }
         document.getElementById("perfilbtn").remove();
